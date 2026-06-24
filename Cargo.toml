@@ -1,0 +1,24 @@
+[package]
+name = "kiyoshi-ai-os"
+version = "0.1.0"
+edition = "2021"
+authors = ["romero429-collab"]
+description = "Kiyoshi AI Operating System - Core deterministic modular engine for adaptive intelligent computation"
+repository = "https://github.com/romero429-collab/Kiyoshi-AI-OS"
+readme = "README.md"
+keywords = ["ai", "os", "deterministic", "modular", "state-machine"]
+categories = ["science", "simulation"]
+
+[dependencies]
+sha2 = "0.10"
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+# No additional dev dependencies required
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
