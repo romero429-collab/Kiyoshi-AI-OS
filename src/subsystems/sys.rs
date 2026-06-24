@@ -7,6 +7,7 @@ use crate::core::event::Event;
 use crate::core::module::{FeedbackDeclaration, Module, VerificationResult};
 
 #[derive(Debug, Clone)]
+#[derive(Default)]
 pub struct SysState {
     pub warnings: u64,
     pub exceptions: u64,
@@ -14,11 +15,6 @@ pub struct SysState {
     pub version: u64,
 }
 
-impl Default for SysState {
-    fn default() -> Self {
-        SysState { warnings: 0, exceptions: 0, ticks: 0, version: 0 }
-    }
-}
 
 pub struct SysSubsystem {
     state: SysState,

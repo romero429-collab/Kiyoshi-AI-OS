@@ -6,16 +6,12 @@ use crate::core::event::Event;
 use crate::core::module::{FeedbackDeclaration, Module, VerificationResult};
 
 #[derive(Debug, Clone)]
+#[derive(Default)]
 pub struct IoState {
     pub operations_completed: u64,
     pub version: u64,
 }
 
-impl Default for IoState {
-    fn default() -> Self {
-        IoState { operations_completed: 0, version: 0 }
-    }
-}
 
 pub struct IoSubsystem {
     state: IoState,

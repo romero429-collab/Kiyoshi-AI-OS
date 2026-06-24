@@ -77,12 +77,16 @@ impl Payload {
         Payload(serde_json::Value::Null)
     }
 
-    pub fn from_str(s: &str) -> Self {
-        Payload(serde_json::Value::String(s.to_owned()))
-    }
-
     pub fn as_bytes(&self) -> Vec<u8> {
         self.0.to_string().into_bytes()
+    }
+}
+
+impl std::str::FromStr for Payload {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        Ok(Payload(serde_json::Value::String(s.to_owned())))
     }
 }
 
@@ -156,7 +160,7 @@ impl Event {
         hasher.update(timestamp.to_le_bytes());
         hasher.update(format!("{:?}", event_type).as_bytes());
         hasher.update(source.as_bytes());
-        hasher.update(&payload.as_bytes());
+        hasher.update(payload.as_bytes());
         hex::encode(hasher.finalize())
     }
 }
@@ -315,11 +319,11 @@ mod tests {
         // Axiom 1: identical inputs → identical outputs
         let e1 = Event::new(
             10, 1000, EventType::AiRequest, Priority::High,
-            "src", None, Payload::from_str("data"),
+            "src", None, "data".parse().unwrap(),
         );
         let e2 = Event::new(
             10, 1000, EventType::AiRequest, Priority::High,
-            "src", None, Payload::from_str("data"),
+            "src", None, "data".parse().unwrap(),
         );
         assert_eq!(e1.verification_hash, e2.verification_hash,
             "identical inputs must produce identical event hashes (Axiom 1: Determinism)");

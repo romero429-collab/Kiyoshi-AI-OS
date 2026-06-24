@@ -6,6 +6,7 @@ use crate::core::event::Event;
 use crate::core::module::{FeedbackDeclaration, Module, VerificationResult};
 
 #[derive(Debug, Clone)]
+#[derive(Default)]
 pub struct MemState {
     /// Simulated allocated bytes
     pub allocated_bytes: u64,
@@ -13,11 +14,6 @@ pub struct MemState {
     pub version: u64,
 }
 
-impl Default for MemState {
-    fn default() -> Self {
-        MemState { allocated_bytes: 0, peak_bytes: 0, version: 0 }
-    }
-}
 
 pub struct MemSubsystem {
     state: MemState,

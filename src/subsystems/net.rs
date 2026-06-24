@@ -6,17 +6,13 @@ use crate::core::event::Event;
 use crate::core::module::{FeedbackDeclaration, Module, VerificationResult};
 
 #[derive(Debug, Clone)]
+#[derive(Default)]
 pub struct NetState {
     pub packets_received: u64,
     pub bytes_received: u64,
     pub version: u64,
 }
 
-impl Default for NetState {
-    fn default() -> Self {
-        NetState { packets_received: 0, bytes_received: 0, version: 0 }
-    }
-}
 
 pub struct NetSubsystem {
     state: NetState,
@@ -80,7 +76,7 @@ mod tests {
     #[test]
     fn test_net_packet_count() {
         let mut sub = NetSubsystem::new();
-        let e = Event::new(1, 0, EventType::NetworkPacket, Priority::Normal, "net", None, Payload::from_str("hello"));
+        let e = Event::new(1, 0, EventType::NetworkPacket, Priority::Normal, "net", None, "hello".parse().unwrap());
         sub.transition(&e);
         assert_eq!(sub.state().packets_received, 1);
         assert!(sub.state().bytes_received > 0);

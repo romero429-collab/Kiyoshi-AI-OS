@@ -6,17 +6,13 @@ use crate::core::event::Event;
 use crate::core::module::{FeedbackDeclaration, Module, VerificationResult};
 
 #[derive(Debug, Clone)]
+#[derive(Default)]
 pub struct AppState {
     pub running_apps: u32,
     pub completed_calculations: u64,
     pub version: u64,
 }
 
-impl Default for AppState {
-    fn default() -> Self {
-        AppState { running_apps: 0, completed_calculations: 0, version: 0 }
-    }
-}
 
 pub struct AppSubsystem {
     state: AppState,

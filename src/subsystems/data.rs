@@ -7,6 +7,7 @@ use crate::core::event::Event;
 use crate::core::module::{FeedbackDeclaration, Module, VerificationResult};
 
 #[derive(Debug, Clone)]
+#[derive(Default)]
 pub struct DataState {
     pub files_loaded: u64,
     pub files_saved: u64,
@@ -14,11 +15,6 @@ pub struct DataState {
     pub version: u64,
 }
 
-impl Default for DataState {
-    fn default() -> Self {
-        DataState { files_loaded: 0, files_saved: 0, deletion_count: 0, version: 0 }
-    }
-}
 
 pub struct DataSubsystem {
     state: DataState,

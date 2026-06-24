@@ -6,17 +6,13 @@ use crate::core::event::Event;
 use crate::core::module::{FeedbackDeclaration, Module, VerificationResult};
 
 #[derive(Debug, Clone)]
+#[derive(Default)]
 pub struct UiState {
     pub active_windows: u32,
     pub last_input_timestamp: u64,
     pub version: u64,
 }
 
-impl Default for UiState {
-    fn default() -> Self {
-        UiState { active_windows: 0, last_input_timestamp: 0, version: 0 }
-    }
-}
 
 pub struct UiSubsystem {
     state: UiState,
