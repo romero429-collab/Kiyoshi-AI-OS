@@ -1,5 +1,3 @@
-# Kiyoshi AI Operating System
-
 **Kiyoshi AI OS** is the core deterministic modular engine for adaptive intelligent computation.  
 Every other component (UI layers, connectors, adapters) plugs into this foundation.
 
