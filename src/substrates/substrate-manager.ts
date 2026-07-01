@@ -2,50 +2,83 @@
  * KIYOSHI AI OPERATING SYSTEM
  * Universal Substrate Manager
  *
- * SubstrateManager provides a single aggregation point for every compute
- * substrate registered in the system.  It exposes:
+ * The substrate layer is Kiyoshi's hardware abstraction kernel.  It presents
+ * a single, uniform interface across every compute paradigm that exists today:
+ * classical CPUs, GPUs, FPGAs, gate-model and annealing quantum hardware,
+ * neuromorphic chips, photonic processors, biological DNA computing, AI
+ * accelerators (TPUs, Groq, Cerebras …), serverless cloud functions, HPC
+ * clusters, edge/embedded devices, and several emerging paradigms.
  *
- *   register()       — add any object that satisfies ISubstrate
- *   getAll()         — enumerate all registered substrates
- *   executeAll()     — broadcast a workload to every substrate in parallel
- *   renderStatusPanel() — formatted ASCII report for the GUI dashboard
+ * Each substrate:
+ *   • Reports its compute category (classical / quantum / neuromorphic / …)
+ *   • Exposes isLive() so callers know whether a real API is reachable
+ *   • Falls back to a high-fidelity simulation when credentials are absent
  *
- * Invariant: a substrate may only be registered once per name.
- * Complexity — executeAll: O(n) with Promise.all parallelism.
+ * SubstrateManager exposes:
+ *   register()          — add any ISubstrate implementation
+ *   getAll()            — every registered substrate
+ *   getLive()           — only substrates with real connectivity
+ *   getSimulated()      — only substrates running in simulation mode
+ *   executeAll()        — broadcast a workload in parallel; capture failures
+ *   renderStatusPanel() — ASCII dashboard showing live/sim status per substrate
  */
 
 // ─────────────────────────────────────────────────────────────────────────────
-// INTERFACE
+// COMPUTE CATEGORIES
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type SubstrateCategory =
+  | 'classical'
+  | 'quantum'
+  | 'neuromorphic'
+  | 'photonic'
+  | 'biological'
+  | 'accelerator'   // TPU, Groq, Cerebras, Graphcore …
+  | 'analog'        // memristive, PCM in-memory compute
+  | 'serverless'    // FaaS: Lambda, Azure Functions, GCP …
+  | 'hpc'           // SLURM / MPI clusters
+  | 'edge'          // Jetson, OpenCL, Raspberry Pi …
+  | 'stochastic'    // p-bit, probabilistic computing
+  | 'thermodynamic' // Extropic AI, Langevin dynamics
+  | 'reservoir'     // echo-state / physical reservoir
+  | 'molecular'     // carbon-nanotube / DNA-origami logic
+  | 'reconfigurable'// FPGA
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CORE INTERFACE
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * Common contract that every compute substrate must satisfy.
- *
- * The existing substrate classes already expose execute() and
- * getSpecifications(); this interface formalises that contract and adds
- * a required `name` string so the manager can label each substrate in reports.
+ * Every compute substrate must satisfy this contract.
+ * Classes implement it directly — no external wrapper needed.
  */
 export interface ISubstrate {
-  /** Short human-readable name, e.g. "CPU", "GPU", "Quantum". */
+  /** Display name shown in dashboards, e.g. "Quantum", "GPU", "HPC". */
   readonly name: string
+  /** Broad compute paradigm this substrate belongs to. */
+  readonly category: SubstrateCategory
   /** Execute a workload and return a platform-specific result object. */
   execute(code: string, input: unknown): Promise<unknown>
-  /** Return a plain-object description of hardware capabilities. */
+  /** Return a plain-object description of hardware / API capabilities. */
   getSpecifications(): Record<string, unknown>
+  /**
+   * Returns true when a real hardware API is reachable (credentials present
+   * and endpoint responding).  Returns false when running in simulation mode.
+   */
+  isLive(): boolean
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// RESULT
+// EXECUTION RESULT
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** Outcome of one substrate's execution attempt. */
 export interface SubstrateResult {
   readonly name: string
+  readonly category: SubstrateCategory
+  readonly live: boolean
   readonly success: boolean
   readonly durationMs: number
-  /** Populated when success = true. */
   readonly output?: unknown
-  /** Populated when success = false. */
   readonly error?: string
 }
 
@@ -53,116 +86,89 @@ export interface SubstrateResult {
 // MANAGER
 // ─────────────────────────────────────────────────────────────────────────────
 
-const PANEL_WIDTH = 72
+const PANEL_WIDTH = 76
 
 export class SubstrateManager {
   private readonly substrates = new Map<string, ISubstrate>()
 
-  /**
-   * Register a substrate.  Throws if a substrate with the same name is already
-   * registered (enforces the uniqueness invariant).
-   *
-   * Complexity: O(1).
-   */
+  /** Register a substrate. Throws on duplicate name. */
   register(substrate: ISubstrate): this {
     if (this.substrates.has(substrate.name)) {
-      throw new Error(`SubstrateManager: duplicate substrate name "${substrate.name}"`)
+      throw new Error(`SubstrateManager: duplicate name "${substrate.name}"`)
     }
     this.substrates.set(substrate.name, substrate)
     return this
   }
 
-  /** Return all registered substrates in registration order. */
-  getAll(): ISubstrate[] {
-    return Array.from(this.substrates.values())
-  }
+  /** All registered substrates in registration order. */
+  getAll(): ISubstrate[] { return Array.from(this.substrates.values()) }
 
-  /** Return a single substrate by name, or undefined if not registered. */
-  get(name: string): ISubstrate | undefined {
-    return this.substrates.get(name)
-  }
+  /** Only substrates with a live real-hardware / API connection. */
+  getLive(): ISubstrate[] { return this.getAll().filter(s => s.isLive()) }
+
+  /** Only substrates operating in simulation mode. */
+  getSimulated(): ISubstrate[] { return this.getAll().filter(s => !s.isLive()) }
+
+  /** Look up a substrate by name. */
+  get(name: string): ISubstrate | undefined { return this.substrates.get(name) }
 
   /**
-   * Execute the same workload on every registered substrate in parallel.
-   *
-   * Individual failures are captured per-result and never propagate — the
-   * caller always receives an array of length equal to the number of registered
-   * substrates.
-   *
-   * Complexity: O(n) wall-clock (parallel), O(n) memory.
+   * Broadcast the same workload to every substrate in parallel.
+   * Per-substrate failures are captured in the result — never propagate.
    */
   async executeAll(code: string, input: unknown): Promise<SubstrateResult[]> {
-    const tasks = Array.from(this.substrates.values()).map(
-      async (substrate): Promise<SubstrateResult> => {
+    return Promise.all(
+      Array.from(this.substrates.values()).map(async (s): Promise<SubstrateResult> => {
         const start = Date.now()
         try {
-          const output = await substrate.execute(code, input)
-          return {
-            name: substrate.name,
-            success: true,
-            durationMs: Date.now() - start,
-            output,
-          }
+          const output = await s.execute(code, input)
+          return { name: s.name, category: s.category, live: s.isLive(), success: true,  durationMs: Date.now() - start, output }
         } catch (err) {
-          return {
-            name: substrate.name,
-            success: false,
-            durationMs: Date.now() - start,
-            error: err instanceof Error ? err.message : String(err),
-          }
+          return { name: s.name, category: s.category, live: s.isLive(), success: false, durationMs: Date.now() - start,
+                   error: err instanceof Error ? err.message : String(err) }
         }
-      },
+      }),
     )
-    return Promise.all(tasks)
   }
 
-  /**
-   * Render a formatted ASCII status panel listing every registered substrate,
-   * its hardware specifications, and connectivity status.
-   *
-   * Designed to be printed directly to the terminal by the dashboard.
-   *
-   * Complexity: O(n · k) where n = substrates, k = spec keys per substrate.
-   */
+  // ── Status panel ────────────────────────────────────────────────────────────
+
   renderStatusPanel(): string {
     const hr  = '═'.repeat(PANEL_WIDTH)
     const div = '─'.repeat(PANEL_WIDTH)
     const lines: string[] = []
+    const live      = this.getLive().length
+    const simulated = this.getSimulated().length
 
     lines.push(hr)
     lines.push(this.centre('KIYOSHI OS  —  UNIVERSAL SUBSTRATE STATUS'))
-    lines.push(this.centre(`${this.substrates.size} substrate(s) connected`))
+    lines.push(this.centre(`${this.substrates.size} substrate(s)  ·  ${live} live  ·  ${simulated} simulation`))
     lines.push(hr)
     lines.push('')
 
     let idx = 0
-    for (const substrate of this.substrates.values()) {
+    for (const s of this.substrates.values()) {
       idx++
-      const specs = substrate.getSpecifications()
-      const icon  = substrateIcon(substrate.name)
+      const specs  = s.getSpecifications()
+      const icon   = substrateIcon(s.category)
+      const badge  = s.isLive() ? '🟢 LIVE' : '🔵 SIM '
 
-      lines.push(`  ${icon}  [${idx}] ${substrate.name}`)
+      lines.push(`  ${icon}  [${String(idx).padStart(2)}] ${s.name.padEnd(20)} ${badge}   (${s.category})`)
       lines.push(`  ${'·'.repeat(PANEL_WIDTH - 2)}`)
-
       for (const [key, value] of Object.entries(specs)) {
-        const label = key.padEnd(22)
-        lines.push(`       ${label} ${String(value)}`)
+        lines.push(`       ${key.padEnd(24)} ${String(value)}`)
       }
       lines.push('')
     }
 
     lines.push(div)
-    lines.push(`  ✅ All ${this.substrates.size} substrates ONLINE`)
+    lines.push(`  ✅  ${this.substrates.size} substrates registered   🟢 ${live} live   🔵 ${simulated} simulation`)
     lines.push(hr)
-
     return lines.join('\n')
   }
 
-  /**
-   * Render a compact summary of execution results returned by executeAll().
-   *
-   * Complexity: O(n).
-   */
+  // ── Execution summary ────────────────────────────────────────────────────────
+
   renderExecutionSummary(results: SubstrateResult[]): string {
     const hr  = '═'.repeat(PANEL_WIDTH)
     const div = '─'.repeat(PANEL_WIDTH)
@@ -174,16 +180,17 @@ export class SubstrateManager {
     lines.push('')
 
     for (const r of results) {
-      const icon   = r.success ? '✅' : '❌'
+      const ok     = r.success ? '✅' : '❌'
+      const liveTag = r.live ? '🟢' : '🔵'
       const timing = `${r.durationMs}ms`
       lines.push(
-        `  ${icon}  ${substrateIcon(r.name)} ${r.name.padEnd(16)} ${timing.padStart(8)}` +
-        (r.error ? `  ⚠  ${r.error.slice(0, 30)}` : ''),
+        `  ${ok} ${liveTag} ${substrateIcon(r.category)} ${r.name.padEnd(20)} ${timing.padStart(8)}` +
+        (r.error ? `  ⚠  ${r.error.slice(0, 28)}` : ''),
       )
     }
 
-    const passed  = results.filter(r => r.success).length
-    const failed  = results.length - passed
+    const passed = results.filter(r => r.success).length
+    const failed = results.length - passed
     lines.push('')
     lines.push(div)
     lines.push(
@@ -191,11 +198,10 @@ export class SubstrateManager {
       (failed > 0 ? `  (${failed} failed)` : '  — all OK'),
     )
     lines.push(hr)
-
     return lines.join('\n')
   }
 
-  // ── Formatting helpers ─────────────────────────────────────────────────────
+  // ── Helpers ─────────────────────────────────────────────────────────────────
 
   private centre(text: string): string {
     const pad = Math.max(0, Math.floor((PANEL_WIDTH - text.length) / 2))
@@ -204,24 +210,26 @@ export class SubstrateManager {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// HELPERS
+// ICON MAP
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** Map a substrate name to a representative emoji icon. */
-function substrateIcon(name: string): string {
+function substrateIcon(category: SubstrateCategory | string): string {
   const icons: Record<string, string> = {
-    CPU:            '🖥️ ',
-    GPU:            '⚡',
-    FPGA:           '⚙️ ',
-    'IBM Quantum':    '⚛️ ',
-    'Google Quantum': '⚛️ ',
-    'IonQ Quantum':   '⚛️ ',
-    Neuromorphic:   '🧠',
-    Optical:        '💡',
-    Biological:     '🧬',
-    Molecular:      '🔬',
-    Memristive:     '🔁',
-    Reservoir:      '🌊',
+    classical:     '🖥️ ',
+    quantum:       '⚛️ ',
+    neuromorphic:  '🧠',
+    photonic:      '💡',
+    biological:    '🧬',
+    accelerator:   '🚀',
+    analog:        '🔁',
+    serverless:    '☁️ ',
+    hpc:           '🏗️ ',
+    edge:          '📡',
+    stochastic:    '🎲',
+    thermodynamic: '🌡️ ',
+    reservoir:     '🌊',
+    molecular:     '🔬',
+    reconfigurable:'⚙️ ',
   }
-  return icons[name] ?? '🔲'
+  return icons[category] ?? '🔲'
 }

@@ -7,17 +7,23 @@ import { EventBus } from '../core/event-bus'
 import { NumericalApproximationEngine } from '../core/numerical/nae'
 import { ComputationEnginePipeline } from '../core/numerical/ce-pipeline'
 import { DiagnosticPanel } from '../core/numerical/diagnostic-panel'
-import { SubstrateManager, ISubstrate } from '../substrates/substrate-manager'
+import { SubstrateManager } from '../substrates/substrate-manager'
 import { CPUSubstrate } from '../substrates/cpu/cpu-substrate'
 import { GPUSubstrate } from '../substrates/gpu/gpu-substrate'
 import { FPGASubstrate } from '../substrates/fpga/fpga-substrate'
-import { IBMQuantumSubstrate, GoogleQuantumSubstrate, IonQQuantumSubstrate } from '../substrates/quantum/quantum-substrate'
+import { QuantumSubstrate } from '../substrates/quantum/quantum-substrate'
 import { NeuromorphicSubstrate } from '../substrates/neuromorphic/neuromorphic-substrate'
 import { OpticalSubstrate } from '../substrates/optical/optical-substrate'
 import { BiologicalSubstrate } from '../substrates/biological/biological-substrate'
 import { MolecularSubstrate } from '../substrates/molecular/molecular-substrate'
 import { MemristiveSubstrate } from '../substrates/memristive/memristive-substrate'
 import { ReservoirSubstrate } from '../substrates/reservoir/reservoir-substrate'
+import { TPUSubstrate } from '../substrates/tpu/tpu-substrate'
+import { ServerlessSubstrate } from '../substrates/serverless/serverless-substrate'
+import { HPCSubstrate } from '../substrates/hpc/hpc-substrate'
+import { EdgeSubstrate } from '../substrates/edge/edge-substrate'
+import { StochasticSubstrate } from '../substrates/stochastic/stochastic-substrate'
+import { ThermodynamicSubstrate } from '../substrates/thermodynamic/thermodynamic-substrate'
 
 export class KiyoshiSystem {
   private systemName: string = 'Kiyoshi OS v1.0'
@@ -32,7 +38,7 @@ export class KiyoshiSystem {
   /** Diagnostic panel — press [D] on the dashboard to open */
   readonly diagnosticPanel: DiagnosticPanel
 
-  /** Universal substrate manager — all 12 compute platforms */
+  /** Universal substrate manager — all compute paradigms */
   private readonly substrateManager: SubstrateManager
 
   constructor() {
@@ -43,25 +49,32 @@ export class KiyoshiSystem {
     this.diagnosticPanel = new DiagnosticPanel(this.nae, this.pipeline, this.bus)
     this.diagnosticPanel.attach()
 
-    // Register all 12 compute substrates
+    // Register all compute substrates — each class implements ISubstrate directly
     this.substrateManager = new SubstrateManager()
     this.substrateManager
       // ── Classical ──────────────────────────────────────────────────────────
-      .register(namedSubstrate('CPU',           new CPUSubstrate()))
-      .register(namedSubstrate('GPU',           new GPUSubstrate()))
-      .register(namedSubstrate('FPGA',          new FPGASubstrate()))
-      // ── Quantum (3 independent providers) ─────────────────────────────────
-      .register(namedSubstrate('IBM Quantum',   new IBMQuantumSubstrate()))
-      .register(namedSubstrate('Google Quantum',new GoogleQuantumSubstrate()))
-      .register(namedSubstrate('IonQ Quantum',  new IonQQuantumSubstrate()))
+      .register(new CPUSubstrate())
+      .register(new GPUSubstrate())
+      .register(new FPGASubstrate())
+      // ── Quantum ────────────────────────────────────────────────────────────
+      .register(new QuantumSubstrate())           // IBM · Google · IonQ · Rigetti · Quantinuum · D-Wave · Azure
       // ── Bio / Neuro / Photonic ─────────────────────────────────────────────
-      .register(namedSubstrate('Neuromorphic',  new NeuromorphicSubstrate()))
-      .register(namedSubstrate('Optical',       new OpticalSubstrate()))
-      .register(namedSubstrate('Biological',    new BiologicalSubstrate()))
+      .register(new NeuromorphicSubstrate())      // Loihi · TrueNorth · SpiNNaker · BrainScaleS
+      .register(new OpticalSubstrate())           // Xanadu · Lightmatter · Luminous
+      .register(new BiologicalSubstrate())        // Twist Bioscience · Benchling · DNA storage
       // ── Emerging / Next-Gen ────────────────────────────────────────────────
-      .register(namedSubstrate('Molecular',     new MolecularSubstrate()))
-      .register(namedSubstrate('Memristive',    new MemristiveSubstrate()))
-      .register(namedSubstrate('Reservoir',     new ReservoirSubstrate()))
+      .register(new MolecularSubstrate())         // CNT / DNA origami / Schrödinger
+      .register(new MemristiveSubstrate())        // Knowm · IBM PCM · HP RRAM
+      .register(new ReservoirSubstrate())         // Spin-torque oscillator · photonic ESN
+      // ── AI Accelerators ───────────────────────────────────────────────────
+      .register(new TPUSubstrate())               // Google TPU · Groq LPU · Cerebras · Graphcore
+      // ── Cloud / Distributed ───────────────────────────────────────────────
+      .register(new ServerlessSubstrate())        // Lambda · Azure Fns · GCP Fns · CF Workers
+      .register(new HPCSubstrate())               // SLURM · PBS · NERSC Perlmutter · Frontier
+      .register(new EdgeSubstrate())              // Jetson Orin · Raspberry Pi · OpenCL
+      // ── Probabilistic / Thermodynamic ─────────────────────────────────────
+      .register(new StochasticSubstrate())        // D-Wave QUBO · P-bit Gibbs sampler
+      .register(new ThermodynamicSubstrate())     // Extropic AI · Normal SPU · Langevin
 
     console.log(`\n${'═'.repeat(70)}`)
     console.log(`🤖 ${this.systemName}`)
@@ -116,7 +129,7 @@ export class KiyoshiSystem {
     console.log(`Version:           ${this.version}`)
     console.log(`Status:            ${this.status}`)
     console.log(`Layers:            5 (Substrates → Intelligence → Engineering → Operations → Integration)`)
-    console.log(`Compute Platforms: 12 (CPU, GPU, FPGA, IBM Quantum, Google Quantum, IonQ Quantum, Neuromorphic, Optical, Biological, Molecular, Memristive, Reservoir)`)
+    console.log(`Compute Platforms: ${this.substrateManager.getAll().length} (CPU · GPU · FPGA · Quantum · Neuromorphic · Optical · Biological · Molecular · Memristive · Reservoir · AI Accelerator · Serverless · HPC · Edge · Stochastic · Thermodynamic)`)
     console.log(`Overall Score:     91/100\n`)
     console.log(`${'═'.repeat(70)}\n`)
   }
@@ -242,22 +255,8 @@ export { fibonacci };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// HELPERS
+// MAIN
 // ─────────────────────────────────────────────────────────────────────────────
-
-/**
- * Wrap any substrate class that has execute() + getSpecifications() as an
- * ISubstrate by attaching a `name` property.
- *
- * This adapter lets existing substrate classes be registered without
- * modification.
- */
-function namedSubstrate(
-  name: string,
-  substrate: { execute(code: string, input: unknown): Promise<unknown>; getSpecifications(): Record<string, unknown> },
-): ISubstrate {
-  return Object.assign(substrate, { name }) as ISubstrate
-}
 
 /**
  * Main execution
