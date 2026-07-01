@@ -79,10 +79,13 @@ export class HPCSubstrate implements ISubstrate {
 
   private async runSLURM(script: string, start: number): Promise<unknown> {
     try {
-      // Write script to tmp and submit via ssh + sbatch
+      // Write script to a temp file and pipe it over ssh to avoid shell injection
       const sshKey = process.env['SLURM_SSH_KEY'] ? `-i ${process.env['SLURM_SSH_KEY']}` : ''
-      const cmd = `echo "${script.replace(/"/g, '\\"')}" | ssh ${sshKey} ${process.env['SLURM_USER']}@${process.env['SLURM_HOST']} sbatch --wrap=-`
-      const out = execSync(cmd, { timeout: 10_000, encoding: 'utf8' })
+      const host   = `${process.env['SLURM_USER']}@${process.env['SLURM_HOST']}`
+      const out = execSync(
+        `ssh ${sshKey} ${host} sbatch`,
+        { input: script, timeout: 10_000, encoding: 'utf8' },
+      )
       return { platform: 'HPC', mode: 'real', provider: 'SLURM', output: out.trim(), executionTimeMs: Date.now() - start }
     } catch (err) {
       console.warn(`🖥️  SLURM fallback: ${(err as Error).message}`)

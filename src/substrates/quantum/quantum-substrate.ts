@@ -223,17 +223,18 @@ export class QuantumSubstrate implements ISubstrate {
     if (!pid || !key) return this.simulate(p, shots)
     const start = Date.now()
     try {
+      const authHeaders = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key }
       const progRes = await fetch(
-        `https://quantumai.googleapis.com/v1alpha1/projects/${pid}/programs?key=${key}`,
-        { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        `https://quantumai.googleapis.com/v1alpha1/projects/${pid}/programs`,
+        { method: 'POST', headers: authHeaders,
           body: JSON.stringify({ name: `projects/${pid}/programs/kiyoshi-${Date.now()}`, code: { languageCode: 'CIRCUIT_V1', source: circuit } }) },
       )
       if (!progRes.ok) throw new Error(`Google program ${progRes.status}`)
       const prog = await progRes.json() as { name: string }
 
       const jobRes = await fetch(
-        `https://quantumai.googleapis.com/v1alpha1/${prog.name}/jobs?key=${key}`,
-        { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        `https://quantumai.googleapis.com/v1alpha1/${prog.name}/jobs`,
+        { method: 'POST', headers: authHeaders,
           body: JSON.stringify({ processorIds: [process.env['GOOGLE_QUANTUM_PROCESSOR'] ?? 'rainbow'], runContext: { parameterSweeps: [{ repetitions: shots }] } }) },
       )
       if (!jobRes.ok) throw new Error(`Google job ${jobRes.status}`)
