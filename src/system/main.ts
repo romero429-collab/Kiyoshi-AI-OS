@@ -7,6 +7,14 @@ import { EventBus } from '../core/event-bus'
 import { NumericalApproximationEngine } from '../core/numerical/nae'
 import { ComputationEnginePipeline } from '../core/numerical/ce-pipeline'
 import { DiagnosticPanel } from '../core/numerical/diagnostic-panel'
+import { SubstrateManager, ISubstrate } from '../substrates/substrate-manager'
+import { CPUSubstrate } from '../substrates/cpu/cpu-substrate'
+import { GPUSubstrate } from '../substrates/gpu/gpu-substrate'
+import { FPGASubstrate } from '../substrates/fpga/fpga-substrate'
+import { QuantumSubstrate } from '../substrates/quantum/quantum-substrate'
+import { NeuromorphicSubstrate } from '../substrates/neuromorphic/neuromorphic-substrate'
+import { OpticalSubstrate } from '../substrates/optical/optical-substrate'
+import { BiologicalSubstrate } from '../substrates/biological/biological-substrate'
 
 export class KiyoshiSystem {
   private systemName: string = 'Kiyoshi OS v1.0'
@@ -21,6 +29,9 @@ export class KiyoshiSystem {
   /** Diagnostic panel — press [D] on the dashboard to open */
   readonly diagnosticPanel: DiagnosticPanel
 
+  /** Universal substrate manager — all 7 compute platforms */
+  private readonly substrateManager: SubstrateManager
+
   constructor() {
     // Initialise NAE-Ω subsystem
     this.bus = new EventBus()
@@ -29,14 +40,26 @@ export class KiyoshiSystem {
     this.diagnosticPanel = new DiagnosticPanel(this.nae, this.pipeline, this.bus)
     this.diagnosticPanel.attach()
 
+    // Register all compute substrates
+    this.substrateManager = new SubstrateManager()
+    this.substrateManager
+      .register(namedSubstrate('CPU',          new CPUSubstrate()))
+      .register(namedSubstrate('GPU',          new GPUSubstrate()))
+      .register(namedSubstrate('FPGA',         new FPGASubstrate()))
+      .register(namedSubstrate('Quantum',      new QuantumSubstrate()))
+      .register(namedSubstrate('Neuromorphic', new NeuromorphicSubstrate()))
+      .register(namedSubstrate('Optical',      new OpticalSubstrate()))
+      .register(namedSubstrate('Biological',   new BiologicalSubstrate()))
+
     console.log(`\n${'═'.repeat(70)}`)
     console.log(`🤖 ${this.systemName}`)
     console.log(`${'═'.repeat(70)}\n`)
-    console.log(`✅ System initialized and ready!\n`)
+    console.log(`✅ System initialized — ${this.substrateManager.getAll().length} substrates online\n`)
   }
 
   /**
-   * Process user code
+   * Process user code — routes through every connected substrate in parallel
+   * and prints a per-substrate execution summary on completion.
    */
   async processCode(userCode: string): Promise<void> {
     console.log(`📝 Processing code:\n`)
@@ -62,6 +85,11 @@ export class KiyoshiSystem {
 
     console.log(`\n${'─'.repeat(70)}`)
     console.log(`✅ Code processing complete!\n`)
+
+    // Execute on all connected substrates and show summary
+    console.log(`\n🔄 Dispatching workload to all substrates...\n`)
+    const results = await this.substrateManager.executeAll(userCode, {})
+    console.log(this.substrateManager.renderExecutionSummary(results))
     console.log(`${'═'.repeat(70)}\n`)
   }
 
@@ -87,6 +115,15 @@ export class KiyoshiSystem {
    */
   showDiagnosticPanel(): void {
     console.log(this.diagnosticPanel.render())
+  }
+
+  /**
+   * Open the Universal Substrate Status Panel and print it to stdout.
+   * Shows live specifications for every connected compute substrate.
+   * Triggered by [S] in the dashboard.
+   */
+  showSubstratePanel(): void {
+    console.log(this.substrateManager.renderStatusPanel())
   }
 
   /**
@@ -150,6 +187,7 @@ export { fibonacci };
     console.log(`  🖥️  Kiyoshi OS Dashboard`)
     console.log(`${'─'.repeat(70)}`)
     console.log(`  [I]  System Info`)
+    console.log(`  [S]  Substrate Status  (${this.substrateManager.getAll().length} substrates connected)`)
     console.log(`  [D]  Diagnostic Panel  (NAE-Ω / CE-Ω)`)
     console.log(`  [R]  Run Demo`)
     console.log(`  [Q]  Quit`)
@@ -164,6 +202,9 @@ export { fibonacci };
       case 'i':
         this.getSystemInfo()
         break
+      case 's':
+        this.showSubstratePanel()
+        break
       case 'd':
         this.showDiagnosticPanel()
         break
@@ -176,7 +217,7 @@ export { fibonacci };
         process.exit(0)
         break
       default:
-        console.log(`  ⚠️  Unknown option: "${key}". Use I / D / R / Q.`)
+        console.log(`  ⚠️  Unknown option: "${key}". Use I / S / D / R / Q.`)
     }
   }
 
@@ -186,6 +227,24 @@ export { fibonacci };
   private delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms))
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Wrap any substrate class that has execute() + getSpecifications() as an
+ * ISubstrate by attaching a `name` property.
+ *
+ * This adapter lets existing substrate classes be registered without
+ * modification.
+ */
+function namedSubstrate(
+  name: string,
+  substrate: { execute(code: string, input: unknown): Promise<unknown>; getSpecifications(): Record<string, unknown> },
+): ISubstrate {
+  return Object.assign(substrate, { name }) as ISubstrate
 }
 
 /**
