@@ -210,13 +210,18 @@ export class SubstrateManager {
 /** Map a substrate name to a representative emoji icon. */
 function substrateIcon(name: string): string {
   const icons: Record<string, string> = {
-    CPU:          '🖥️ ',
-    GPU:          '⚡',
-    FPGA:         '⚙️ ',
-    Quantum:      '⚛️ ',
-    Neuromorphic: '🧠',
-    Optical:      '💡',
-    Biological:   '🧬',
+    CPU:            '🖥️ ',
+    GPU:            '⚡',
+    FPGA:           '⚙️ ',
+    'IBM Quantum':    '⚛️ ',
+    'Google Quantum': '⚛️ ',
+    'IonQ Quantum':   '⚛️ ',
+    Neuromorphic:   '🧠',
+    Optical:        '💡',
+    Biological:     '🧬',
+    Molecular:      '🔬',
+    Memristive:     '🔁',
+    Reservoir:      '🌊',
   }
   return icons[name] ?? '🔲'
 }
