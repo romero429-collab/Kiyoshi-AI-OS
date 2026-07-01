@@ -6,10 +6,15 @@
 - CPU (Classical)
 - GPU (NVIDIA, AMD, Intel)
 - FPGA (Field Programmable Gate Array)
-- Quantum (IBM, Google, IonQ)
-- Biological
-- Optical
-- Neuromorphic
+- IBM Quantum (127-qubit heavy-hex)
+- Google Quantum (72-qubit Sycamore-class)
+- IonQ Quantum (trapped-ion, 11 logical qubits)
+- Biological (DNA-based)
+- Optical (Photonic)
+- Neuromorphic (Intel Loihi-2)
+- Molecular (Carbon Nanotube / DNA Origami)
+- Memristive (RRAM Crossbar, analog in-memory)
+- Reservoir (Spin-Torque Oscillator / Echo-State)
 
 ### Phase 2: Intelligence
 - Unified Intelligent Agent (UIA-Ω)

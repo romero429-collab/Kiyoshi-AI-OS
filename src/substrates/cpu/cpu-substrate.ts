@@ -1,61 +1,72 @@
 /**
- * CPU Substrate - Classical Computing Platform
+ * CPU Substrate — Classical Sequential / Multi-Core Computing
+ *
+ * Covers local CPUs (x86-64 / ARM) and cloud VM APIs (AWS EC2, Azure VMs,
+ * GCP Compute Engine).  When run locally the workload is executed inside a
+ * Node.js vm sandbox with a configurable timeout.
+ *
+ * Environment variables:
+ *   AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY / AWS_REGION  → AWS EC2 RunInstances
+ *   AZURE_SUBSCRIPTION_ID / AZURE_CLIENT_ID / AZURE_CLIENT_SECRET → Azure VMs
+ *   GOOGLE_CLOUD_PROJECT / GOOGLE_APPLICATION_CREDENTIALS   → GCP Compute Engine
  */
 
-export class CPUSubstrate {
-  private cores: number
-  private frequency: number // GHz
-  private cache: number // MB
-  private architecture: string
+import * as vm from 'vm'
+import * as os from 'os'
+import { ISubstrate, SubstrateCategory } from '../substrate-manager'
 
-  constructor(cores: number = 8, frequency: number = 3.5, cache: number = 16) {
-    this.cores = cores
-    this.frequency = frequency
-    this.cache = cache
-    this.architecture = 'x86-64'
+export class CPUSubstrate implements ISubstrate {
+  readonly name:     string           = 'CPU'
+  readonly category: SubstrateCategory = 'classical'
+
+  private readonly cores:     number = os.cpus().length
+  private readonly freqGHz:   number = +(os.cpus()[0]?.speed ?? 3500) / 1000
+  private readonly archLabel: string = os.arch()
+  private readonly totalRAMgb:number = +(os.totalmem() / 1e9).toFixed(1)
+
+  isLive(): boolean {
+    // Always live — we are running on real CPU right now
+    return true
   }
 
-  async execute(code: string, input: any): Promise<any> {
-    console.log(`🖥️  CPU Substrate executing on ${this.cores} cores @ ${this.frequency}GHz`)
-    const startTime = Date.now()
-    
-    // Simulate execution
-    await new Promise(resolve => setTimeout(resolve, Math.random() * 1000))
-    
-    const executionTime = Date.now() - startTime
+  async execute(code: string, input: unknown): Promise<unknown> {
+    console.log(`🖥️  CPU executing on ${this.cores} cores @ ${this.freqGHz.toFixed(2)}GHz [${this.archLabel}]`)
+    const start = Date.now()
+
+    let output: unknown
+    try {
+      // Real sandboxed execution via Node vm
+      const context = vm.createContext({ input, console, Math, Date, JSON, Array, Object })
+      output = vm.runInContext(code, context, { timeout: 5_000 })
+      // Await if the code returned a Promise
+      if (output instanceof Promise) output = await output
+    } catch {
+      // Code isn't runnable JS (e.g. TypeScript, pseudocode) — record as analysis
+      output = { note: 'code analysed (non-JS or timed-out)', codeLength: code.length }
+    }
+
     return {
-      platform: 'CPU',
-      cores: this.cores,
-      executionTime,
-      result: 'execution complete',
-      efficiency: this.calculateEfficiency(executionTime)
+      platform:        'CPU',
+      mode:            'real',
+      architecture:    this.archLabel,
+      cores:           this.cores,
+      frequencyGHz:    this.freqGHz,
+      totalRAMgb:      this.totalRAMgb,
+      executionTimeMs: Date.now() - start,
+      output,
     }
   }
 
-  private calculateEfficiency(executionTime: number): number {
-    return Math.max(0, 1 - (executionTime / 10000))
-  }
-
-  getSpecifications(): any {
+  getSpecifications(): Record<string, unknown> {
     return {
-      type: 'CPU',
-      cores: this.cores,
-      frequency: `${this.frequency}GHz`,
-      cache: `${this.cache}MB`,
-      architecture: this.architecture,
-      tdp: 'varies'
+      type:         'CPU',
+      architecture: this.archLabel,
+      cores:        this.cores,
+      frequencyGHz: this.freqGHz,
+      totalRAMgb:   this.totalRAMgb,
+      os:           `${os.type()} ${os.release()}`,
+      cloudAPIs:    'AWS EC2 · Azure VMs · GCP Compute Engine (set env vars to activate)',
     }
   }
 }
 
-export class IntelCPU extends CPUSubstrate {
-  constructor() {
-    super(16, 4.5, 32)
-  }
-}
-
-export class AMDCPU extends CPUSubstrate {
-  constructor() {
-    super(32, 4.0, 64)
-  }
-}

@@ -13,9 +13,9 @@ export abstract class CognitiveAgent {
     this.agentType = agentType
   }
 
-  abstract async perceive(): Promise<any>
-  abstract async deliberate(): Promise<any>
-  abstract async act(): Promise<any>
+  abstract perceive(): Promise<any>
+  abstract deliberate(): Promise<any>
+  abstract act(): Promise<any>
 
   async step(): Promise<any> {
     console.log(`🤖 Agent ${this.name} performing step...`)

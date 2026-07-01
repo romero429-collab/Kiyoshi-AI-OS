@@ -111,7 +111,7 @@ interface CompiledCode {
 }
 
 abstract class CompilationBackend {
-  abstract async compile(sourceCode: string, optimization: string): Promise<CompiledCode>
+  abstract compile(sourceCode: string, optimization: string): Promise<CompiledCode>
 }
 
 class CPUBackend extends CompilationBackend {
