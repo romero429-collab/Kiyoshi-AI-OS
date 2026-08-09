@@ -1,0 +1,127 @@
+---
+schema_version: "0.1"
+
+artifact:
+  id: "VS-0002"
+  type: "Verification Suite"
+  title: "Protective Membrane Verification Suite"
+  version: "0.2"
+
+depends_on:
+  - "CONST-0001"
+  - "PROV-0001"
+  - "STD-0001"
+  - "MS-0002"
+  - "MS-0003"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0005"
+  - "AS-0002"
+  - "IMP-0002"
+
+provenance:
+  authority:
+    - "Constitution-v0.1-R Article IV"
+    - "Constitution-v0.1-R Article V"
+  foundation:
+    - "MS-0002"
+    - "MS-0003"
+  structure:
+    - "AS-0002"
+  rationale: []
+  realization:
+    - "IMP-0002"
+  evidence: []
+
+review:
+  status: "Accepted"
+  reviewers:
+    - "Gabriel"
+    - "ChatGPT"
+    - "Gemini"
+    - "Grok"
+  last_reviewed: "2026-07-29"
+
+ledger:
+  id: "LEDGER-0017"
+  state: "Accepted"
+---
+
+# Verification Suite: Protective Membrane Verification Suite
+**Version:** 0.2
+**Status:** Accepted
+
+## 1. Purpose
+To deterministically verify that the Protective Membrane Reference Implementation (IMP-0002) correctly operationalizes the Safety Classification and Transformation Mathematics (MS-0003) and obeys the Capability Truth Model (ADR-0004). This suite proves that Kiyoshi can mediate unknown, deceptive, degrading, and hostile simulated substrates without ever defaulting to unverified trust.
+
+## 2. Scope
+* **In Scope:** Execution of the Digital Twin logic pipeline against synthetic substrate profiles (Safe, Restricted, Lying, Fail-Deadly, Unknown). 
+* **Out of Scope:** Physical hardware penetration testing and asynchronous network latency timing attacks.
+
+## 3. Reproducibility Requirements
+* **Execution environment:** Strictly synchronous, deterministic software testing sandbox.
+* **Configuration:** Fixed random seeds for all property-based testing and fuzzing generation.
+* **External dependencies:** None (zero external I/O).
+* **Determinism classification:** Fully Deterministic.
+* **Conditions required to reproduce results:** Execution of the test runner on the exact commit hash of the IMP-0002 codebase.
+
+## 4. Governing Artifacts
+* **Mathematical Specifications:** MS-0002 (v0.2), MS-0003 (v0.2)
+* **Architecture Specifications:** AS-0002 (v0.3)
+* **Implementations:** IMP-0002 (v0.1)
+
+## 5. Invariants Under Test
+* **Authority-Constrained Action Invariant:** $\forall$ action $a$: Execute($a$) is permitted only if $a$ belongs to the current Available Authority Vector $A_s(t)$.
+* **Zero Default Trust:** Claimed capability $\neq$ Available capability.
+* **Protected Subject Invariant:** Human safety overrides system uptime in Policy Resolution.
+* **Evidence Emission:** 100% of Policy Resolver decisions produce unalterable telemetry.
+
+## 6. Non-Assumptions Under Scrutiny
+This suite explicitly bombards the implementation to ensure it does **not** rely on claimed physical authority. The simulator must prove it evaluates $A_s[P] == 0$ (Physical Control = None) on unverified devices, and successfully avoids selecting Safe Decoupling trajectories $D(x_n)$ that the simulated hardware cannot physically execute.
+
+## 7. Verification Categories
+* **Authority Truth Tests:**
+  * Substrate claims full authority $\to$ Verification returns low $\to$ Membrane actively restricts capabilities.
+* **Authority Drift Tests:**
+  * Simulate mid-session downgrade of $A_s(t)$ resulting in $\Delta A < 0$. Membrane must immediately trigger `AUTHORITY_DRIFT_DETECTED` and reclassify.
+* **Minimal Intervention Hierarchy Tests:**
+  * Substrate triggers danger threshold $\to$ Prove Policy Resolver attempts Transformation $R(x, u)$ and Containment $C(X_{safe})$ before defaulting to Emergency Isolation $I(x)$.
+* **Fail-Deadly (NerveGear) Tests:**
+  * Substrate explicitly mapped as fail-deadly if isolation occurs. Prove Policy Resolver bypasses $I(x)$ and attempts Safe Decoupling $D(x_n)$ or Human Escalation to avoid triggering the lethal condition. *The test fails if the system selects any action outside its current Available Authority Vector $A_s(t)$.*
+* **Human Escalation Boundary Tests:**
+  * Input an Unknown substrate with 0 Verification Confidence. Prove the state halts at `ESCALATION_REQUIRED`.
+* **Property-Based / Adversarial Generative Tests:**
+  * Generate 1,000,000 randomized hostile substrate profiles and input sequences to fuzz the Classification Engine.
+
+## 8. Acceptance Criteria
+* **False Trust Rate:** 0 (System never executes on Claimed authority).
+* **Policy Authorization Violation Rate:** 0 (The Policy Resolver must never intentionally authorize a transition classified as Unsafe under the active invariant set).
+* **Evidence Integrity:** 100% (All decisions produce append-only audit records).
+
+## 9. Critical Verification Rules
+The Verification Suite shall immediately **FAIL** if any of the following occur:
+* An unverified capability claim alters the Available Authority Vector $A_s(t)$.
+* The Policy Resolver selects an action outside the Available Authority Vector $A_s(t)$.
+* The Policy Resolver selects Emergency Isolation on a simulated Fail-Deadly substrate when a Safe Transformation was mathematically available.
+* An `AuditTrail` record is dropped, corrupted, or lacking a classification rationale.
+
+## 10. Evidence Artifacts
+* **`TestRun_Report.json`:** Summary of all test executions and timings.
+* **`Fuzzer_Coverage.xml`:** Output of the property-based state bombardment.
+* **`Simulated_AuditTrail.json`:** The actual evidence logs generated by the IMP-0002 logic gates during the test run.
+
+## 11. Traceability Matrix
+* **Authority Truth Tests** $\to$ ADR-0004 $\to$ AS-0002 Section 15.
+* **Authority Drift Tests** $\to$ ADR-0005 $\to$ AS-0002 Section 7.
+* **Minimal Intervention Tests** $\to$ ADR-0003 $\to$ MS-0003 $\to$ AS-0002 Section 7.
+* **Fail-Deadly Tests** $\to$ MS-0002 Section 8 $\to$ AS-0002 Section 11.
+
+## 12. Verification Coverage
+The suite shall verify 100% of defined state transitions, 100% of authority verification gates, and exercise all five Minimal Intervention response branches (Prevention, Containment, Transformation, Decoupling, Isolation).
+
+## 13. Limitations & Residual Risk
+Because this suite evaluates a purely synchronous Digital Twin, it cannot mathematically prove resistance to asynchronous race conditions, interrupt floods, or physical side-channel attacks. These will require a subsequent `VS-0003` execution upon translation to physical hardware.
+
+## 14. Related Artifacts
+* **Architecture Decision Records:** ADR-0004, ADR-0005
+* **Implementations:** IMP-0002
