@@ -14,6 +14,7 @@ Synced from Google Drive on **2026-08-09**.
 | [`imp/`](imp/) | Implementation specs + Digital Twin source artifacts |
 | [`master/`](master/) | High-level master specs, MVP/MV/MK, blueprints |
 | [`dynamical-systems/`](dynamical-systems/) | Lyapunov / DDS formalization series |
+| [`beacon-academy/`](beacon-academy/) | Beacon Academy markdown corpus (crypto, economy, twin) |
 
 ## Existing engineering docs
 
@@ -21,12 +22,16 @@ Synced from Google Drive on **2026-08-09**.
 - [INSTALLATION.md](INSTALLATION.md)
 - [PHASES.md](PHASES.md)
 
-## Not yet synced (remaining Drive gap)
+## Sibling repository
+
+- **[romero429-collab/red-clover](https://github.com/romero429-collab/red-clover)** — Red Clover swarm protocol, blockchain, and agent docs
+
+## Still on Drive only (remaining gap)
 
 - Google Docs master architectural plans (export as Markdown next)
-- Beacon Academy corpus (`docs/beacon-academy/` recommended)
+- Beacon Academy `.docx` biological integrations
 - Media/prototypes (mp4, zip, HTML, PNG)
-- Red Clover materials (pending own repo vs `docs/red-clover/` decision)
+- PDFs (`red-clover.pdf` versions)
 
 ## Source of truth note
 
