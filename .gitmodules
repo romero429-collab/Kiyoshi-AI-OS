@@ -1,0 +1,6 @@
+[submodule "external/kiyoshi"]
+	path = external/kiyoshi
+	url = https://github.com/romero429-collab/kiyoshi.git
+[submodule "external/ai-data-bridge"]
+	path = external/ai-data-bridge
+	url = https://github.com/romero429-collab/ai-data-bridge.git
