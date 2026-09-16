@@ -21,9 +21,11 @@ Synced from Google Drive on **2026-08-09**.
 - [ARCHITECTURE.md](ARCHITECTURE.md)
 - [INSTALLATION.md](INSTALLATION.md)
 - [PHASES.md](PHASES.md)
+- [eye-view.md](eye-view.md) — Reality Integration Layer (live globe HUD)
 
-## Sibling repository
+## Sibling repositories
 
+- **[romero429-collab/eye-view](https://github.com/romero429-collab/eye-view)** — Kiyoshi's Eye View, the reality-grounding HUD
 - **[romero429-collab/red-clover](https://github.com/romero429-collab/red-clover)** — Red Clover swarm protocol, blockchain, and agent docs
 
 ## Still on Drive only (remaining gap)
