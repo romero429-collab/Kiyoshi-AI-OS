@@ -125,9 +125,9 @@ class Playbook {
 }
 
 class EscalationPolicy {
-  level: number
-  contacts: string[]
-  delayMinutes: number
+  level!: number
+  contacts!: string[]
+  delayMinutes!: number
 }
 
 export { IncidentResponseSystem as IRC }
