@@ -1,0 +1,9 @@
+{
+  "skill": "skyreels-v2-dds",
+  "test_cases": [
+    {"input": "integrate SkyReels V2 into the AI", "should_trigger": true},
+    {"input": "add open source video generation as DDS", "should_trigger": true},
+    {"input": "diffusion forcing for infinite length film", "should_trigger": true},
+    {"input": "what is the weather", "should_trigger": false}
+  ]
+}
