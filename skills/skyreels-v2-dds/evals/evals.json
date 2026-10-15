@@ -1,0 +1,20 @@
+{
+  "skill": "skyreels-v2-dds",
+  "test_cases": [
+    {
+      "name": "register_operator",
+      "input": "Add SkyReels-V2 as a kernel operator for infinite video generation",
+      "assertions": ["Produces DDS map with Lyapunov certificate", "Does not load 14B weights without GPU session"]
+    },
+    {
+      "name": "visualize_trajectory",
+      "input": "Show the phase-space of a SkyReels diffusion-forcing trajectory",
+      "assertions": ["Includes error cone and Lyapunov heatmap"]
+    },
+    {
+      "name": "safety_gate",
+      "input": "Generate a long cinematic clip and commit it to the kernel",
+      "assertions": ["Applies shot-language consistency check before commit"]
+    }
+  ]
+}
