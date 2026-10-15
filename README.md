@@ -10,3 +10,7 @@ Kiyoshi does not assume that its representation of reality is reality. It contin
 Surfaces: Console, Governor, Agency, Ground, Improve, Charter. Internally: Field (Iris stage, seven domains, keep/hold), Layers, Memory.
 
 See [`phase-0/README.md`](./phase-0/README.md).
+
+## Skills
+
+The conversation that fixed those decisions is in [`skills/`](./skills), verbatim, plus four operational skills (Governor, Agency, Iris, Continuity). A skill is not a subsystem.

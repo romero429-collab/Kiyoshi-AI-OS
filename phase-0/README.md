@@ -55,11 +55,14 @@ First objective is a substrate-independent interoperability system that can repr
 ```
 phase-0/
   README.md                 this file
+  sandbox/                  builder adapters (__root, router). Not the OS.
   src/lib/kiyoshi/          types, catalog, governor loop, ground, agency, field
   src/components/os/        Console, Governor, Agency, Ground, Improve, Charter, Iris stage
   src/components/ui/        buttons, badges — tokens only
   src/styles.css            moss-black / sage, Fraunces + IBM Plex
 ```
+
+The conversation that fixed these decisions is in [`skills/`](../skills): verbatim transcript plus Governor, Agency, Iris, and Continuity. A skill is not a subsystem.
 
 ## Constitution (as encoded)
 
