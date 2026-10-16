@@ -1,0 +1,9 @@
+{
+  "skill": "kiyoshi-phonon-harness-zero",
+  "test_cases": [
+    {"input": "Join the phonon jump meter with Harness-Zero and delete the coach", "should_trigger": true},
+    {"input": "Can I distill T1eff into the student after the parity watch?", "should_trigger": true},
+    {"input": "What is the back-action leakage of the Stanford phonon experiment?", "should_trigger": true},
+    {"input": "How do I set up a basic Express server?", "should_trigger": false}
+  ]
+}
