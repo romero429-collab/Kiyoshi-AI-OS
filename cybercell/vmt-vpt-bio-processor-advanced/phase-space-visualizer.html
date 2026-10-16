@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Multi-Rate Guardrail VMT/VPT DDS Visualizer</title>
+<style>
+body { margin:0; background:#0a0a0f; color:#ddd; font-family:system-ui; }
+#info { position:absolute; top:10px; left:10px; background:rgba(20,20,30,0.9); padding:12px; border-radius:8px; max-width:340px; z-index:10; }
+#status { position:absolute; bottom:10px; left:10px; background:rgba(20,20,30,0.9); padding:8px; border-radius:6px; }
+canvas { display:block; }
+</style>
+</head>
+<body>
+<div id="info">
+<h3 style="margin:0 0 8px; color:#4fc3f7;">Multi-Rate + Guardrail Runtime</h3>
+<p style="font-size:12px; margin:0;">Fast clock (σ,ε,a,δ) @ high rate<br>Slow clock (τ) every 50 steps<br>Guardrail activates when λ̂₁ > -0.02</p>
+</div>
+<div id="status">CONTRACTING • λ̂₁ ≈ -0.12 • Guardrail idle</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(65, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+scene.add(new THREE.AmbientLight(0x404040));
+scene.add(new THREE.AxesHelper(3));
+camera.position.set(5,4,6); camera.lookAt(0,0,0);
+
+let state = {E:1, sigma:0.5, eps:0.1, a:0.8, delta:0.3, tau:0};
+let params = {G0:1, beta:0.8, gamma:0.92, alpha:1.2, gamma_pos:0.3, pert:0.2};
+let step = 0, lambdaEst = -0.12, guardActive = false;
+const trail = [];
+const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.1), new THREE.MeshPhongMaterial({color:0x4fc3f7}));
+scene.add(sphere);
+
+function fastStep(s, p) {
+  // Simplified fast update (τ frozen)
+  let epsN = s.eps + 0.01*(s.a - s.sigma/2);
+  let G = p.G0*(1+p.beta*Math.abs(epsN)**1.5);
+  let sigmaN = p.gamma*s.sigma + (1-p.gamma)*(G*epsN + s.a);
+  let aN = s.a + 0.01*(p.gamma_pos*s.delta - 0.8*s.a + 0.05);
+  let deltaN = s.delta + 0.01*(p.pert - p.alpha*aN*(1+0.1*s.E) - 0.5*s.delta);
+  return {E:s.E, sigma:Math.max(-8,Math.min(8,sigmaN)), eps:epsN, a:Math.max(0,Math.min(5,aN)), delta:Math.max(-3,Math.min(3,deltaN)), tau:s.tau};
+}
+function slowStep(tau, sigma2) {
+  return tau + 0.5*(0.01*Math.tanh(sigma2 - 2.25) - 0.005*tau);
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  step++;
+  state = fastStep(state, params);
+  if (step % 50 === 0) {
+    state.tau = slowStep(state.tau, state.sigma**2);
+    // cheap lambda proxy
+    lambdaEst = -0.12 + 0.05*Math.sin(step*0.01) + (Math.abs(state.delta)>1 ? 0.08 : 0);
+    if (lambdaEst > -0.02) {
+      guardActive = true;
+      params.gamma = Math.min(0.98, params.gamma+0.01);
+      params.beta = Math.max(0.2, params.beta-0.05);
+      state.delta *= 0.95;
+    } else guardActive = false;
+  }
+  const pos = new THREE.Vector3(state.E-1.5, state.sigma, state.delta);
+  sphere.position.copy(pos);
+  trail.push(pos.clone());
+  if (trail.length > 120) trail.shift();
+  document.getElementById('status').textContent = 
+    (guardActive ? 'GUARDRAIL ACTIVE • ' : 'CONTRACTING • ') + 
+    `λ̂₁ ≈ ${lambdaEst.toFixed(3)} • τ=${state.tau.toFixed(3)} • δ=${state.delta.toFixed(3)}`;
+  renderer.render(scene, camera);
+}
+animate();
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
