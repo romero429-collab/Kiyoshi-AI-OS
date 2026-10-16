@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kiyoshi Cybercell — SpudCell Phase-Space Visualizer</title>
+<style>
+  body { margin:0; background:#0a0a12; color:#e0e0ff; font-family:ui-monospace,monospace; overflow:hidden; }
+  #ui { position:absolute; top:10px; left:10px; z-index:10; background:rgba(10,10,20,0.85); padding:12px; border:1px solid #445; border-radius:6px; max-width:320px; }
+  #ui h2 { margin:0 0 8px 0; font-size:14px; color:#8af; }
+  label { display:block; font-size:11px; margin-top:6px; }
+  input[type=range] { width:100%; }
+  .val { float:right; color:#8f8; }
+  #status { margin-top:10px; font-size:11px; line-height:1.4; }
+  #status .ok { color:#4f4; } #status .warn { color:#fa4; } #status .bad { color:#f44; }
+  canvas { display:block; }
+</style>
+</head>
+<body>
+<div id="ui">
+  <h2>SpudCell Cybercell DDS</h2>
+  <label>κ (feeding gain) <span class="val" id="kVal">2.0</span>
+    <input type="range" id="kappa" min="0.5" max="5.0" step="0.05" value="2.0">
+  </label>
+  <label>θ (division threshold) <span class="val" id="tVal">0.80</span>
+    <input type="range" id="theta" min="0.3" max="1.5" step="0.02" value="0.80">
+  </label>
+  <label>Perturbation impulse <span class="val" id="pVal">0.00</span>
+    <input type="range" id="pert" min="0" max="0.8" step="0.02" value="0">
+  </label>
+  <button id="inject" style="margin-top:8px;width:100%;padding:4px;background:#234;color:#cff;border:1px solid #456;cursor:pointer;">Inject δV Impulse</button>
+  <button id="reset" style="margin-top:4px;width:100%;padding:4px;background:#234;color:#cff;border:1px solid #456;cursor:pointer;">Reset to x₀</button>
+  <div id="status">
+    <div>λ₁ estimate: <span id="lyap">—</span></div>
+    <div>Regime: <span id="regime">—</span></div>
+    <div>‖e‖: <span id="err">0.000</span></div>
+    <div>Generation τ: <span id="tau">0</span></div>
+    <div id="msg" class="ok">Ready — limited-lineage window</div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0a0a12);
+const camera = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 1000);
+camera.position.set(6, 4, 8);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+const axes = new THREE.AxesHelper(4);
+scene.add(axes);
+const grid = new THREE.GridHelper(10, 20, 0x223, 0x112);
+scene.add(grid);
+scene.add(new THREE.AmbientLight(0x446688, 0.6));
+const dir = new THREE.DirectionalLight(0xffffff, 0.5);
+dir.position.set(5,10,7);
+scene.add(dir);
+let V=1.0, A=4.8, G=[1,1,1,1,1,1,1], R=2.0, Pp=0.5, Pf=0.1, tau=0;
+let eV=0;
+let kappa=2.0, theta=0.80;
+const Tmax=8, alpha=0.35, beta=0.25, gamma=0.12, eta=0.45, lambdaDeg=0.08, muP=0.15, muF=0.12, rhoMax=0.35, K=1.2;
+const trailGeo = new THREE.BufferGeometry();
+const trailMax = 400;
+const trailPos = new Float32Array(trailMax*3);
+trailGeo.setAttribute('position', new THREE.BufferAttribute(trailPos,3));
+const trailMat = new THREE.LineBasicMaterial({color:0x44aaff, transparent:true, opacity:0.7});
+const trail = new THREE.Line(trailGeo, trailMat);
+scene.add(trail);
+let trailIdx=0;
+const cellMesh = new THREE.Mesh(new THREE.SphereGeometry(0.3, 24, 16), new THREE.MeshPhongMaterial({color:0x66ccff, transparent:true, opacity:0.85, emissive:0x112233}));
+scene.add(cellMesh);
+const twinMesh = new THREE.Mesh(new THREE.SphereGeometry(0.18, 16, 12), new THREE.MeshPhongMaterial({color:0xff6688, transparent:true, opacity:0.7}));
+scene.add(twinMesh);
+let twinV=1.0, twinR=2.0, twinActive=false, twinSep=0;
+const errTube = new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,1,8), new THREE.MeshBasicMaterial({color:0xffaa00, transparent:true, opacity:0.35}));
+errTube.visible=false;
+scene.add(errTube);
+let isDrag=false, prevX=0, prevY=0;
+renderer.domElement.addEventListener('mousedown', e=>{isDrag=true;prevX=e.clientX;prevY=e.clientY;});
+window.addEventListener('mouseup', ()=>isDrag=false);
+window.addEventListener('mousemove', e=>{ if(!isDrag) return; const dx=e.clientX-prevX, dy=e.clientY-prevY; camera.position.applyAxisAngle(new THREE.Vector3(0,1,0), -dx*0.005); camera.position.y += dy*0.01; camera.lookAt(0,0,0); prevX=e.clientX; prevY=e.clientY; });
+window.addEventListener('wheel', e=>{ camera.position.multiplyScalar(1+e.deltaY*0.001); });
+const kappaEl=document.getElementById('kappa');
+const thetaEl=document.getElementById('theta');
+const pertEl=document.getElementById('pert');
+kappaEl.oninput=()=>{kappa=+kappaEl.value; document.getElementById('kVal').textContent=kappa.toFixed(2);};
+thetaEl.oninput=()=>{theta=+thetaEl.value; document.getElementById('tVal').textContent=theta.toFixed(2);};
+pertEl.oninput=()=>{document.getElementById('pVal').textContent=(+pertEl.value).toFixed(2);};
+document.getElementById('inject').onclick=()=>{ const dV=+pertEl.value; V += dV; eV = dV; twinActive=true; twinV=V*1.0001; twinR=R; twinSep=0; document.getElementById('msg').textContent='Impulse injected — observing recovery'; document.getElementById('msg').className='warn'; };
+document.getElementById('reset').onclick=()=>{ V=1.0; A=4.8; G=[1,1,1,1,1,1,1]; R=2.0; Pp=0.5; Pf=0.1; tau=0; eV=0; twinActive=false; trailIdx=0; document.getElementById('msg').textContent='Reset to x₀'; document.getElementById('msg').className='ok'; };
+function sigma(p){ return 1/(1+Math.exp(-8*(p-0.4))); }
+function step(){ const s = sigma(Pp); V = Math.max(1e-6, V + alpha * R * s); A = Math.max(4*Math.PI*Math.pow(3*V/(4*Math.PI),2/3), A + beta * Math.pow(V,2/3) * s); R = Math.max(0, R - gamma*V + eta * s * 1.5); Pp = Math.max(0, (1-lambdaDeg)*Pp + muP * G[0]); Pf = Math.max(0, (1-lambdaDeg)*Pf + muF * G[1]); const rho = rhoMax * R/(K+R); for(let i=0;i<7;i++) G[i] = Math.max(0, Math.round(G[i]*(1+rho*0.3))); const stress = Pf * A; if(stress > theta * 12){ V *= 0.5; A *= 0.5; R *= 0.5; for(let i=0;i<7;i++) G[i] = Math.floor(G[i]/2) + (Math.random()<0.5?0:1); tau += 1; } if(tau >= Tmax){ V*=0.1; R*=0.1; } eV *= 0.82; if(Math.abs(eV)<1e-4) eV=0; if(twinActive){ const s2 = sigma(Pp); twinV = Math.max(1e-6, twinV + alpha * twinR * s2); twinR = Math.max(0, twinR - gamma*twinV + eta * s2 * 1.5); twinSep = Math.abs(twinV - V); } }
+function estimateLyap(){ if(!twinActive || twinSep<1e-12) return 0; return Math.log(twinSep / 1e-8) / Math.max(tau+1,1); }
+function updateVisuals(){ const x = Math.log(V+1e-6)*1.2; const y = Math.log(1+R)*1.5; const z = Pf*3 - 1.5; cellMesh.position.set(x,y,z); cellMesh.scale.setScalar(0.4 + 0.3*Math.min(V,3)); trailPos[trailIdx*3]=x; trailPos[trailIdx*3+1]=y; trailPos[trailIdx*3+2]=z; trailIdx = (trailIdx+1)%trailMax; trailGeo.attributes.position.needsUpdate=true; if(twinActive){ twinMesh.visible=true; twinMesh.position.set(Math.log(twinV+1e-6)*1.2, Math.log(1+twinR)*1.5, z+0.2); } else twinMesh.visible=false; if(Math.abs(eV)>0.01){ errTube.visible=true; errTube.position.copy(cellMesh.position); errTube.scale.set(1, Math.abs(eV)*4, 1); } else errTube.visible=false; const ly = estimateLyap(); document.getElementById('lyap').textContent = ly.toFixed(3); document.getElementById('err').textContent = Math.abs(eV).toFixed(3); document.getElementById('tau').textContent = tau; let regime, cls; if(kappa < 1.4){ regime='Extinction (λ₁<0)'; cls='bad'; } else if(kappa < 3.2){ regime='Limited-lineage (λ₁≈0)'; cls='ok'; } else { regime='Runaway (λ₁>0)'; cls='warn'; } document.getElementById('regime').textContent = regime; document.getElementById('regime').className = cls; if(kappa<1.4) cellMesh.material.color.setHex(0x884444); else if(kappa<3.2) cellMesh.material.color.setHex(0x44aaff); else cellMesh.material.color.setHex(0xffaa44); }
+let frame=0; function animate(){ requestAnimationFrame(animate); if(frame%3===0){ step(); updateVisuals(); } frame++; renderer.render(scene, camera); } animate(); window.addEventListener('resize', ()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
+</script>
+</body>
+</html>
