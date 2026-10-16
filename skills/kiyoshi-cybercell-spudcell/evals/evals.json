@@ -1,0 +1,20 @@
+{
+  "skill": "kiyoshi-cybercell-spudcell",
+  "test_cases": [
+    {
+      "name": "state_space_definition",
+      "input": "Define the state space for SpudCell cybercell substrate",
+      "assertions": ["Includes V, A, G vector of 7 plasmids, R, P_pore, P_FLAG, tau", "Mentions membrane constraint and logarithmic metric"]
+    },
+    {
+      "name": "lyapunov_sign_change",
+      "input": "What is the critical kappa for limited-lineage attractor in SpudCell DDS",
+      "assertions": ["kappa_c approximately 1.4", "kappa_u approximately 3.2", "lambda_e less than or equal to -0.18"]
+    },
+    {
+      "name": "hybrid_projection",
+      "input": "How does the SpudCell state map to Kiyoshi cybercell computational state",
+      "assertions": ["Phi_hybrid maps to memory segments, resource cycles, code copies, control tags", "Kill-switch maps to process termination"]
+    }
+  ]
+}

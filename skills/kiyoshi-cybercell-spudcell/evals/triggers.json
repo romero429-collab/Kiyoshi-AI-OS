@@ -1,0 +1,10 @@
+{
+  "skill": "kiyoshi-cybercell-spudcell",
+  "test_cases": [
+    {"input": "model SpudCell as DDS for Kiyoshi cybercell", "should_trigger": true},
+    {"input": "hybrid substrate for synthetic cell growth division", "should_trigger": true},
+    {"input": "Lyapunov analysis of SpudCell limited lineage", "should_trigger": true},
+    {"input": "what is the weather today", "should_trigger": false},
+    {"input": "build a todo app", "should_trigger": false}
+  ]
+}
