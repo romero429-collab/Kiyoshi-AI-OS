@@ -1,0 +1,56 @@
+// kiyoshi_manifold.fbs
+// Defines the strictly bounded memory layout for the Macroscopic Coupled Map Lattice.
+
+namespace kiyoshi.cml;
+
+// STRUCTS (Inline, fixed-length memory blocks. Strict spatial ergodicity.)
+
+// Mathematically preserves the S^3 norm (||q|| = 1.000) for edge kinematics.
+struct Quaternion {
+  w: float32;
+  x: float32;
+  y: float32;
+  z: float32;
+}
+
+// Bounded chaos indicators. If spectral_radius >= 1.0, the Genesis Nexus 
+// initiates hyper-dissipative load shedding.
+struct DDSMetrics {
+  lambda_1: float32;          // Largest Lyapunov exponent
+  spectral_radius: float32;   // \rho(J) of the local node
+  ergodicity_epsilon: float32; // Local coupling constant \varepsilon
+}
+
+// TABLES (Extensible, backward-compatible phase-space topologies.)
+
+// The foundational state vector of a transient node proposing a CML update.
+table CrdtStateVector {
+  node_id: uint64;            // Unique hash of the ambient browser session
+  vector_clock: uint64;       // Discrete temporal step (n)
+  kinetic_state: float32;     // Current value of x_n governed by the Logistic map
+  kinematics: Quaternion;     // Encodes the Hamilton product 
+  metrics: DDSMetrics;        // Real-time structural stability diagnostics
+}
+
+// The collision resolution payload. Bypasses chaotic drift by forcing concurrent
+// vectors through the volume-preserving Tent map before arriving at the Genesis Nexus.
+table TentMapPayload {
+  collision_id: uint64;       // Hash of the interacting transient nodes
+  x_left: float32;            // State vector from Node A
+  x_right: float32;           // State vector from Node B
+  resolved_state: float32;    // The mathematically deterministic outcome
+}
+
+// UNION (Allows the Genesis Nexus to evaluate the payload type with zero pointer overhead)
+union PayloadContent {
+  CrdtStateVector,
+  TentMapPayload
+}
+
+// The ultimate wrapper routed through the WebRTC SCTP channel.
+table DataChannelMessage {
+  timestamp: uint64;          // Epoch timestamp of the discrete iteration
+  content: PayloadContent;    // The mathematically verified payload
+}
+
+root_type DataChannelMessage;
