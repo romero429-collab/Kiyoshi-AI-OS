@@ -5,3 +5,4 @@
 - Initial skill from the Anise defense session.
 - Recorded the discrete law, the image-scale resident, the metabolic deficit, and the lysosome surcharge.
 - Code committed at `projects/anise/defense` in `romero429-collab/main`.
+- Added Cloned Presence, Unasked Read, and Assisted Unwrap. Fresh purple catches all three. No cloning procedure.

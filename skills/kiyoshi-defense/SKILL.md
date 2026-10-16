@@ -1,6 +1,6 @@
 ---
 name: kiyoshi-defense
-description: "Operate the Anise defense instrument. Use when protecting the cell, running red or purple assays, pricing parasite mass, clearing the lysosome, or checking that Zero stayed sealed. Trigger on Kiyoshi defense, Anise nucleus, RedClover charge, resident mass, metabolic deficit, or lysosome tax."
+description: "Operate the Anise defense instrument. Use when protecting the cell, running red or purple assays, pricing parasite mass, clearing the lysosome, checking that Zero stayed sealed, or refusing a cloned, unasked, or unwrap-assisted proximity credential."
 type: workflow
 lifecycle: active
 ---
@@ -34,6 +34,7 @@ Source of truth is `romero429-collab/main`, path `projects/anise/defense`. This 
 3. If charge cannot pay the drill, breathe. Do not invent a second charge source.
 4. A resident with mass at the cap (`0.25`, bite `8.8`) must be excised while charge can still pay. After charge falls through the excise cost, breathing cannot bank it back.
 5. Clear the lysosome when `Q ≥ 10`. Clearing a resting lysosome (`Q = 6`) loses health.
+6. Cloned Presence, Unasked Read, and Assisted Unwrap are already known. A fresh purple assay catches all three. Do not add a cloning procedure. The counter is the class.
 
 ## Laws
 

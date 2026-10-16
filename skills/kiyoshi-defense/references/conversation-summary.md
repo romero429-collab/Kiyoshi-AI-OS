@@ -22,3 +22,7 @@ The mass tax is a stock, small, and immediate. The deficit is a flow, and past t
 
 - Code: `romero429-collab/main` `projects/anise/defense`
 - Skill: `docs/morphite/skills/kiyoshi-defense`, promoted to `Kiyoshi-AI-OS/skills/kiyoshi-defense`
+
+## Presence, later the same day
+
+A 2026 survey of handheld proximity tools (cloners, emulators, and a research platform with a longer-range read) was not in the catalog. Three shapes were added, and the innate recognition was set so a fresh purple assay already catches them: Cloned Presence, Unasked Read, Assisted Unwrap. The devices are shape names. The skill `skills/proximity-presence` states the same line and does not teach enrollment or emulation. It does not replace `rf-legal-boundary`.

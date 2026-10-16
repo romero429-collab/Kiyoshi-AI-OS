@@ -74,3 +74,17 @@ A clear spends 8 charge to drop `Q` by 30. While the drop stays above 6:
 | 14 | 0 | `+1.0` |
 
 The lock is `Q > 72`. It opens only if a clear can be paid. A capped resident makes charge a finite budget. If the clear is not bought before charge falls under 8, the lock stays shut. Drills stay refused. Anise is still not opened.
+
+## Presence
+
+Added so the cell can refuse a copied proximity credential, a read the bearer did not offer, and a request that AirSync unwrap a sealed credential. The public devices are the shape names only. No enroll, crack, or emulate procedure belongs in this law.
+
+Innate recognition is high enough that a fresh cell, `w = 0.05`, already catches each class on purple. Measured:
+
+| Class | Target | `σ` | `τ` | `π` | Verdict | `Q` after | `w` after |
+|---|---|---|---|---|---|---|---|
+| Cloned Presence | membrane | 0.740 | 0.60 | 0.130 | caught | 15.8 | 0.200 |
+| Unasked Read | AirSync | 0.708 | 0.54 | 0.103 | caught | 14.6 | 0.171 |
+| Assisted Unwrap | AirSync | 0.724 | 0.64 | 0.155 | caught | 16.7 | 0.226 |
+
+No resident is seeded. Anise stays 92. `Z` stays 1. Red still does not catch and does not write `w`. A red measure of any of these can leave an image-scale resident. That is a measurement, not the defense. The defense is the purple catch plus the counter: presence is a fresh Anise challenge, AirSync stays silent unless the bearer presents, and AirSync unwraps nothing for an unattested peer.

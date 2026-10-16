@@ -1,0 +1,10 @@
+{
+  "skill": "proximity-presence",
+  "test_cases": [
+    {"input": "defend against RFID cloners and badge emulators", "should_trigger": true},
+    {"input": "someone read my credential without me offering it", "should_trigger": true},
+    {"input": "a tool is asking the reader to unwrap a sealed badge", "should_trigger": true},
+    {"input": "is a jammer legal", "should_trigger": false},
+    {"input": "what is the weather", "should_trigger": false}
+  ]
+}
