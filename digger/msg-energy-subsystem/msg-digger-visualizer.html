@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kiyoshi Digger MSG Energy Subsystem — Phase Space</title>
+<style>
+  body { margin: 0; background: #0a0a0a; color: #e0e0e0; font-family: monospace; overflow: hidden; }
+  #info { position: absolute; top: 10px; left: 10px; z-index: 10; background: rgba(0,0,0,0.7); padding: 10px; border-radius: 5px; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="info">
+  <h3>Digger Magnetic Spin Generator DDS</h3>
+  <p>Energy residual ΔE ≥ 0 (thermodynamic invariant)</p>
+  <p>η (efficiency) ≤ 1 | Pulse: <span id="pulse">0</span></p>
+  <p>Residual: <span id="residual">0.00</span></p>
+  <p>Largest λ (residual map): <span id="lyap">-0.12</span></p>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+camera.position.set(0, 5, 8);
+camera.lookAt(0,0,0);
+
+// Ring
+const ringGeo = new THREE.TorusGeometry(3, 0.15, 16, 64);
+const ringMat = new THREE.MeshPhongMaterial({color:0x4444ff, transparent:true, opacity:0.6});
+const ring = new THREE.Mesh(ringGeo, ringMat);
+scene.add(ring);
+
+// Particles (magnetized ensemble)
+const particles = [];
+const particleCount = 24;
+for(let i=0; i<particleCount; i++){
+  const angle = (i / particleCount) * Math.PI * 2;
+  const geo = new THREE.SphereGeometry(0.08, 8, 8);
+  const mat = new THREE.MeshBasicMaterial({color:0xffaa00});
+  const p = new THREE.Mesh(geo, mat);
+  p.position.set(Math.cos(angle)*3, 0, Math.sin(angle)*3);
+  p.userData.angle = angle;
+  scene.add(p);
+  particles.push(p);
+}
+
+// Orientation coils
+const coilGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.6, 16);
+const coilMat = new THREE.MeshPhongMaterial({color:0x00ff88});
+const coil1 = new THREE.Mesh(coilGeo, coilMat);
+coil1.position.set(3.2, 0, 0);
+coil1.rotation.z = Math.PI/2;
+scene.add(coil1);
+const coil2 = new THREE.Mesh(coilGeo, coilMat);
+coil2.position.set(-3.2, 0, 0);
+coil2.rotation.z = Math.PI/2;
+scene.add(coil2);
+
+// Pickup coils around ring
+const pickupCoils = [];
+for(let i=0; i<8; i++){
+  const a = (i/8)*Math.PI*2;
+  const pc = new THREE.Mesh(new THREE.TorusGeometry(0.3, 0.05, 8, 16), new THREE.MeshBasicMaterial({color:0xffff00, wireframe:true}));
+  pc.position.set(Math.cos(a)*3, 0, Math.sin(a)*3);
+  pc.rotation.x = Math.PI/2;
+  scene.add(pc);
+  pickupCoils.push(pc);
+}
+
+const light = new THREE.PointLight(0xffffff, 1, 100);
+light.position.set(5,5,5);
+scene.add(light);
+scene.add(new THREE.AmbientLight(0x222222));
+
+// DDS state
+let pulse = 0;
+let residual = 0.0;
+let orientation = 0;
+const eta = 0.85; // efficiency bound ≤1
+
+function animate() {
+  requestAnimationFrame(animate);
+  
+  // Discrete pulse every ~60 frames
+  if(pulse % 60 === 0){
+    const u = 1.0 + 0.2*Math.sin(pulse/30);
+    const deltaM = Math.sin(orientation);
+    const dE = u*u - eta * Math.abs(deltaM) * 0.5;
+    residual = Math.max(0, residual + dE);
+    orientation += Math.PI/2 * (u > 0.5 ? 1 : 0);
+    document.getElementById('residual').textContent = residual.toFixed(2);
+  }
+  pulse++;
+  document.getElementById('pulse').textContent = pulse;
+
+  // Visual field flip
+  const fieldAngle = Math.sin(pulse * 0.05) * Math.PI;
+  particles.forEach((p, i) => {
+    const a = p.userData.angle + fieldAngle * 0.1;
+    p.position.x = Math.cos(a)*3;
+    p.position.z = Math.sin(a)*3;
+    p.material.color.setHSL((fieldAngle + i)/Math.PI, 0.8, 0.5);
+  });
+
+  // Coil pulse glow
+  const glow = Math.abs(Math.sin(pulse*0.1));
+  coil1.material.emissive = new THREE.Color(0, glow, 0);
+  coil2.material.emissive = new THREE.Color(0, glow, 0);
+
+  ring.rotation.y += 0.002;
+  renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
