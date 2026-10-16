@@ -1,0 +1,20 @@
+{
+  "skill": "kiyoshi-edge-mesh-lora-dds",
+  "test_cases": [
+    {
+      "name": "charm_proof",
+      "input": "Prove the Charm substrate stays contractive before scale-up",
+      "assertions": ["computes lambda_1^C < 0 condition", "freezes F_s if positive"]
+    },
+    {
+      "name": "lora_mesh",
+      "input": "Add LoRa radio to the mesh and show duty-cycle effect",
+      "assertions": ["parameterizes beta_mu with SF, D, SNR", "identifies Type II orbit"]
+    },
+    {
+      "name": "cloud_inversion",
+      "input": "Show the phone-home instability versus offline-first attractor",
+      "assertions": ["rho_kappa = 1 is transcritical", "kappa->1, a->0 face"]
+    }
+  ]
+}

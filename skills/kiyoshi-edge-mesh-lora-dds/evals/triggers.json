@@ -1,0 +1,9 @@
+{
+  "skill": "kiyoshi-edge-mesh-lora-dds",
+  "test_cases": [
+    {"input": "model Charm to drone mesh as DDS with LoRa", "should_trigger": true},
+    {"input": "offline-first robot Lyapunov", "should_trigger": true},
+    {"input": "write a React todo app", "should_trigger": false},
+    {"input": "analyze stock portfolio", "should_trigger": false}
+  ]
+}
