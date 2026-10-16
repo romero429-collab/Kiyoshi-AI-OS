@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QPU Control-Thermal DDS — Phase Space</title>
+<style>
+  html,body{margin:0;height:100%;background:#07080c;color:#c8d0dc;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;overflow:hidden}
+  #ui{position:absolute;left:10px;top:10px;z-index:2;width:280px;background:rgba(8,10,16,.82);border:1px solid #2a3344;padding:10px 12px;max-height:calc(100% - 20px);overflow:auto}
+  h1{font-size:12px;letter-spacing:.08em;color:#8ec8ff;margin:0 0 8px}
+  label{display:block;margin:7px 0 2px;color:#8b95a8;font-size:11px}
+  input[type=range]{width:100%}
+  .val{color:#e8eef6;float:right}
+  button{background:#1a2433;color:#d6e4f5;border:1px solid #3a4a60;padding:5px 8px;margin:4px 4px 0 0;cursor:pointer}
+  button:hover{border-color:#7ab4ff}
+  #hud{position:absolute;right:10px;top:10px;z-index:2;text-align:right;background:rgba(8,10,16,.82);border:1px solid #2a3344;padding:10px}
+  .ok{color:#5ee0b5}.bad{color:#ff6b6b}.warn{color:#ffd166}
+  #hint{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);color:#667;font-size:11px}
+</style>
+</head>
+<body>
+<div id="ui">
+  <h1>STEP 4 — Φ : Y → R³</h1>
+  <div>x = σ_INL (μV) · y = |Γ| · z = θ_mK (mK)</div>
+  <label>σ_INL raw (μV) <span class="val" id="v_inl">20</span></label>
+  <input type="range" id="inl" min="0" max="400" value="20" step="1"/>
+  <label>calibrated? <input type="checkbox" id="cal" checked/></label>
+  <label>bend radius R (mm) <span class="val" id="v_r">40</span></label>
+  <input type="range" id="R" min="8" max="80" value="40" step="1"/>
+  <label>PI grade</label>
+  <select id="pi"><option value="2611">PI-2611 (Si-matched)</option><option value="kapton">Kapton HN</option></select>
+  <label>metal</label>
+  <select id="metal"><option value="NbTiN">NbTiN</option><option value="Nb">Nb</option></select>
+  <label>p^C (W) @ 4K <span class="val" id="v_pc">3.5</span></label>
+  <input type="range" id="pc" min="0.2" max="5" value="3.5" step="0.1"/>
+  <label>q_th ribbon (μW) <span class="val" id="v_q">8</span></label>
+  <input type="range" id="qth" min="1" max="80" value="8" step="1"/>
+  <label>live trim η <span class="val" id="v_eta">0</span></label>
+  <input type="range" id="eta" min="0" max="0.4" value="0" step="0.02"/>
+  <label>perturb |δy| <span class="val" id="v_d">0.02</span></label>
+  <input type="range" id="delta" min="0" max="0.15" value="0.02" step="0.005"/>
+  <button id="kick">impulse e</button>
+  <button id="reset">reset</button>
+  <button id="pause">pause</button>
+</div>
+<div id="hud">
+  <div>λ₁ ≈ <span id="lam">—</span></div>
+  <div>attractor <span id="att">—</span></div>
+  <div>||e|| <span id="err">—</span></div>
+  <div id="flags"></div>
+</div>
+<div id="hint">drag to orbit · walls = B1 INL · B3 mismatch · B5/B6 Bluefors lids</div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+
+const W = innerWidth, H = innerHeight;
+const sc = new THREE.Scene();
+sc.background = new THREE.Color(0x07080c);
+const cam = new THREE.PerspectiveCamera(50, W/H, 0.05, 40);
+cam.position.set(3.2, 2.4, 3.6);
+const rend = new THREE.WebGLRenderer({antialias:true});
+rend.setSize(W,H); document.body.appendChild(rend.domElement);
+
+let az=0.7, el=0.45, dist=5.2, drag=false, lx=0, ly=0;
+rend.domElement.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY});
+addEventListener('pointerup',()=>drag=false);
+addEventListener('pointermove',e=>{
+  if(!drag) return;
+  az += (e.clientX-lx)*0.005; el += (e.clientY-ly)*0.005; el=Math.max(-1.2,Math.min(1.2,el));
+  lx=e.clientX; ly=e.clientY;
+});
+rend.domElement.addEventListener('wheel',e=>{dist=Math.max(2,Math.min(12,dist+e.deltaY*0.004));});
+
+const grid = new THREE.GridHelper(4, 16, 0x243044, 0x151a24);
+grid.rotation.x = Math.PI/2; sc.add(grid);
+[['x σ',new THREE.Vector3(2.2,0,0)],['y Γ',new THREE.Vector3(0,2.2,0)],['z θ',new THREE.Vector3(0,0,2.2)]].forEach(([t,p])=>{
+  const c=document.createElement('canvas'); c.width=256;c.height=64;
+  const g=c.getContext('2d'); g.fillStyle='#9ab'; g.font='28px monospace'; g.fillText(t,8,40);
+  const tx=new THREE.CanvasTexture(c);
+  const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true}));
+  spr.position.copy(p); spr.scale.set(0.9,0.22,1); sc.add(spr);
+});
+
+function wall(w,h,pos,rot,col){
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h), new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.12,side:THREE.DoubleSide}));
+  m.position.copy(pos); m.rotation.set(rot.x,rot.y,rot.z); sc.add(m);
+}
+// design box ~ [0,2] on each visual axis
+wall(2.2,2.2,new THREE.Vector3(1.1,0,1.1), new THREE.Vector3(0,Math.PI/2,0), 0xff6688); // B1
+wall(2.2,2.2,new THREE.Vector3(0,1.1,1.1), new THREE.Vector3(Math.PI/2,0,0), 0xffaa44); // B3
+wall(2.2,2.2,new THREE.Vector3(1.1,1.1,2.05), new THREE.Vector3(0,0,0), 0x66aaff); // B6 lid
+
+const trailN=240;
+function makeTrail(col){
+  const geo=new THREE.BufferGeometry();
+  const arr=new Float32Array(trailN*3); geo.setAttribute('position', new THREE.BufferAttribute(arr,3));
+  const line=new THREE.Line(geo, new THREE.LineBasicMaterial({color:col,transparent:true,opacity:0.85}));
+  sc.add(line);
+  return {geo, arr, i:0, line};
+}
+const nom=makeTrail(0x5ee0b5), tw=makeTrail(0xff6b6b);
+const pNom=new THREE.Mesh(new THREE.SphereGeometry(0.045,12,12), new THREE.MeshBasicMaterial({color:0x5ee0b5}));
+const pTw=new THREE.Mesh(new THREE.SphereGeometry(0.035,12,12), new THREE.MeshBasicMaterial({color:0xff6b6b}));
+sc.add(pNom,pTw);
+
+const cone=new THREE.Mesh(new THREE.SphereGeometry(1,16,12), new THREE.MeshBasicMaterial({color:0xff6b6b,transparent:true,opacity:0.12,wireframe:true}));
+sc.add(cone);
+
+// --- map ---
+const lamJ=20; // V^-1
+function epsOf(Rmm, grade){
+  const res = grade==='kapton' ? 0.006 : 0.001;
+  const h=20e-6; // PI thickness m
+  return res + h/(2*(Rmm*1e-3));
+}
+function Gamma(eps){
+  // mismatch from Lk strain + geometry; scale so 1e-3 strain ~ 0.02 Gamma
+  return Math.max(-0.9, Math.min(0.9, 8*eps - 0.02));
+}
+function sigmaUsed(raw_uV, cal){
+  const raw=raw_uV*1e-6;
+  return cal ? Math.min(raw, 12e-6) : raw;
+}
+function stepY(y, p){
+  // y = [sig, Gam, phi, qth, theta_mK, pC]
+  const [sig, Gam, phi, qth, th, pC] = y;
+  const Q4 = p.Q4;      // W
+  const Qmxc = p.Qmxc;  // W at operating T
+  const sigN = p.sigTarget + (p.eta>0 ? 0.15*p.eta*Math.sin(p.t*0.35) : 0);
+  const sig2 = sig + 0.18*(sigN - sig);
+  const Gam2 = Gam + 0.12*(p.Gam0 - Gam);
+  let phi2 = phi;
+  if(p.IoverIc>1 || p.T4overTc>1) phi2 = 1;
+  const qJ = phi2>0 ? 80e-6 : 0;
+  const q2 = p.qth + qJ;
+  // thermal Euler on mK
+  const C=4e-6; // dummy heat cap
+  const th2 = th + 0.08*((q2 - Qmxc)/Math.max(Qmxc,1e-8))*0.02 + (pC>Q4? 0.01*(pC-Q4): 0);
+  const pC2 = p.pC;
+  return [sig2, Gam2, phi2, q2, Math.max(0.008, th2), pC2];
+}
+function Phi(y){
+  // visual units
+  const x = Math.min(2.05, (y[0]/100e-6)*2);          // 100 uV -> 2
+  const yy= Math.min(2.05, Math.abs(y[1])*8);
+  const z = Math.min(2.05, (y[4]/0.12)*2);            // 120 mK -> 2
+  return new THREE.Vector3(x,yy,z);
+}
+function lamEst(y,p){
+  const a = lamJ*y[0] + Math.abs(y[1]) + 0.01;
+  const crisis = (y[2]>0) || (p.pC>p.Q4) || (y[3]>p.Qmxc);
+  if(crisis) return 0.15;
+  return Math.log(Math.max(1e-6, a));
+}
+
+let paused=false, t=0;
+let y=[20e-6, 0.03, 0, 8e-6, 0.02, 3.5];
+let yt=[22e-6, 0.035, 0, 8e-6, 0.021, 3.5];
+document.getElementById('pause').onclick=()=>{paused=!paused};
+document.getElementById('reset').onclick=()=>{ y=[20e-6,0.03,0,8e-6,0.02,3.5]; yt=y.map((v,i)=>v+(i<2?1e-6:0)); };
+document.getElementById('kick').onclick=()=>{ y[0]+=40e-6; y[4]+=0.01; };
+
+function params(){
+  const raw=+document.getElementById('inl').value;
+  const cal=document.getElementById('cal').checked;
+  const R=+document.getElementById('R').value;
+  const grade=document.getElementById('pi').value;
+  const metal=document.getElementById('metal').value;
+  const pC=+document.getElementById('pc').value;
+  const qth=+document.getElementById('qth').value*1e-6;
+  const eta=+document.getElementById('eta').value;
+  const d=+document.getElementById('delta').value;
+  document.getElementById('v_inl').textContent=raw;
+  document.getElementById('v_r').textContent=R;
+  document.getElementById('v_pc').textContent=pC.toFixed(1);
+  document.getElementById('v_q').textContent=(qth*1e6).toFixed(0);
+  document.getElementById('v_eta').textContent=eta.toFixed(2);
+  document.getElementById('v_d').textContent=d.toFixed(3);
+  const eps=epsOf(R,grade);
+  const Tc = metal==='NbTiN'?13.2:9.0;
+  return {
+    t, sigTarget: sigmaUsed(raw,cal), Gam0: Gamma(eps),
+    eta, pC, qth, Q4: 2.0, Qmxc: 30e-6, // 20 mK guaranteed
+    IoverIc: (1/R)*8, T4overTc: 4.0/Tc, eps
+  };
+}
+
+function pushTrail(tr, v){
+  tr.arr.copyWithin(0,3);
+  tr.arr[trailN*3-3]=v.x; tr.arr[trailN*3-2]=v.y; tr.arr[trailN*3-1]=v.z;
+  tr.geo.attributes.position.needsUpdate=true;
+}
+
+function tick(){
+  requestAnimationFrame(tick);
+  cam.position.set(dist*Math.cos(el)*Math.sin(az), dist*Math.sin(el), dist*Math.cos(el)*Math.cos(az));
+  cam.lookAt(1,0.7,0.9);
+  const p=params();
+  if(!paused){
+    t+=1; p.t=t;
+    y = stepY(y,p);
+    // twin
+    const d=+document.getElementById('delta').value;
+    if(t===1){ yt=y.map((v,i)=> v + (i===0?d*50e-6: i===1?d*0.02:0)); }
+    yt = stepY(yt,p);
+  }
+  const P=Phi(y), Q=Phi(yt);
+  pNom.position.copy(P); pTw.position.copy(Q);
+  pNom.material.color.set(lamEst(y,p)<0?0x5ee0b5:0xff6b6b);
+  pushTrail(nom,P); pushTrail(tw,Q);
+  const sep=P.distanceTo(Q);
+  cone.position.copy(P);
+  cone.scale.setScalar(Math.max(0.04, sep*1.6));
+  const L=lamEst(y,p);
+  const elam=document.getElementById('lam');
+  elam.textContent=L.toFixed(3);
+  elam.className=L<0?'ok':'bad';
+  let att='A1 fixed';
+  if(p.eta>0.02) att='A2 cycle';
+  if(y[2]>0 || p.pC>p.Q4 || y[3]>p.Qmxc || y[4]>0.12) att='crisis ∂P';
+  const ea=document.getElementById('att'); ea.textContent=att; ea.className=att[0]==='c'?'bad':(att[1]==='2'?'warn':'ok');
+  document.getElementById('err').textContent=sep.toFixed(3);
+  const flags=[];
+  if(lamJ*y[0]+Math.abs(y[1])>0.08) flags.push('B1/B3 near');
+  if(p.pC>p.Q4) flags.push('B5 4K fold');
+  if(y[3]>p.Qmxc) flags.push('B6 MXC fold');
+  if(y[2]>0) flags.push('B4 quench');
+  document.getElementById('flags').innerHTML=flags.map(f=>'<div class="bad">'+f+'</div>').join('')||'<div class="ok">inside design box</div>';
+  rend.render(sc,cam);
+}
+tick();
+addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();rend.setSize(innerWidth,innerHeight)});
+</script>
+</body>
+</html>
