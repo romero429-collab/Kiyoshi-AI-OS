@@ -40,6 +40,7 @@
 - [ ] Full rendering implementation for Swarm Visual Matrix.
 - [ ] Mesh-to-Mesh Physical Grafting (robotic docking, power sharing).
 - [ ] Digger Control Protocols fully mapped to motor actuation.
+- [x] Digger QPU control-thermal DDS (cryo-CMOS + superconducting ribbon + Bluefors thermal lids + Lyapunov gating of ACO). Skill: skills/kiyoshi-digger-qpu-dds.
 
 ## Phase 5: Hardware Evolution & Neuromorphic Substrates (Pending) [ ]
 - [ ] Spiking Neural Network (SNN) Translation.
