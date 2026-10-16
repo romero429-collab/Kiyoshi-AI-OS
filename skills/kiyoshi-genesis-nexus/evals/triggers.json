@@ -1,0 +1,9 @@
+{
+  "skill": "kiyoshi-genesis-nexus",
+  "test_cases": [
+    {"input": "Implement the Genesis Nexus DataChannel handler with FlatBuffers", "should_trigger": true},
+    {"input": "Add Banach verification to the persistent swarm coordinator", "should_trigger": true},
+    {"input": "How do I set up a basic Express server?", "should_trigger": false},
+    {"input": "Create a WebRTC signaling server for Kiyoshi transient nodes", "should_trigger": true}
+  ]
+}
