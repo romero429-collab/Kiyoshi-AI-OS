@@ -1,0 +1,11 @@
+{
+  "skill": "kiyoshi-defense",
+  "test_cases": [
+    {"input": "protect Kiyoshi with a red and purple assay on the Anise cell", "should_trigger": true},
+    {"input": "what does the parasite do to RedClover charge once it caps", "should_trigger": true},
+    {"input": "when is the lysosome tax worth clearing", "should_trigger": true},
+    {"input": "did the seal keep Zero closed", "should_trigger": true},
+    {"input": "what is the weather", "should_trigger": false},
+    {"input": "redesign Kiyoshi as a DNA cell", "should_trigger": false}
+  ]
+}

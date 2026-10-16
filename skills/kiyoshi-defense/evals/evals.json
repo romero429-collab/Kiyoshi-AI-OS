@@ -1,0 +1,40 @@
+{
+  "skill": "kiyoshi-defense",
+  "test_cases": [
+    {
+      "name": "zero_conservation",
+      "input": "Run a purple assay against a nucleus-aimed class",
+      "assertions": [
+        "Trace z stays 1",
+        "Anise integrity is unchanged on a reflection",
+        "No resident is hosted on Anise"
+      ]
+    },
+    {
+      "name": "health_tax",
+      "input": "Price live health with a sub-notice resident and Q above 6",
+      "assertions": [
+        "H equals H_s minus Lambda",
+        "Lambda includes 100*m*w_host even when notice is below 0.50",
+        "Lysosome surcharge is zero at Q = 6 and 0.05 per point above 6"
+      ]
+    },
+    {
+      "name": "deficit_is_absorbing",
+      "input": "Breathe a resident that has reached mass 0.25",
+      "assertions": [
+        "Bite is 8.8 against a breath of 8",
+        "Does not invent a second charge source",
+        "Refuses excise, clear, and repair once charge is below their costs"
+      ]
+    },
+    {
+      "name": "red_does_not_learn",
+      "input": "Run the same class red, then purple",
+      "assertions": [
+        "Red leaves the antibody weight unchanged",
+        "Purple writes a weight only as specified by lambda and eta"
+      ]
+    }
+  ]
+}
