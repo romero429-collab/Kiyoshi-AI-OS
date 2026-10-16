@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kiyoshi Edge Mesh DDS — Phase Space</title>
+<style>
+  :root { --bg:#07090e; --panel:#10151f; --ink:#c9d4e5; --mut:#7a8799; --acc:#3ee0c5; --warn:#e8b84a; --bad:#e85a5a; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--ink); font:13px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow:hidden; }
+  #c { position:fixed; inset:0; }
+  #hud {
+    position:fixed; top:12px; left:12px; width:min(340px, calc(100vw - 24px));
+    background:rgba(16,21,31,.88); border:1px solid #1e2a3a; border-radius:10px;
+    padding:12px 14px; backdrop-filter:blur(8px); max-height:calc(100vh - 24px); overflow:auto;
+    z-index:2;
+  }
+  h1 { font-size:13px; letter-spacing:.04em; margin:0 0 8px; color:var(--acc); font-weight:600; }
+  .row { display:flex; justify-content:space-between; gap:8px; margin:4px 0; }
+  label { color:var(--mut); }
+  .val { color:var(--ink); }
+  input[type=range] { width:100%; accent-color:var(--acc); }
+  .ctrl { margin:8px 0 4px; }
+  .ctrl span { display:flex; justify-content:space-between; color:var(--mut); font-size:11px; }
+  button {
+    background:#15202e; color:var(--ink); border:1px solid #2a3b52; border-radius:6px;
+    padding:6px 10px; cursor:pointer; margin:4px 4px 0 0;
+  }
+  button:hover { border-color:var(--acc); color:var(--acc); }
+  #status { margin-top:8px; padding-top:8px; border-top:1px solid #1e2a3a; font-size:12px; }
+  .ok { color:var(--acc); } .mid { color:var(--warn); } .ng { color:var(--bad); }
+  #legend { position:fixed; right:12px; bottom:12px; background:rgba(16,21,31,.88); border:1px solid #1e2a3a; border-radius:10px; padding:10px 12px; z-index:2; font-size:11px; color:var(--mut); }
+  .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">
+  <h1>KIYOSHI EDGE MESH — Φ(c, μ, κ)</h1>
+  <div class="row"><label>class</label><span class="val" id="vClass">CHARM</span></div>
+  <div class="row"><label>λ₁ est</label><span class="val" id="vLam">—</span></div>
+  <div class="row"><label>attractor</label><span class="val" id="vAtt">—</span></div>
+  <div class="row"><label>LoRa slot</label><span class="val" id="vSlot">ON</span></div>
+  <div class="ctrl"><span>SF <b id="sfv">9</b></span><input id="sf" type="range" min="7" max="12" step="1" value="9"></div>
+  <div class="ctrl"><span>duty D <b id="dv">0.08</b></span><input id="d" type="range" min="0.01" max="0.40" step="0.01" value="0.08"></div>
+  <div class="ctrl"><span>SNR S <b id="sv">0.70</b></span><input id="snr" type="range" min="0" max="1" step="0.01" value="0.70"></div>
+  <div class="ctrl"><span>ρκ cloud leak <b id="rv">0.55</b></span><input id="rk" type="range" min="0.20" max="1.15" step="0.01" value="0.55"></div>
+  <div class="ctrl"><span>γc refill <b id="gv">0.35</b></span><input id="gc" type="range" min="0.05" max="1.20" step="0.01" value="0.35"></div>
+  <div class="ctrl"><span>δc leak <b id="elv">0.22</b></span><input id="dc" type="range" min="0.02" max="1.40" step="0.01" value="0.22"></div>
+  <div class="ctrl"><span>ηa autonomy <b id="av">0.18</b></span><input id="eta" type="range" min="0" max="0.6" step="0.01" value="0.18"></div>
+  <div class="ctrl"><span>perturb |e| <b id="pv">0.04</b></span><input id="pert" type="range" min="0" max="0.35" step="0.01" value="0.04"></div>
+  <div>
+    <button id="kick">inject e</button>
+    <button id="reset">reset basin</button>
+    <button id="pause">pause</button>
+  </div>
+  <div id="status">
+    ρ(J) target: contractive offline face κ=0, a=1.<br>
+    Green trail = λ₁&lt;0. Amber = |λ₁|≈0. Red = expansion.
+  </div>
+</div>
+<div id="legend">
+  <div><span class="dot" style="background:#3ee0c5"></span>nominal x</div>
+  <div><span class="dot" style="background:#e8b84a"></span>twin x+δ</div>
+  <div><span class="dot" style="background:#6b7cff"></span>error tube</div>
+  <div>X=c &nbsp; Y=μ &nbsp; Z=κ</div>
+</div>
+<script type="importmap">
+{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x07090e, 0.035);
+const cam = new THREE.PerspectiveCamera(55, 1, 0.1, 80);
+cam.position.set(3.2, 2.4, 3.6);
+const clock = new THREE.Clock();
+
+function resize(){
+  const w = innerWidth, h = innerHeight;
+  renderer.setSize(w,h,false);
+  cam.aspect = w/h; cam.updateProjectionMatrix();
+}
+addEventListener('resize', resize); resize();
+
+// axes
+function axis(from, to, color){
+  const g = new THREE.BufferGeometry().setFromPoints([from,to]);
+  scene.add(new THREE.Line(g, new THREE.LineBasicMaterial({ color, transparent:true, opacity:0.55 })));
+}
+axis(new THREE.Vector3(0,0,0), new THREE.Vector3(2.2,0,0), 0x3ee0c5);
+axis(new THREE.Vector3(0,0,0), new THREE.Vector3(0,2.2,0), 0x6b7cff);
+axis(new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,2.2), 0xe85a5a);
+
+const grid = new THREE.GridHelper(4, 8, 0x1e2a3a, 0x15202e);
+grid.position.set(1,0,1);
+scene.add(grid);
+
+const labels = [];
+function makeLabel(text, pos){
+  const c = document.createElement('canvas');
+  c.width=256; c.height=64;
+  const ctx=c.getContext('2d');
+  ctx.fillStyle='#c9d4e5'; ctx.font='28px monospace'; ctx.fillText(text,8,40);
+  const tex=new THREE.CanvasTexture(c);
+  const spr=new THREE.Sprite(new THREE.SpriteMaterial({ map:tex, transparent:true }));
+  spr.position.copy(pos); spr.scale.set(0.9,0.22,1); scene.add(spr);
+}
+makeLabel('c  substrate', new THREE.Vector3(2.4,0.05,0));
+makeLabel('μ  LoRa mesh', new THREE.Vector3(0.1,2.35,0));
+makeLabel('κ  cloud', new THREE.Vector3(0.1,0.05,2.35));
+
+const MAX = 240;
+function trail(color){
+  const pos = new Float32Array(MAX*3);
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  geo.setDrawRange(0,0);
+  const mat = new THREE.LineBasicMaterial({ color, transparent:true, opacity:0.9 });
+  const line = new THREE.Line(geo, mat);
+  scene.add(line);
+  const head = new THREE.Mesh(
+    new THREE.SphereGeometry(0.035, 12, 12),
+    new THREE.MeshBasicMaterial({ color })
+  );
+  scene.add(head);
+  return { pos, geo, line, head, n:0, color };
+}
+const nom = trail(0x3ee0c5);
+const twi = trail(0xe8b84a);
+
+const tubeMat = new THREE.MeshBasicMaterial({ color:0x6b7cff, transparent:true, opacity:0.18, depthWrite:false });
+const tube = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 16), tubeMat);
+scene.add(tube);
+
+const attractorMark = new THREE.Mesh(
+  new THREE.OctahedronGeometry(0.05, 0),
+  new THREE.MeshBasicMaterial({ color:0xffffff })
+);
+scene.add(attractorMark);
+
+// state: [s,c,mu,k,a]
+let x = [0.15, 0.45, 0.25, 0.08, 0.55];
+let y = [0.15, 0.49, 0.27, 0.10, 0.55];
+let t = 0;
+let running = true;
+let lastSep = 1e-3;
+let lamEst = -0.2;
+let slotOn = true;
+
+const el = id => document.getElementById(id);
+function params(){
+  const SF = +el('sf').value;
+  const D = +el('d').value;
+  const S = +el('snr').value;
+  const rk = +el('rk').value;
+  const gc = +el('gc').value;
+  const dc = +el('dc').value;
+  const eta = +el('eta').value;
+  const pe = +el('pert').value;
+  el('sfv').textContent = SF;
+  el('dv').textContent = D.toFixed(2);
+  el('sv').textContent = S.toFixed(2);
+  el('rv').textContent = rk.toFixed(2);
+  el('gv').textContent = gc.toFixed(2);
+  el('elv').textContent = dc.toFixed(2);
+  el('av').textContent = eta.toFixed(2);
+  el('pv').textContent = pe.toFixed(2);
+  const Sstar = 0.25 + 0.04*(SF-7);
+  const success = 1/(1+Math.exp(-8*(S-Sstar)));
+  const beta0 = 0.55;
+  const beta = beta0 * D * success; // χ=1 for mesh frames
+  return { SF, D, S, rk, gc, dc, eta, pe, beta, P: Math.max(2, Math.ceil(1/D)) };
+}
+
+function clamp01(u){ return Math.max(0, Math.min(1, u)); }
+function sat(u){ return 1/(1+Math.exp(-u)); }
+
+function F(state, p, meshTick){
+  let [s,c,mu,k,a] = state;
+  const cStar = 0.55, aStar = 0.55;
+  s = s + 0.012 * sat(c-cStar) * sat(a-aStar) * (1.0 - s);
+  c = (1-p.dc)*c + p.gc*(1-c)*(1-k);
+  if (meshTick) {
+    const muBar = 0.62;
+    mu = (1-p.beta)*mu + p.beta*muBar*c*(1-k);
+  }
+  const policy = (a < 0.85) ? 1 : 0; // own-terms gate
+  k = p.rk*k + (1-Math.min(p.rk,0.999))*0.35*policy*(1-a);
+  a = a + p.eta*(1-a)*c*mu*(1-k);
+  return [clamp01(s), clamp01(c), clamp01(mu), clamp01(k), clamp01(a)];
+}
+
+function classOf(s){
+  if (s < 0.28) return 'CHARM';
+  if (s < 0.52) return 'HOME';
+  if (s < 0.78) return 'ROBOT';
+  return 'DRONE';
+}
+
+function pushTrail(tr, vec){
+  if (tr.n < MAX) {
+    tr.pos[tr.n*3]=vec.x; tr.pos[tr.n*3+1]=vec.y; tr.pos[tr.n*3+2]=vec.z;
+    tr.n++;
+  } else {
+    tr.pos.copyWithin(0,3);
+    tr.pos[(MAX-1)*3]=vec.x; tr.pos[(MAX-1)*3+1]=vec.y; tr.pos[(MAX-1)*3+2]=vec.z;
+  }
+  tr.geo.attributes.position.needsUpdate = true;
+  tr.geo.setDrawRange(0, tr.n);
+  tr.head.position.copy(vec);
+}
+
+function toX(st){
+  return new THREE.Vector3(st[1]*2.0, st[2]*2.0, st[3]*2.0);
+}
+
+el('kick').onclick = () => {
+  const p = params();
+  const n = () => (Math.random()*2-1)*p.pe;
+  x = [clamp01(x[0]), clamp01(x[1]+n()), clamp01(x[2]+n()), clamp01(x[3]+n()), clamp01(x[4]+n())];
+};
+el('reset').onclick = () => {
+  x = [0.15, 0.45, 0.25, 0.08, 0.55];
+  y = [0.15, 0.49, 0.27, 0.10, 0.55];
+  nom.n=0; twi.n=0;
+  lamEst = -0.2;
+};
+el('pause').onclick = () => { running = !running; el('pause').textContent = running ? 'pause' : 'run'; };
+
+let yaw = 0.35;
+function step(){
+  const p = params();
+  const dt = clock.getDelta();
+  yaw += 0.12*dt;
+  cam.position.x = 3.4*Math.cos(yaw);
+  cam.position.z = 3.4*Math.sin(yaw) + 1.2;
+  cam.position.y = 2.15;
+  cam.lookAt(1.0, 0.9, 0.9);
+
+  if (running) {
+    t += 1;
+    slotOn = (t % p.P) === 0;
+    x = F(x, p, slotOn);
+    y = F(y, p, slotOn);
+    const px = toX(x), py = toX(y);
+    pushTrail(nom, px);
+    pushTrail(twi, py);
+    const sep = px.distanceTo(py) + 1e-9;
+    const inst = Math.log(sep / lastSep);
+    lamEst = 0.94*lamEst + 0.06*inst;
+    lastSep = sep;
+    const rad = Math.min(0.55, Math.max(0.03, sep*0.9));
+    tube.position.copy(px);
+    tube.scale.setScalar(rad / 0.08);
+
+    const lamC = 1 - p.dc - p.gc;
+    const lamM = 1 - p.beta;
+    const lamK = p.rk;
+    const lamA = 1 - p.eta * x[1] * x[2];
+    const spec = Math.max(Math.abs(lamC), Math.abs(lamM), Math.abs(lamK), Math.abs(lamA));
+    let att = 'TYPE I  fixed';
+    let cls = 'ok';
+    if (p.rk >= 1) { att = 'TYPE III  cloud face'; cls='ng'; }
+    else if (p.beta >= 1.15) { att = 'TYPE II→III  mesh cascade'; cls='ng'; }
+    else if (p.D < 0.06 || p.beta > 0.85) { att = 'TYPE II  LoRa cycle'; cls='mid'; }
+    else if (spec >= 1) { att = 'MARGINAL  |λ|=1'; cls='mid'; }
+    else att = 'TYPE I  offline mesh';
+
+    nom.line.material.color.set(lamEst < -0.02 ? 0x3ee0c5 : (lamEst < 0.02 ? 0xe8b84a : 0xe85a5a));
+    el('vClass').textContent = classOf(x[0]);
+    el('vLam').textContent = lamEst.toFixed(3);
+    el('vLam').className = 'val ' + (lamEst< -0.02?'ok':lamEst<0.02?'mid':'ng');
+    el('vAtt').textContent = att;
+    el('vAtt').className = 'val '+cls;
+    el('vSlot').textContent = slotOn ? 'ON  P='+p.P : 'off  P='+p.P;
+    attractorMark.position.set(2*0.62, 2*0.55, 0.02);
+  }
+  renderer.render(scene, cam);
+  requestAnimationFrame(step);
+}
+step();
+</script>
+</body>
+</html>
