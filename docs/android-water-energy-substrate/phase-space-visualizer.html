@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Android Water-Energy Phase Space Visualizer</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>body{margin:0;overflow:hidden;} canvas{display:block;}</style>
+</head>
+<body>
+<div id="info">W: <span id="w">0</span> H-O: <span id="ho">0</span> E: <span id="e">0</span> λ: <span id="lam">0</span></div>
+<script>
+// Simplified discrete map simulation and Three.js particle
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const geometry = new THREE.BufferGeometry();
+const positions = [];
+const material = new THREE.PointsMaterial({color: 0x00ff00, size: 0.05});
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+
+camera.position.z = 2;
+
+let x = [0.1, 0, 0, 0, 1, 0]; // W H O E C P
+let gA = 1.0;
+
+function step() {
+  // Simplified F step
+  const dW = 0.01 * gA * x[4];
+  x[0] = Math.max(0, x[0] - dW);
+  x[1] += 0.1 * dW;
+  x[2] += 0.8 * dW;
+  x[3] += 100 * Math.min(x[1], 2*x[2]);
+  x[1] *= 0.99; x[2] *= 0.99;
+  // project
+  return [x[0], (x[1]-x[2]), x[3]/1000];
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  const r = step();
+  positions.push(r[0], r[1], r[2]);
+  if (positions.length > 3000) positions.splice(0,3);
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.computeBoundingSphere();
+  document.getElementById('w').textContent = x[0].toFixed(3);
+  document.getElementById('ho').textContent = (x[1]-x[2]).toFixed(3);
+  document.getElementById('e').textContent = x[3].toFixed(1);
+  document.getElementById('lam').textContent = (gA > 1.5 ? 0.1 : -0.05).toFixed(3);
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>
