@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kiyoshi ADE DDS Simulation</title>
+<style>
+body { margin: 0; overflow: hidden; background: #000; color: #0ff; font-family: monospace; }
+#controls { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); padding: 10px; border: 1px solid #0ff; }
+label { display: block; margin: 5px 0; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+<div id="controls">
+<label>γ_C (CTO): <input type="range" id="gamma" min="0.1" max="2.5" step="0.1" value="0.8"></label>
+<label>η_W (Worker): <input type="range" id="eta" min="0.1" max="2.0" step="0.1" value="0.7"></label>
+<label>α_B+β_D (Swarm): <input type="range" id="swarm" min="0.1" max="3.0" step="0.1" value="1.2"></label>
+<label>τ_L (Latency): <input type="range" id="latency" min="0" max="5" step="1" value="1"></label>
+<div id="status">λ_max ≈ 0</div>
+</div>
+<script>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+camera.position.z = 15;
+
+const particles = [];
+const geometry = new THREE.BufferGeometry();
+const positions = new Float32Array(200 * 3);
+const colors = new Float32Array(200 * 3);
+for (let i = 0; i < 200; i++) {
+  positions[i*3] = (Math.random()-0.5)*10;
+  positions[i*3+1] = (Math.random()-0.5)*10;
+  positions[i*3+2] = (Math.random()-0.5)*5;
+  particles.push({v: new THREE.Vector3(0,0,0)});
+}
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+const material = new THREE.PointsMaterial({size: 0.15, vertexColors: true});
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+
+// Simple kernel graph
+const kernelGeo = new THREE.SphereGeometry(0.5, 8, 8);
+const kernelMat = new THREE.MeshBasicMaterial({color: 0x00ffff, wireframe: true});
+const kernel = new THREE.Mesh(kernelGeo, kernelMat);
+scene.add(kernel);
+
+function update() {
+  const gamma = parseFloat(document.getElementById('gamma').value);
+  const eta = parseFloat(document.getElementById('eta').value);
+  const swarm = parseFloat(document.getElementById('swarm').value);
+  const latency = parseInt(document.getElementById('latency').value);
+
+  // Approximate λ_max from gains
+  const lambda = Math.max(Math.log(Math.max(gamma, eta, swarm/2)), -1);
+  document.getElementById('status').textContent = `λ_max ≈ ${lambda.toFixed(3)}`;
+
+  const pos = geometry.attributes.position.array;
+  const col = geometry.attributes.color.array;
+  for (let i = 0; i < 200; i++) {
+    const p = particles[i];
+    // Discrete force toward attractor modulated by gains
+    const fx = -0.05 * pos[i*3] * (1 - gamma*0.3);
+    const fy = -0.05 * pos[i*3+1] * (1 - eta*0.4);
+    const fz = -0.03 * pos[i*3+2] * (1 - swarm*0.2);
+    p.v.x = p.v.x * 0.95 + fx;
+    p.v.y = p.v.y * 0.95 + fy;
+    p.v.z = p.v.z * 0.95 + fz;
+    pos[i*3] += p.v.x;
+    pos[i*3+1] += p.v.y;
+    pos[i*3+2] += p.v.z;
+
+    // Color by Lyapunov sign
+    if (lambda < 0) {
+      col[i*3] = 0.2; col[i*3+1] = 0.6; col[i*3+2] = 1.0; // blue
+    } else {
+      col[i*3] = 1.0; col[i*3+1] = 0.2; col[i*3+2] = 0.2; // red
+    }
+  }
+  geometry.attributes.position.needsUpdate = true;
+  geometry.attributes.color.needsUpdate = true;
+  kernel.rotation.y += 0.01 * (1 + latency*0.1);
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  update();
+  renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
