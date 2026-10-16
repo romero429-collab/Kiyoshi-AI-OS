@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<robot name="kiyoshi_biped">
+
+  <!-- Refractor Core (Pelvis / Central Base) -->
+  <link name="pelvis">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="4.5"/>
+      <inertia ixx="0.045" ixy="0" ixz="0" iyy="0.032" iyz="0" izz="0.045"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.22 0.18 0.12"/></geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.22 0.18 0.12"/></geometry>
+    </collision>
+  </link>
+
+  <!-- LEFT LEG (6-DoF: Hip spherical, Knee revolute, Ankle universal) -->
+  <joint name="left_hip_roll" type="revolute">
+    <origin xyz="0 0.11 0" rpy="0 0 0"/>
+    <parent link="pelvis"/>
+    <child link="left_hip_pitch"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="120" velocity="12" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0.8" friction="0.3"/>
+  </joint>
+  <link name="left_hip_pitch">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.8"/>
+      <inertia ixx="0.012" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.012"/>
+    </inertial>
+    <visual><geometry><cylinder radius="0.045" length="0.09"/></geometry></visual>
+    <collision><geometry><cylinder radius="0.045" length="0.09"/></geometry></collision>
+  </link>
+  <joint name="left_hip_pitch" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="left_hip_pitch"/>
+    <child link="left_hip_yaw"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="120" velocity="12" lower="-1.4" upper="1.4"/>
+    <dynamics damping="0.8" friction="0.3"/>
+  </joint>
+  <link name="left_hip_yaw">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.4"/>
+      <inertia ixx="0.009" ixy="0" ixz="0" iyy="0.007" iyz="0" izz="0.009"/>
+    </inertial>
+    <visual><geometry><cylinder radius="0.04" length="0.07"/></geometry></visual>
+    <collision><geometry><cylinder radius="0.04" length="0.07"/></geometry></collision>
+  </link>
+  <joint name="left_hip_yaw" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="left_hip_yaw"/>
+    <child link="left_upper_leg"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="120" velocity="12" lower="-1.0" upper="1.0"/>
+    <dynamics damping="0.8" friction="0.3"/>
+  </joint>
+  <link name="left_upper_leg">
+    <inertial>
+      <origin xyz="0 0 -0.18" rpy="0 0 0"/>
+      <mass value="2.2"/>
+      <inertia ixx="0.018" ixy="0" ixz="0" iyy="0.015" iyz="0" izz="0.018"/>
+    </inertial>
+    <visual><geometry><cylinder radius="0.038" length="0.36"/></geometry></visual>
+    <collision><geometry><cylinder radius="0.038" length="0.36"/></geometry></collision>
+  </link>
+  <joint name="left_knee" type="revolute">
+    <origin xyz="0 0 -0.36" rpy="0 0 0"/>
+    <parent link="left_upper_leg"/>
+    <child link="left_lower_leg"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="140" velocity="14" lower="-2.2" upper="0.1"/>
+    <dynamics damping="0.9" friction="0.4"/>
+  </joint>
+  <link name="left_lower_leg">
+    <inertial>
+      <origin xyz="0 0 -0.16" rpy="0 0 0"/>
+      <mass value="1.6"/>
+      <inertia ixx="0.011" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.011"/>
+    </inertial>
+    <visual><geometry><cylinder radius="0.032" length="0.32"/></geometry></visual>
+    <collision><geometry><cylinder radius="0.032" length="0.32"/></geometry></collision>
+  </link>
+  <joint name="left_ankle_pitch" type="revolute">
+    <origin xyz="0 0 -0.32" rpy="0 0 0"/>
+    <parent link="left_lower_leg"/>
+    <child link="left_ankle_roll"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="90" velocity="10" lower="-0.8" upper="0.8"/>
+    <dynamics damping="0.6" friction="0.25"/>
+  </joint>
+  <link name="left_ankle_roll">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.9"/>
+      <inertia ixx="0.004" ixy="0" ixz="0" iyy="0.003" iyz="0" izz="0.004"/>
+    </inertial>
+    <visual><geometry><box size="0.09 0.07 0.05"/></geometry></visual>
+    <collision><geometry><box size="0.09 0.07 0.05"/></geometry></collision>
+  </link>
+  <joint name="left_ankle_roll" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="left_ankle_roll"/>
+    <child link="left_foot"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="90" velocity="10" lower="-0.6" upper="0.6"/>
+    <dynamics damping="0.6" friction="0.25"/>
+  </joint>
+  <link name="left_foot">
+    <inertial>
+      <origin xyz="0.02 0 0" rpy="0 0 0"/>
+      <mass value="0.7"/>
+      <inertia ixx="0.0025" ixy="0" ixz="0" iyy="0.002" iyz="0" izz="0.0035"/>
+    </inertial>
+    <visual><geometry><box size="0.18 0.09 0.04"/></geometry></visual>
+    <collision><geometry><box size="0.18 0.09 0.04"/></geometry></collision>
+  </link>
+
+  <!-- RIGHT LEG (Perfect Mirror) -->
+  <joint name="right_hip_roll" type="revolute">
+    <origin xyz="0 -0.11 0" rpy="0 0 0"/>
+    <parent link="pelvis"/>
+    <child link="right_hip_pitch"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="120" velocity="12" lower="-1.2" upper="1.2"/>
+    <dynamics damping="0.8" friction="0.3"/>
+  </joint>
+  <link name="right_hip_pitch">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.8"/>
+      <inertia ixx="0.012" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.012"/>
+    </inertial>
+    <visual><geometry><cylinder radius="0.045" length="0.09"/></geometry></visual>
+    <collision><geometry><cylinder radius="0.045" length="0.09"/></geometry></collision>
+  </link>
+  <joint name="right_hip_pitch" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="right_hip_pitch"/>
+    <child link="right_hip_yaw"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="120" velocity="12" lower="-1.4" upper="1.4"/>
+    <dynamics damping="0.8" friction="0.3"/>
+  </joint>
+  <link name="right_hip_yaw">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.4"/>
+      <inertia ixx="0.009" ixy="0" ixz="0" iyy="0.007" iyz="0" izz="0.009"/>
+    </inertial>
+    <visual><geometry><cylinder radius="0.04" length="0.07"/></geometry></visual>
+    <collision><geometry><cylinder radius="0.04" length="0.07"/></geometry></collision>
+  </link>
+  <joint name="right_hip_yaw" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="right_hip_yaw"/>
+    <child link="right_upper_leg"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="120" velocity="12" lower="-1.0" upper="1.0"/>
+    <dynamics damping="0.8" friction="0.3"/>
+  </joint>
+  <link name="right_upper_leg">
+    <inertial>
+      <origin xyz="0 0 -0.18" rpy="0 0 0"/>
+      <mass value="2.2"/>
+      <inertia ixx="0.018" ixy="0" ixz="0" iyy="0.015" iyz="0" izz="0.018"/>
+    </inertial>
+    <visual><geometry><cylinder radius="0.038" length="0.36"/></geometry></visual>
+    <collision><geometry><cylinder radius="0.038" length="0.36"/></geometry></collision>
+  </link>
+  <joint name="right_knee" type="revolute">
+    <origin xyz="0 0 -0.36" rpy="0 0 0"/>
+    <parent link="right_upper_leg"/>
+    <child link="right_lower_leg"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="140" velocity="14" lower="-2.2" upper="0.1"/>
+    <dynamics damping="0.9" friction="0.4"/>
+  </joint>
+  <link name="right_lower_leg">
+    <inertial>
+      <origin xyz="0 0 -0.16" rpy="0 0 0"/>
+      <mass value="1.6"/>
+      <inertia ixx="0.011" ixy="0" ixz="0" iyy="0.009" iyz="0" izz="0.011"/>
+    </inertial>
+    <visual><geometry><cylinder radius="0.032" length="0.32"/></geometry></visual>
+    <collision><geometry><cylinder radius="0.032" length="0.32"/></geometry></collision>
+  </link>
+  <joint name="right_ankle_pitch" type="revolute">
+    <origin xyz="0 0 -0.32" rpy="0 0 0"/>
+    <parent link="right_lower_leg"/>
+    <child link="right_ankle_roll"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="90" velocity="10" lower="-0.8" upper="0.8"/>
+    <dynamics damping="0.6" friction="0.25"/>
+  </joint>
+  <link name="right_ankle_roll">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.9"/>
+      <inertia ixx="0.004" ixy="0" ixz="0" iyy="0.003" iyz="0" izz="0.004"/>
+    </inertial>
+    <visual><geometry><box size="0.09 0.07 0.05"/></geometry></visual>
+    <collision><geometry><box size="0.09 0.07 0.05"/></geometry></collision>
+  </link>
+  <joint name="right_ankle_roll" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="right_ankle_roll"/>
+    <child link="right_foot"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="90" velocity="10" lower="-0.6" upper="0.6"/>
+    <dynamics damping="0.6" friction="0.25"/>
+  </joint>
+  <link name="right_foot">
+    <inertial>
+      <origin xyz="0.02 0 0" rpy="0 0 0"/>
+      <mass value="0.7"/>
+      <inertia ixx="0.0025" ixy="0" ixz="0" iyy="0.002" iyz="0" izz="0.0035"/>
+    </inertial>
+    <visual><geometry><box size="0.18 0.09 0.04"/></geometry></visual>
+    <collision><geometry><box size="0.18 0.09 0.04"/></geometry></collision>
+  </link>
+
+</robot>
