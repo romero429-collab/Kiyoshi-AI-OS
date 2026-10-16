@@ -1,0 +1,20 @@
+{
+  "skill": "kiyoshi-genesis-nexus",
+  "test_cases": [
+    {
+      "name": "ingest_valid_crdt",
+      "input": "Implement zero-copy ingest for a CrdtStateVector with ρ(J)=0.87",
+      "assertions": ["Banach gate passes", "logs merge into DAG"]
+    },
+    {
+      "name": "reject_high_rho",
+      "input": "Handle TentMapPayload or CRDT with spectral_radius >= 1.0",
+      "assertions": ["Banach gate rejects", "isolation triggered"]
+    },
+    {
+      "name": "sdp_handshake",
+      "input": "Generate SDP Answer and trickle ICE candidates asynchronously",
+      "assertions": ["PeerConnection reaches Connected", "no blocking on main loop"]
+    }
+  ]
+}
