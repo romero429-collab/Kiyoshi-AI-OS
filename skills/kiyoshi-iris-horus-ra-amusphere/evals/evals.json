@@ -1,0 +1,25 @@
+{
+  "skill": "kiyoshi-iris-horus-ra-amusphere",
+  "test_cases": [
+    {
+      "name": "step1_state_space",
+      "input": "Formalize the Iris local core as a discrete dynamical system using the Chaos Architect protocol. Start with Step 1.",
+      "assertions": ["Defines 6-component state vector mapping Anise/Red Clover/AirSync/Iris/Horus/Ra", "Constructs composite F = F6 o ... o F1", "States spectral-radius condition rho(J_F) < 1"]
+    },
+    {
+      "name": "step2_lyapunov",
+      "input": "Proceed to Step 2. Analyze local Lyapunov exponents for the Horus-Ra twin and error-cone dynamics.",
+      "assertions": ["Isolates Horus-Ra twin ensemble", "Derives finite-time lambda_Z^max", "Defines error-cone radius rho_cone(t) = rho0 * exp(lambda_Z^max * t)"]
+    },
+    {
+      "name": "amusphere_environmental",
+      "input": "Render Horus and Ra as pure environmental fields similar to the Amusphere, not as playable characters.",
+      "assertions": ["Removes particle/agent kinematics", "Implements volumetric density advection driven by lambda_Z^max", "Color maps blue for contraction and red for expansion"]
+    },
+    {
+      "name": "verification_tests",
+      "input": "List the five visual verification tests for the local-layer Amusphere simulation.",
+      "assertions": ["Includes contraction test, period-2 birth, cascade accumulation, strange-attractor boundedness, and parameter-reset"]
+    }
+  ]
+}

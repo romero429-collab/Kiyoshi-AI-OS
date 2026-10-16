@@ -1,0 +1,10 @@
+{
+  "skill": "kiyoshi-iris-horus-ra-amusphere",
+  "test_cases": [
+    {"input": "Iris Horus Ra Amusphere local layer DDS", "should_trigger": true},
+    {"input": "error cone Lyapunov advection environmental field", "should_trigger": true},
+    {"input": "Chaos Architect protocol for Iris simulation layer", "should_trigger": true},
+    {"input": "build a trading bot for options", "should_trigger": false},
+    {"input": "design a new hero for AetherForge", "should_trigger": false}
+  ]
+}
