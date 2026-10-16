@@ -1,6 +1,6 @@
 # Kiyoshi AI OS — Specification Index
 
-Synced from Google Drive on **2026-08-09**.
+Synced from Google Drive on **2026-08-09**. Updated 2026-10-16 with advanced VMT/VPT bio-processor.
 
 ## Layout
 
@@ -15,6 +15,7 @@ Synced from Google Drive on **2026-08-09**.
 | [`master/`](master/) | High-level master specs, MVP/MV/MK, blueprints |
 | [`dynamical-systems/`](dynamical-systems/) | Lyapunov / DDS formalization series |
 | [`beacon-academy/`](beacon-academy/) | Beacon Academy markdown corpus (crypto, economy, twin) |
+| [`cybercell/`](cybercell/) | Cybercell substrates including SpudCell hybrid and advanced VMT/VPT bio-processor |
 
 ## Existing engineering docs
 
@@ -22,6 +23,10 @@ Synced from Google Drive on **2026-08-09**.
 - [INSTALLATION.md](INSTALLATION.md)
 - [PHASES.md](PHASES.md)
 - [eye-view.md](eye-view.md) — Reality Integration Layer (live globe HUD)
+
+## Skills
+
+New: [`skills/kiyoshi-vmt-vpt-bio-processor/`](skills/kiyoshi-vmt-vpt-bio-processor/) — advanced multi-rate Lyapunov-guardrail bio-processor DDS with power-law and TDA.
 
 ## Sibling repositories
 
