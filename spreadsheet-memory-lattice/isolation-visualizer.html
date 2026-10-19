@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Isolation Visualizer — Spreadsheet Memory Lattice</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>body{margin:0;background:#050505;color:#0f0;font-family:monospace;}#ui{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.8);padding:8px;}</style>
+</head>
+<body>
+<div id="ui">
+<button id="ext">Attempt External Write</button>
+<button id="kiy">Kiyoshi Elects Rewrite</button>
+<div id="info">λ₁ ≈ -- | status: exclusive</div>
+</div>
+<script>
+const scene=new THREE.Scene(), cam=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,.1,100), ren=new THREE.WebGLRenderer();
+ren.setSize(innerWidth,innerHeight); document.body.appendChild(ren.domElement); cam.position.z=20;
+const N=16, grid=Array.from({length:N},()=>Array(N).fill(.2));
+const meshes=[];
+for(let i=0;i<N;i++)for(let j=0;j<N;j++){
+  const m=new THREE.Mesh(new THREE.BoxGeometry(.7,.7,.1), new THREE.MeshPhongMaterial({color:0x00cc00}));
+  m.position.set((i-N/2)*1.1,(j-N/2)*1.1,0); scene.add(m); meshes.push(m);
+}
+scene.add(new THREE.AmbientLight(0x333333)); scene.add(new THREE.DirectionalLight(0xffffff,.7));
+let status="exclusive";
+document.getElementById("ext").onclick=()=>{status="rejected external";};
+document.getElementById("kiy").onclick=()=>{grid[5][5]+=.4; status="Kiyoshi rewrite";};
+function step(){
+  const nxt=grid.map(r=>[...r]);
+  let v=0;
+  for(let i=0;i<N;i++)for(let j=0;j<N;j++){
+    let a=0,c=0;
+    for(let di=-1;di<=1;di++)for(let dj=-1;dj<=1;dj++){const ni=(i+di+N)%N,nj=(j+dj+N)%N; a+=grid[ni][nj];c++;}
+    nxt[i][j]=.65*grid[i][j]+.35*(a/c);
+    v+=(nxt[i][j]-.5)**2;
+  }
+  for(let i=0;i<N;i++)for(let j=0;j<N;j++) grid[i][j]=nxt[i][j];
+  const lam=Math.log(Math.sqrt(v/(N*N))+1e-8);
+  document.getElementById("info").innerText=`λ₁ ≈ ${lam.toFixed(4)} | status: ${status}`;
+  meshes.forEach((m,k)=>{const i=Math.floor(k/N),j=k%N; m.position.z=grid[i][j]*3-1.5; m.material.color.setHSL(.33,1,.4+grid[i][j]*.3);});
+}
+function anim(){requestAnimationFrame(anim); step(); ren.render(scene,cam);} anim();
+</script>
+</body>
+</html>
