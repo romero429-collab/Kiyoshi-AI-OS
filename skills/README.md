@@ -12,5 +12,6 @@ The full words are verbatim under [kiyoshi-conversation/references/transcript](.
 | [kiyoshi-iris](./kiyoshi-iris/SKILL.md) | Perception, the chair, costume versus occupancy, two eyes. |
 | [kiyoshi-continuity](./kiyoshi-continuity/SKILL.md) | Primitives, provenance, envelopes, keep versus hold, continuity of state. |
 | [kiyoshi-soul-bennu-sui-dds](./kiyoshi-soul-bennu-sui-dds/SKILL.md) | Bennu/Phoenix cycle, Sui object model as DDS, sovereign public system beyond crypto, Lyapunov-gated regeneration. |
+| [kiyoshi-spreadsheet-memory-lattice](./kiyoshi-spreadsheet-memory-lattice/SKILL.md) | Spreadsheet memory bank, exclusive kernel access, resource/scheduling lattice, provenance projection Π. |
 
 Playable encoding of the same decisions: [`phase-0/`](../phase-0).
