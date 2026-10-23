@@ -95,8 +95,8 @@ const data = await response.json();
 }
 
 class CodePattern {
-  name: string
-  pattern: string
+  name!: string
+  pattern!: string
 }
 
 class CodeTemplate {

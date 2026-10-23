@@ -83,9 +83,9 @@ export class AutomatedTestEngine {
 }
 
 class Test {
-  name: string
-  code: string
-  type: string
+  name!: string
+  code!: string
+  type!: string
 }
 
 class TestSuite {

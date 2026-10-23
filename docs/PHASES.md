@@ -4,8 +4,9 @@
 
 Supports 12 compute platforms:
 - Classical (CPU, GPU, FPGA)
-- Quantum (3 providers)
-- Biological, Optical, Neuromorphic
+- Quantum: IBM Quantum, Google Quantum, IonQ Quantum (3 independent providers)
+- Bio/Neuro/Photonic: Biological, Optical, Neuromorphic
+- Emerging: Molecular, Memristive, Reservoir
 
 **Score: 98/100** - Most complete substrate coverage
 
