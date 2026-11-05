@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "dlrm_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "dlrm",
+)
+
+rust_binary(
+    name = "dlrm",
+    srcs = ["src/main.rs"],
+    deps = [":dlrm_lib"],
+)
