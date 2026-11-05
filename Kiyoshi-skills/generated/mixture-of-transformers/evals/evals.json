@@ -1,0 +1,8 @@
+{
+  "skill": "mixture-of-transformers",
+  "test_cases": [
+    {"name": "moe", "input": "Run Mixture-of-Transformers", "assertions": ["sparse", "multi-modal"]},
+    {"name": "scale", "input": "Use sparse scalable architecture", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "mixture-of-transformers", "assertions": ["activates", "workflow"]}
+  ]
+}

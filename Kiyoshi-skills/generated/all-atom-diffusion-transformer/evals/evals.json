@@ -1,0 +1,8 @@
+{
+  "skill": "all-atom-diffusion-transformer",
+  "test_cases": [
+    {"name": "molecule", "input": "Generate molecules with all-atom diffusion", "assertions": ["atoms", "structure"]},
+    {"name": "diffusion", "input": "Use All Atom Diffusion Transformer", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "all-atom-diffusion-transformer", "assertions": ["activates", "workflow"]}
+  ]
+}

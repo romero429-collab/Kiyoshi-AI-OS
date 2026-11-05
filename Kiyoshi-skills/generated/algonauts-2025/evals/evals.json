@@ -1,0 +1,8 @@
+{
+  "skill": "algonauts-2025",
+  "test_cases": [
+    {"name": "encode", "input": "Predict fMRI with Algonauts 2025", "assertions": ["brain", "responses"]},
+    {"name": "fmri", "input": "Use Algonauts encoding models", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "algonauts-2025", "assertions": ["activates", "workflow"]}
+  ]
+}

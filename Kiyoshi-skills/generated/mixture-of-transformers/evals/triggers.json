@@ -1,0 +1,8 @@
+{
+  "skill": "mixture-of-transformers",
+  "test_cases": [
+    {"input": "Mixture-of-Transformers", "should_trigger": true},
+    {"input": "mixture-of-transformers", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

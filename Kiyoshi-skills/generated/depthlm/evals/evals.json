@@ -1,0 +1,8 @@
+{
+  "skill": "depthlm",
+  "test_cases": [
+    {"name": "depth", "input": "Estimate depth with DepthLM", "assertions": ["depth map", "estimation"]},
+    {"name": "lm", "input": "Use DepthLM", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "depthlm", "assertions": ["activates", "workflow"]}
+  ]
+}

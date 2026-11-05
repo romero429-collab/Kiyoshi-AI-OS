@@ -1,15 +1,17 @@
 ---
 name: scenescript
-description: "Public code release associated with SceneScript. Use when building scene scripting or 3D scene skills."
+description: "SceneScript 3D scene modeling modeled from facebookresearch/scenescript. Use when building scene skills."
 type: tool
 lifecycle: active
 ---
 
-# SceneScript
+# SceneScript — 3D Scene Modeling
 
-Pilot skill derived from https://github.com/facebookresearch/scenescript.
+Modeled from https://github.com/facebookresearch/scenescript. Remade as a Kiyoshi-owned scene tool.
 
 ## Workflow
-1. Reference the source repository for scene scripting patterns.
-2. Map to 3D scene tools under Kiyoshi-skills.
-3. Enforce contractive scene dynamics (negative Lyapunov exponents on script generation).
+1. Accept scene description or input.
+2. Generate or edit 3D scene with SceneScript.
+3. Render under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

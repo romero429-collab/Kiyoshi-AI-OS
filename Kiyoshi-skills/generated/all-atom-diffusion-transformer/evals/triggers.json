@@ -1,0 +1,8 @@
+{
+  "skill": "all-atom-diffusion-transformer",
+  "test_cases": [
+    {"input": "all-atom diffusion transformer", "should_trigger": true},
+    {"input": "all-atom-diffusion-transformer", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

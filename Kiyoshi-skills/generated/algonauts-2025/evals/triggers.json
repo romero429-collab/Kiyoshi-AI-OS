@@ -1,0 +1,8 @@
+{
+  "skill": "algonauts-2025",
+  "test_cases": [
+    {"input": "Algonauts 2025 fMRI", "should_trigger": true},
+    {"input": "algonauts-2025", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

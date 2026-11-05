@@ -1,15 +1,17 @@
 ---
 name: depthlm
-description: "[ICLR 2026 Oral (top 1.2%)] Official implementation of DepthLM. Use when building depth estimation or vision-language skills."
+description: "DepthLM depth estimation modeled from facebookresearch/DepthLM_Official. Use when building depth skills."
 type: tool
 lifecycle: active
 ---
 
-# DepthLM
+# DepthLM — Depth Estimation
 
-Pilot skill derived from https://github.com/facebookresearch/DepthLM_Official.
+Modeled from https://github.com/facebookresearch/DepthLM_Official. Remade as a Kiyoshi-owned depth tool.
 
 ## Workflow
-1. Reference the source repository for DepthLM patterns.
-2. Map to depth estimation tools under Kiyoshi-skills.
-3. Enforce contractive depth dynamics (negative Lyapunov exponents on estimation).
+1. Accept image input.
+2. Estimate depth with DepthLM.
+3. Output under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

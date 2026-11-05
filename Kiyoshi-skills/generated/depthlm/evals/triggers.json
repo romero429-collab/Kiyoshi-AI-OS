@@ -1,0 +1,8 @@
+{
+  "skill": "depthlm",
+  "test_cases": [
+    {"input": "DepthLM depth estimation", "should_trigger": true},
+    {"input": "depthlm", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

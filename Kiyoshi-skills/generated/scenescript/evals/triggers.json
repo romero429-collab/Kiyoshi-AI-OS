@@ -1,0 +1,8 @@
+{
+  "skill": "scenescript",
+  "test_cases": [
+    {"input": "SceneScript 3D", "should_trigger": true},
+    {"input": "scenescript", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

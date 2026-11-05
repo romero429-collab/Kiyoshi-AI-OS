@@ -1,0 +1,8 @@
+{
+  "skill": "scenescript",
+  "test_cases": [
+    {"name": "scene", "input": "Model 3D scene with SceneScript", "assertions": ["scene", "generate"]},
+    {"name": "script", "input": "Use SceneScript", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "scenescript", "assertions": ["activates", "workflow"]}
+  ]
+}
