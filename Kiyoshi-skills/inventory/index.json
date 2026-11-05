@@ -4,7 +4,7 @@
   "starred_captured": 300,
   "forked_captured": 464,
   "total_captured": 764,
-  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill", "agent-reach", "gemini-cli"],
-  "generated_at": "2026-11-05T22:20:00Z",
-  "note": "Next pilot (gemini-cli) generated. Ready for further expansion."
+  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill", "agent-reach", "gemini-cli", "ruview"],
+  "generated_at": "2026-11-05T22:25:00Z",
+  "note": "Next pilot (ruview) generated. Ready for further expansion."
 }
