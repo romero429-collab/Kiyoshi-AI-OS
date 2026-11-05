@@ -1,15 +1,17 @@
 ---
 name: unitree-rl-gym
-description: "Unitree RL Gym. Use when building reinforcement learning for robotics or quadruped control skills."
+description: "Unitree RL Gym modeled from unitreerobotics/unitree_rl_gym. Use when building quadruped RL skills."
 type: tool
 lifecycle: active
 ---
 
-# Unitree RL Gym
+# Unitree RL Gym — Quadruped Control
 
-Pilot skill derived from https://github.com/unitreerobotics/unitree_rl_gym.
+Modeled from https://github.com/unitreerobotics/unitree_rl_gym. Remade as a Kiyoshi-owned robotics tool.
 
 ## Workflow
-1. Reference the source repository for Unitree RL patterns.
-2. Map to robotics RL tools under Kiyoshi-skills.
-3. Enforce contractive control dynamics (negative Lyapunov exponents on policy updates).
+1. Load Unitree robot environment.
+2. Train or execute RL policy.
+3. Control under contractive updates (λ_max < 0).
+
+See inventory entry for source metadata.

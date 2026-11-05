@@ -1,15 +1,17 @@
 ---
 name: agent-toolkit-for-aws
-description: "Official, AWS-supported MCP servers, skills, and plugins to help AI agents build on AWS. Use when building AWS-integrated agent skills."
+description: "AWS MCP servers and skills modeled from aws/agent-toolkit-for-aws. Use when building AWS agent skills."
 type: tool
 lifecycle: active
 ---
 
-# Agent Toolkit for AWS
+# Agent Toolkit for AWS — Cloud Agents
 
-Pilot skill derived from https://github.com/aws/agent-toolkit-for-aws.
+Modeled from https://github.com/aws/agent-toolkit-for-aws. Remade as a Kiyoshi-owned cloud tool.
 
 ## Workflow
-1. Reference the source repository for AWS MCP and skill patterns.
-2. Map to cloud integration tools under Kiyoshi-skills.
-3. Enforce contractive cloud dynamics (negative Lyapunov exponents on resource orchestration).
+1. Select AWS MCP server or skill.
+2. Orchestrate cloud resources.
+3. Execute under contractive orchestration (λ_max < 0).
+
+See inventory entry for source metadata.

@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-rl-gym",
+  "test_cases": [
+    {"input": "Unitree RL Gym", "should_trigger": true},
+    {"input": "unitree-rl-gym", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

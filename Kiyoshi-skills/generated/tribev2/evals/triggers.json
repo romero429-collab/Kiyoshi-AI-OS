@@ -1,0 +1,8 @@
+{
+  "skill": "tribev2",
+  "test_cases": [
+    {"input": "TRIBE v2 brain model", "should_trigger": true},
+    {"input": "tribev2", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

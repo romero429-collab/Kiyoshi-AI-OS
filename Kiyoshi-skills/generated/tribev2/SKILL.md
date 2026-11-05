@@ -1,15 +1,17 @@
 ---
 name: tribev2
-description: "This repository contains the code to train and evaluate TRIBE v2, a multimodal model for brain response. Use when building multimodal brain or neuroscience model skills."
+description: "Multimodal brain response model modeled from facebookresearch/tribev2. Use when building neuroscience skills."
 type: tool
 lifecycle: active
 ---
 
-# TRIBE v2
+# TRIBE v2 — Brain Response Model
 
-Pilot skill derived from https://github.com/facebookresearch/tribev2.
+Modeled from https://github.com/facebookresearch/tribev2. Remade as a Kiyoshi-owned neuroscience tool.
 
 ## Workflow
-1. Reference the source repository for multimodal brain response patterns.
-2. Map to neuroscience modeling tools under Kiyoshi-skills.
-3. Enforce contractive multimodal dynamics (negative Lyapunov exponents on signal fusion).
+1. Ingest multimodal stimuli.
+2. Predict brain responses with TRIBE v2.
+3. Fuse under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

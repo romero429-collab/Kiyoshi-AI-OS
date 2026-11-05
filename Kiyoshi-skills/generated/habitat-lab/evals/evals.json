@@ -1,0 +1,8 @@
+{
+  "skill": "habitat-lab",
+  "test_cases": [
+    {"name": "embodied", "input": "Train embodied agent in Habitat", "assertions": ["environment", "tasks"]},
+    {"name": "sim", "input": "Use Habitat Lab for simulation", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "habitat-lab", "assertions": ["activates", "workflow"]}
+  ]
+}

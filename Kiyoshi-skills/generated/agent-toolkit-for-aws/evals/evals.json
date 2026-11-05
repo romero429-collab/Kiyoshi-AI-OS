@@ -1,0 +1,8 @@
+{
+  "skill": "agent-toolkit-for-aws",
+  "test_cases": [
+    {"name": "aws", "input": "Use AWS agent toolkit", "assertions": ["MCP", "resources"]},
+    {"name": "cloud", "input": "Orchestrate AWS with agents", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "agent-toolkit-for-aws", "assertions": ["activates", "workflow"]}
+  ]
+}

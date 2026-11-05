@@ -1,0 +1,8 @@
+{
+  "skill": "tribev2",
+  "test_cases": [
+    {"name": "brain", "input": "Predict brain responses with TRIBE v2", "assertions": ["multimodal", "response"]},
+    {"name": "neuro", "input": "Run multimodal brain model", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "tribev2", "assertions": ["activates", "workflow"]}
+  ]
+}

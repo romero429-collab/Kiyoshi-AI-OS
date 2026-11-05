@@ -1,15 +1,17 @@
 ---
 name: habitat-lab
-description: "A modular high-level library to train embodied AI agents across a variety of tasks and environments. Use when building embodied AI or simulation training skills."
+description: "Embodied AI training library modeled from facebookresearch/habitat-lab. Use when building simulation skills."
 type: tool
 lifecycle: active
 ---
 
-# Habitat Lab
+# Habitat Lab — Embodied AI
 
-Pilot skill derived from https://github.com/facebookresearch/habitat-lab.
+Modeled from https://github.com/facebookresearch/habitat-lab. Remade as a Kiyoshi-owned simulation tool.
 
 ## Workflow
-1. Reference the source repository for embodied AI training patterns.
-2. Map to simulation and agent training tools under Kiyoshi-skills.
-3. Enforce contractive embodiment dynamics (negative Lyapunov exponents on environment interaction).
+1. Load embodied environment.
+2. Train agent on tasks.
+3. Interact under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

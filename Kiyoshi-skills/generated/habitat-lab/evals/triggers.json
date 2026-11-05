@@ -1,0 +1,8 @@
+{
+  "skill": "habitat-lab",
+  "test_cases": [
+    {"input": "embodied AI Habitat", "should_trigger": true},
+    {"input": "habitat-lab", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

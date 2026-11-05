@@ -1,0 +1,8 @@
+{
+  "skill": "agent-toolkit-for-aws",
+  "test_cases": [
+    {"input": "AWS agent toolkit", "should_trigger": true},
+    {"input": "agent-toolkit-for-aws", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}
