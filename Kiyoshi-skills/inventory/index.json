@@ -5,6 +5,7 @@
   "forked_captured": 464,
   "total_captured": 764,
   "pilots_generated_count": 105,
-  "generated_at": "2026-11-06T01:25:00Z",
-  "note": "Parallel batch of 10 pilots generated. ~187 remaining. Continue for full coverage."
+  "finalized_count": 5,
+  "generated_at": "2026-11-06T01:30:00Z",
+  "note": "Finalization started. First 5 pilots now have evals/evals.json and evals/triggers.json. Continue finalizing remaining ~100 before next generation batch."
 }
