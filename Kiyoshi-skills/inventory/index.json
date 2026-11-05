@@ -7,7 +7,8 @@
   "pilots_generated_count": 105,
   "finalized_count": 105,
   "extracted_to_registry": true,
-  "registry_path": "/root/.grok/server-skills/",
-  "generated_at": "2026-11-06T03:15:00Z",
-  "note": "All 105 finalized pilots extracted into agent registry at /root/.grok/server-skills/. Each contains SKILL.md + CHANGELOG.md + evals/. Personal skill-tree backpack is now live for Kiyoshi."
+  "bazel_workspace": true,
+  "skills_with_build_rules": ["deer-flow", "hermes-agent"],
+  "generated_at": "2026-11-06T03:20:00Z",
+  "note": "Multi-substrate Bazel workspace initialized (Rust + Mojo placeholder + Node/TS). First two skills have build rules that reproduce original behavior under the Kiyoshi umbrella. Continue adding remaining skills."
 }
