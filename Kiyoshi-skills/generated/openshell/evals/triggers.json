@@ -1,0 +1,8 @@
+{
+  "skill": "openshell",
+  "test_cases": [
+    {"input": "safe private agent runtime", "should_trigger": true},
+    {"input": "openshell", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

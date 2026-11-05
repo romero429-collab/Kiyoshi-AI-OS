@@ -1,0 +1,8 @@
+{
+  "skill": "openshell",
+  "test_cases": [
+    {"name": "runtime", "input": "Run agent in OpenShell", "assertions": ["isolated", "private"]},
+    {"name": "safe", "input": "Use safe agent runtime", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "openshell", "assertions": ["activates", "workflow"]}
+  ]
+}

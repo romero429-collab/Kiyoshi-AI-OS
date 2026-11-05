@@ -1,15 +1,17 @@
 ---
 name: palmier-pro
-description: "macOS video editor built for AI. Use when building AI-assisted video editing or macOS media skills."
+description: "macOS AI video editor modeled from palmier-io/palmier-pro. Use when building AI-assisted video editing skills."
 type: tool
 lifecycle: active
 ---
 
-# Palmier Pro
+# Palmier Pro — AI Video Editor
 
-Pilot skill derived from https://github.com/palmier-io/palmier-pro.
+Modeled from https://github.com/palmier-io/palmier-pro. Remade as a Kiyoshi-owned editor.
 
 ## Workflow
-1. Reference the source repository for AI video editor patterns.
-2. Map to media editing tools under Kiyoshi-skills.
-3. Enforce contractive editing dynamics (negative Lyapunov exponents on timeline updates).
+1. Import media on macOS.
+2. Apply AI-assisted edits.
+3. Export under contractive timeline updates (λ_max < 0).
+
+See inventory entry for source metadata.

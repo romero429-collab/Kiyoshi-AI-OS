@@ -1,15 +1,17 @@
 ---
 name: openshell
-description: "OpenShell is the safe, private runtime for autonomous AI agents. Use when building secure agent runtimes or private execution environments."
+description: "Safe private runtime for autonomous agents modeled from NVIDIA/OpenShell. Use when building secure agent runtimes."
 type: tool
 lifecycle: active
 ---
 
-# OpenShell
+# OpenShell — Safe Agent Runtime
 
-Pilot skill derived from https://github.com/NVIDIA/OpenShell.
+Modeled from https://github.com/NVIDIA/OpenShell. Remade as a Kiyoshi-owned secure runtime.
 
 ## Workflow
-1. Reference the source repository for safe private agent runtime patterns.
-2. Map to secure execution tools under Kiyoshi-skills.
-3. Enforce contractive isolation dynamics (negative Lyapunov exponents on sandbox boundaries).
+1. Launch isolated runtime for agent.
+2. Enforce privacy and safety boundaries.
+3. Manage under contractive isolation (λ_max < 0).
+
+See inventory entry for source metadata.

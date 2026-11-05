@@ -1,0 +1,8 @@
+{
+  "skill": "stop-slop",
+  "test_cases": [
+    {"input": "remove AI tells from prose", "should_trigger": true},
+    {"input": "stop-slop", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

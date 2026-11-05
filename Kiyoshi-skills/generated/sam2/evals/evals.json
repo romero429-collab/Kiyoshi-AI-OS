@@ -1,0 +1,8 @@
+{
+  "skill": "sam2",
+  "test_cases": [
+    {"name": "segment", "input": "Segment image with SAM 2", "assertions": ["masks", "prompts"]},
+    {"name": "infer", "input": "Run SAM 2 inference", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "sam2", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "sam2",
+  "test_cases": [
+    {"input": "segment anything model 2", "should_trigger": true},
+    {"input": "sam2", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

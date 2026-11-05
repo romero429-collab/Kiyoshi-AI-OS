@@ -1,15 +1,17 @@
 ---
 name: stop-slop
-description: "A skill file for removing AI tells from prose. Use when building prose refinement or anti-AI-detection writing skills."
+description: "Remove AI tells from prose modeled from hardikpandya/stop-slop. Use when refining agent-generated text."
 type: workflow
 lifecycle: active
 ---
 
-# Stop Slop
+# Stop Slop — Prose Refinement
 
-Pilot skill derived from https://github.com/hardikpandya/stop-slop.
+Modeled from https://github.com/hardikpandya/stop-slop. Remade as a Kiyoshi-owned editing loop.
 
 ## Workflow
-1. Reference the source repository for AI-tell removal patterns.
-2. Map to prose refinement tools under Kiyoshi-skills.
-3. Enforce contractive editing dynamics (negative Lyapunov exponents on revision steps).
+1. Accept AI-generated prose.
+2. Detect and remove AI tells.
+3. Iterate under contractive revision (λ_max < 0).
+
+See inventory entry for source metadata.

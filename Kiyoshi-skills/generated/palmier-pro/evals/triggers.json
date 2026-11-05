@@ -1,0 +1,8 @@
+{
+  "skill": "palmier-pro",
+  "test_cases": [
+    {"input": "macOS AI video editor", "should_trigger": true},
+    {"input": "palmier-pro", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

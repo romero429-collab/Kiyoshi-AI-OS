@@ -1,0 +1,8 @@
+{
+  "skill": "palmier-pro",
+  "test_cases": [
+    {"name": "edit", "input": "Edit video with Palmier Pro AI", "assertions": ["AI edits", "export"]},
+    {"name": "mac", "input": "Use macOS AI video editor", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "palmier-pro", "assertions": ["activates", "workflow"]}
+  ]
+}

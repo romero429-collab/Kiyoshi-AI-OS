@@ -1,0 +1,8 @@
+{
+  "skill": "google-skills",
+  "test_cases": [
+    {"input": "Google product agent skills", "should_trigger": true},
+    {"input": "google-skills", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

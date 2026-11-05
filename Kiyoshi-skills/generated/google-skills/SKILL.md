@@ -1,15 +1,17 @@
 ---
 name: google-skills
-description: "Agent Skills for Google products and technologies. Use when building Google-integrated agent skills or product-specific workflows."
+description: "Agent skills for Google products modeled from google/skills. Use when building Google-integrated agent skills."
 type: knowledge
 lifecycle: active
 ---
 
-# Google Skills
+# Google Skills — Product Integrations
 
-Pilot skill derived from https://github.com/google/skills.
+Modeled from https://github.com/google/skills. Remade as a Kiyoshi-owned integration set.
 
 ## Workflow
-1. Reference the source repository for Google product agent skill patterns.
-2. Map to integrated product tools under Kiyoshi-skills.
-3. Enforce contractive integration dynamics (negative Lyapunov exponents on API calls).
+1. Select Google product skill.
+2. Integrate into agent workflow.
+3. Execute under contractive API calls (λ_max < 0).
+
+See inventory entry for source metadata.

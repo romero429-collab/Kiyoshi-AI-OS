@@ -1,15 +1,17 @@
 ---
 name: sam2
-description: "The repository provides code for running inference with the Meta Segment Anything Model 2 (SAM 2). Use when building image segmentation or visual foundation model skills."
+description: "Segment Anything Model 2 inference modeled from facebookresearch/sam2. Use when building visual segmentation skills."
 type: tool
 lifecycle: active
 ---
 
-# SAM 2
+# SAM 2 — Segment Anything
 
-Pilot skill derived from https://github.com/facebookresearch/sam2.
+Modeled from https://github.com/facebookresearch/sam2. Remade as a Kiyoshi-owned segmentation tool.
 
 ## Workflow
-1. Reference the source repository for Segment Anything Model 2 patterns.
-2. Map to visual segmentation tools under Kiyoshi-skills.
-3. Enforce contractive inference dynamics (negative Lyapunov exponents on mask generation).
+1. Accept image + prompts.
+2. Generate masks via SAM 2.
+3. Return under contractive inference (λ_max < 0).
+
+See inventory entry for source metadata.

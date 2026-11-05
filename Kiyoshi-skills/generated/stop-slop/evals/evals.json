@@ -1,0 +1,8 @@
+{
+  "skill": "stop-slop",
+  "test_cases": [
+    {"name": "refine", "input": "Remove AI tells from this text", "assertions": ["detect", "revise"]},
+    {"name": "prose", "input": "Refine prose with stop-slop", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "stop-slop", "assertions": ["activates", "workflow"]}
+  ]
+}
