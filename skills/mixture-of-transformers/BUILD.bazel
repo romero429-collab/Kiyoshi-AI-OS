@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "mixture_of_transformers_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "mixture_of_transformers",
+)
+
+rust_binary(
+    name = "mixture_of_transformers",
+    srcs = ["src/main.rs"],
+    deps = [":mixture_of_transformers_lib"],
+)

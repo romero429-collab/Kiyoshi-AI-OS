@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "algonauts_2025_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "algonauts_2025",
+)
+
+rust_binary(
+    name = "algonauts_2025",
+    srcs = ["src/main.rs"],
+    deps = [":algonauts_2025_lib"],
+)
