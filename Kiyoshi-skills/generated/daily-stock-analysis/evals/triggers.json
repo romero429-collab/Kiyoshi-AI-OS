@@ -1,0 +1,8 @@
+{
+  "skill": "daily-stock-analysis",
+  "test_cases": [
+    {"input": "stock analysis LLM", "should_trigger": true},
+    {"input": "daily-stock-analysis", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

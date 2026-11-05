@@ -1,17 +1,17 @@
 ---
 name: last30days-skill
-description: "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary. Use when building multi-source research and synthesis skills."
+description: "Multi-source research synthesizer modeled from mvanhorn/last30days-skill. Use when building grounded summary skills."
 type: workflow
 lifecycle: active
 ---
 
-# Last30Days Skill
+# Last30Days — Research Synthesizer
 
-Pilot skill derived from https://github.com/mvanhorn/last30days-skill.
+Modeled from https://github.com/mvanhorn/last30days-skill. Remade as a Kiyoshi-owned research loop.
 
 ## Workflow
-1. Reference the source repository for multi-platform research and synthesis patterns.
-2. Map to grounded summary workflows under Kiyoshi-skills.
-3. Enforce contractive research dynamics (negative Lyapunov exponents on multi-source aggregation).
+1. Query Reddit, X, YouTube, HN, Polymarket, web.
+2. Synthesize grounded summary.
+3. Return under contractive aggregation (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

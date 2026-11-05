@@ -1,0 +1,8 @@
+{
+  "skill": "security-audit-skill",
+  "test_cases": [
+    {"name": "audit", "input": "Run multi-phase security audit", "assertions": ["verified", "machine-readable"]},
+    {"name": "findings", "input": "Generate audit findings", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "security-audit-skill", "assertions": ["activates", "workflow"]}
+  ]
+}

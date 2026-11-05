@@ -1,0 +1,8 @@
+{
+  "skill": "security-audit-skill",
+  "test_cases": [
+    {"input": "multi-phase security audit", "should_trigger": true},
+    {"input": "security-audit-skill", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

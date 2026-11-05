@@ -1,0 +1,8 @@
+{
+  "skill": "daily-stock-analysis",
+  "test_cases": [
+    {"name": "analyze", "input": "Run daily stock analysis", "assertions": ["multi-source", "decision board"]},
+    {"name": "alert", "input": "Generate stock alerts", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "daily-stock-analysis", "assertions": ["activates", "workflow"]}
+  ]
+}

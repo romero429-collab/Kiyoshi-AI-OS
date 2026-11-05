@@ -1,0 +1,8 @@
+{
+  "skill": "penpot",
+  "test_cases": [
+    {"input": "open-source design platform", "should_trigger": true},
+    {"input": "penpot", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

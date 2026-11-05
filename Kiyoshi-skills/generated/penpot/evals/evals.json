@@ -1,0 +1,8 @@
+{
+  "skill": "penpot",
+  "test_cases": [
+    {"name": "design", "input": "Create a design in Penpot style", "assertions": ["files", "collab"]},
+    {"name": "collab", "input": "Collaborate on design platform", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "penpot", "assertions": ["activates", "workflow"]}
+  ]
+}

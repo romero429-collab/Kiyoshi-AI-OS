@@ -1,0 +1,8 @@
+{
+  "skill": "last30days-skill",
+  "test_cases": [
+    {"name": "research", "input": "Research a topic across platforms", "assertions": ["multi-source", "summary"]},
+    {"name": "ground", "input": "Synthesize grounded last-30-days report", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "last30days-skill", "assertions": ["activates", "workflow"]}
+  ]
+}

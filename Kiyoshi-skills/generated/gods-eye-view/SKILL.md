@@ -1,17 +1,17 @@
 ---
 name: gods-eye-view
-description: "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe. Use when building spatial intelligence, satellite, or 3D globe visualization skills."
+description: "Live spatial intelligence on a 3D globe modeled from bilawalsidhu/gods-eye-view. Use when building geospatial visualization skills."
 type: tool
 lifecycle: active
 ---
 
-# Gods Eye View
+# Gods Eye View — Spatial Globe
 
-Pilot skill derived from https://github.com/bilawalsidhu/gods-eye-view.
+Modeled from https://github.com/bilawalsidhu/gods-eye-view. Remade as a Kiyoshi-owned visualization tool.
 
 ## Workflow
-1. Reference the source repository for live spatial intelligence and 3D globe patterns.
-2. Map to geospatial visualization tools under Kiyoshi-skills.
-3. Enforce contractive spatial-data dynamics (negative Lyapunov exponents on globe updates).
+1. Ingest live open-source spatial data.
+2. Render on photorealistic 3D globe.
+3. Update under contractive data dynamics (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

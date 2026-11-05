@@ -1,0 +1,8 @@
+{
+  "skill": "gods-eye-view",
+  "test_cases": [
+    {"name": "globe", "input": "Render live spatial data on 3D globe", "assertions": ["globe", "live"]},
+    {"name": "intel", "input": "Use gods-eye-view for spatial intelligence", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "gods-eye-view", "assertions": ["activates", "workflow"]}
+  ]
+}

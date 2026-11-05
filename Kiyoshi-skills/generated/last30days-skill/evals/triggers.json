@@ -1,0 +1,8 @@
+{
+  "skill": "last30days-skill",
+  "test_cases": [
+    {"input": "research last 30 days", "should_trigger": true},
+    {"input": "last30days-skill", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

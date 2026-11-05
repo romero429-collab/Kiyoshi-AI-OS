@@ -1,17 +1,17 @@
 ---
 name: security-audit-skill
-description: "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings. Use when building security audit, verification, or multi-phase analysis skills."
+description: "Multi-phase security audit modeled from cloudflare/security-audit-skill. Use when building verified audit skills."
 type: workflow
 lifecycle: active
 ---
 
-# Security Audit Skill
+# Security Audit Skill — Verified Findings
 
-Pilot skill derived from https://github.com/cloudflare/security-audit-skill.
+Modeled from https://github.com/cloudflare/security-audit-skill. Remade as a Kiyoshi-owned audit loop.
 
 ## Workflow
-1. Reference the source repository for multi-phase security audit patterns.
-2. Map to verified, machine-readable audit workflows under Kiyoshi-skills.
-3. Enforce contractive verification dynamics (negative Lyapunov exponents on audit phases).
+1. Run multi-phase audit.
+2. Independently verify findings.
+3. Emit machine-readable report under contractive verification (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

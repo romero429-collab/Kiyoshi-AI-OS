@@ -1,0 +1,8 @@
+{
+  "skill": "gods-eye-view",
+  "test_cases": [
+    {"input": "spatial intelligence globe", "should_trigger": true},
+    {"input": "gods-eye-view", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

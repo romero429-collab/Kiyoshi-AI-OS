@@ -1,17 +1,17 @@
 ---
 name: penpot
-description: "Penpot: The open-source design platform for Product teams that need scalable collaboration. Use when building open-source design, collaboration, or UI tool skills."
+description: "Open-source design platform modeled from penpot/penpot. Use when building collaborative design skills."
 type: tool
 lifecycle: active
 ---
 
-# Penpot
+# Penpot — Design Collaboration
 
-Pilot skill derived from https://github.com/penpot/penpot.
+Modeled from https://github.com/penpot/penpot. Remade as a Kiyoshi-owned design tool.
 
 ## Workflow
-1. Reference the source repository for open-source design platform patterns.
-2. Map to collaborative design tools under Kiyoshi-skills.
-3. Enforce contractive collaboration dynamics (negative Lyapunov exponents on multi-user updates).
+1. Create or edit design files.
+2. Support multi-user collaboration.
+3. Sync under contractive updates (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

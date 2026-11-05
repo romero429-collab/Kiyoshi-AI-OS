@@ -1,17 +1,17 @@
 ---
 name: daily-stock-analysis
-description: "LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboards and automatic push. Use when building LLM-driven financial analysis or stock monitoring skills."
+description: "LLM-powered multi-market stock analysis modeled from ZhuLinsen/daily_stock_analysis. Use when building financial analysis skills."
 type: workflow
 lifecycle: active
 ---
 
-# Daily Stock Analysis
+# Daily Stock Analysis — LLM Financial System
 
-Pilot skill derived from https://github.com/ZhuLinsen/daily_stock_analysis.
+Modeled from https://github.com/ZhuLinsen/daily_stock_analysis. Remade as a Kiyoshi-owned analysis loop.
 
 ## Workflow
-1. Reference the source repository for LLM-driven multi-market stock analysis patterns.
-2. Map to financial data and decision workflows under Kiyoshi-skills.
-3. Enforce contractive analysis dynamics (negative Lyapunov exponents on multi-source fusion).
+1. Ingest multi-source market data and news.
+2. Run LLM decision board.
+3. Push alerts under contractive fusion (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.
