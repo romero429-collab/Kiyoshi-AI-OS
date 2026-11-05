@@ -1,0 +1,8 @@
+{
+  "skill": "cutler",
+  "test_cases": [
+    {"input": "CutLER unsupervised detection", "should_trigger": true},
+    {"input": "cutler", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

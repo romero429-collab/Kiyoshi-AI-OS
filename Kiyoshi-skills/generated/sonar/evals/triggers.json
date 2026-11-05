@@ -1,0 +1,8 @@
+{
+  "skill": "sonar",
+  "test_cases": [
+    {"input": "SONAR embeddings", "should_trigger": true},
+    {"input": "sonar", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "edgetam",
+  "test_cases": [
+    {"name": "track", "input": "Track on-device with EdgeTAM", "assertions": ["on-device", "identity"]},
+    {"name": "edge", "input": "Use EdgeTAM", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "edgetam", "assertions": ["activates", "workflow"]}
+  ]
+}

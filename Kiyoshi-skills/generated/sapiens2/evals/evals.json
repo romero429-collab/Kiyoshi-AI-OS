@@ -1,0 +1,8 @@
+{
+  "skill": "sapiens2",
+  "test_cases": [
+    {"name": "highres", "input": "Process with Sapiens2 high-res ViT", "assertions": ["1K", "features"]},
+    {"name": "human", "input": "Use Sapiens2", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "sapiens2", "assertions": ["activates", "workflow"]}
+  ]
+}

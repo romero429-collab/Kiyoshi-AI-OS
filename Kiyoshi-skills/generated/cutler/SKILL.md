@@ -1,15 +1,17 @@
 ---
 name: cutler
-description: "Code release for Cut and Learn for Unsupervised Object Detection and Instance Segmentation. Use when building unsupervised object detection skills."
+description: "Unsupervised object detection and instance segmentation modeled from facebookresearch/CutLER. Use when building unsupervised vision skills."
 type: tool
 lifecycle: active
 ---
 
-# CutLER
+# CutLER — Unsupervised Detection
 
-Pilot skill derived from https://github.com/facebookresearch/CutLER.
+Modeled from https://github.com/facebookresearch/CutLER. Remade as a Kiyoshi-owned vision tool.
 
 ## Workflow
-1. Reference the source repository for unsupervised detection patterns.
-2. Map to object detection tools under Kiyoshi-skills.
-3. Enforce contractive unsupervised dynamics (negative Lyapunov exponents on cut-and-learn).
+1. Cut and learn from unlabeled images.
+2. Detect and segment objects unsupervised.
+3. Converge under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

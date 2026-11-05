@@ -1,0 +1,8 @@
+{
+  "skill": "sonar",
+  "test_cases": [
+    {"name": "embed", "input": "Embed sentences with SONAR", "assertions": ["multilingual", "fixed-size"]},
+    {"name": "align", "input": "Use SONAR embeddings", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "sonar", "assertions": ["activates", "workflow"]}
+  ]
+}

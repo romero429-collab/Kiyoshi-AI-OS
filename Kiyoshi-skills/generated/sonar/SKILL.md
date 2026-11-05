@@ -1,15 +1,17 @@
 ---
 name: sonar
-description: "SONAR, a new multilingual and multimodal fixed-size sentence embedding space. Use when building multilingual embedding or sentence representation skills."
+description: "Multilingual multimodal fixed-size embeddings modeled from facebookresearch/SONAR. Use when building sentence embedding skills."
 type: tool
 lifecycle: active
 ---
 
-# SONAR
+# SONAR — Multilingual Embeddings
 
-Pilot skill derived from https://github.com/facebookresearch/SONAR.
+Modeled from https://github.com/facebookresearch/SONAR. Remade as a Kiyoshi-owned embedding tool.
 
 ## Workflow
-1. Reference the source repository for multilingual embedding patterns.
-2. Map to fixed-size embedding tools under Kiyoshi-skills.
-3. Enforce contractive embedding dynamics (negative Lyapunov exponents on alignment).
+1. Encode sentences across languages and modalities.
+2. Produce fixed-size embeddings.
+3. Align under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

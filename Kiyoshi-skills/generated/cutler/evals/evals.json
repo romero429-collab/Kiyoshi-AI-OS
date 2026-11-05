@@ -1,0 +1,8 @@
+{
+  "skill": "cutler",
+  "test_cases": [
+    {"name": "detect", "input": "Unsupervised object detection with CutLER", "assertions": ["objects", "segment"]},
+    {"name": "unsup", "input": "Run CutLER", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "cutler", "assertions": ["activates", "workflow"]}
+  ]
+}

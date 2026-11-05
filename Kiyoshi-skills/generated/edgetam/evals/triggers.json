@@ -1,0 +1,8 @@
+{
+  "skill": "edgetam",
+  "test_cases": [
+    {"input": "EdgeTAM on-device track", "should_trigger": true},
+    {"input": "edgetam", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

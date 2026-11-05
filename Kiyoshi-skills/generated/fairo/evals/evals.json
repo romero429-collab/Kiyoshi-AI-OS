@@ -1,0 +1,8 @@
+{
+  "skill": "fairo",
+  "test_cases": [
+    {"name": "agent", "input": "Build embodied agent with FAIRO", "assertions": ["modular", "tasks"]},
+    {"name": "embodied", "input": "Use FAIRO architecture", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "fairo", "assertions": ["activates", "workflow"]}
+  ]
+}

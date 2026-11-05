@@ -1,0 +1,8 @@
+{
+  "skill": "sapiens2",
+  "test_cases": [
+    {"input": "Sapiens2 high-res", "should_trigger": true},
+    {"input": "sapiens2", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

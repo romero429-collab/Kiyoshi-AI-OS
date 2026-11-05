@@ -1,15 +1,17 @@
 ---
 name: edgetam
-description: "[CVPR 2025] Official PyTorch implementation of EdgeTAM: On-Device Track Anything Model. Use when building on-device tracking skills."
+description: "On-device Track Anything Model modeled from facebookresearch/EdgeTAM. Use when building efficient tracking skills."
 type: tool
 lifecycle: active
 ---
 
-# EdgeTAM
+# EdgeTAM — On-Device Tracking
 
-Pilot skill derived from https://github.com/facebookresearch/EdgeTAM.
+Modeled from https://github.com/facebookresearch/EdgeTAM. Remade as a Kiyoshi-owned tracking tool.
 
 ## Workflow
-1. Reference the source repository for on-device tracking patterns.
-2. Map to efficient tracking tools under Kiyoshi-skills.
-3. Enforce contractive tracking dynamics (negative Lyapunov exponents on edge inference).
+1. Track objects on-device with EdgeTAM.
+2. Maintain identity across frames.
+3. Update under contractive edge inference (λ_max < 0).
+
+See inventory entry for source metadata.

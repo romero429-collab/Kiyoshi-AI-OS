@@ -1,15 +1,17 @@
 ---
 name: fairo
-description: "A modular embodied agent architecture and platform for building embodied agents. Use when building embodied agent architecture skills."
+description: "Modular embodied agent architecture modeled from facebookresearch/fairo. Use when building embodied agent skills."
 type: tool
 lifecycle: active
 ---
 
-# FAIRO
+# FAIRO — Embodied Agent Architecture
 
-Pilot skill derived from https://github.com/facebookresearch/fairo.
+Modeled from https://github.com/facebookresearch/fairo. Remade as a Kiyoshi-owned agent platform.
 
 ## Workflow
-1. Reference the source repository for embodied agent architecture patterns.
-2. Map to modular agent platforms under Kiyoshi-skills.
-3. Enforce contractive embodiment dynamics (negative Lyapunov exponents on modular composition).
+1. Compose modular embodied agent.
+2. Execute tasks in environment.
+3. Coordinate under contractive composition (λ_max < 0).
+
+See inventory entry for source metadata.
