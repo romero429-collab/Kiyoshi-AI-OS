@@ -1,0 +1,8 @@
+{
+  "skill": "gstack",
+  "test_cases": [
+    {"input": "gstack orchestration", "should_trigger": true},
+    {"input": "multi-role coding agents", "should_trigger": true},
+    {"input": "weather today", "should_trigger": false}
+  ]
+}

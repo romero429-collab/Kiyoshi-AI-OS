@@ -1,0 +1,8 @@
+{
+  "skill": "orca",
+  "test_cases": [
+    {"name": "fleet", "input": "Run a fleet of Claude Code agents on a repo", "assertions": ["registers agents", "dispatch"]},
+    {"name": "route", "input": "Orchestrate coding agents with orca pattern", "assertions": ["contractive swarm", "results"]},
+    {"name": "trigger", "input": "orca fleet", "assertions": ["activates", "workflow"]}
+  ]
+}

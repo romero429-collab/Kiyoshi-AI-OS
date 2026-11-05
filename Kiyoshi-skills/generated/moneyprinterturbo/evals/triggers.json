@@ -1,0 +1,8 @@
+{
+  "skill": "moneyprinterturbo",
+  "test_cases": [
+    {"input": "generate short video from topic", "should_trigger": true},
+    {"input": "moneyprinterturbo", "should_trigger": true},
+    {"input": "chess moves", "should_trigger": false}
+  ]
+}

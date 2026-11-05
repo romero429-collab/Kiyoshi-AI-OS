@@ -1,0 +1,8 @@
+{
+  "skill": "taste-skill",
+  "test_cases": [
+    {"name": "refine", "input": "Improve the visual taste of this AI-generated page", "assertions": ["art direction", "reference check"]},
+    {"name": "converge", "input": "Apply taste-skill refinement loop", "assertions": ["converges", "higher quality"]},
+    {"name": "trigger", "input": "give agents taste", "assertions": ["activates", "workflow"]}
+  ]
+}

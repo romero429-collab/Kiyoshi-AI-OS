@@ -1,0 +1,8 @@
+{
+  "skill": "agent-reach",
+  "test_cases": [
+    {"name": "search", "input": "Search Twitter and Reddit for AI skill discussions", "assertions": ["multi-source", "normalized"]},
+    {"name": "read", "input": "Use agent-reach to observe GitHub trends", "assertions": ["contractive", "structured"]},
+    {"name": "trigger", "input": "agent-reach web search", "assertions": ["activates", "workflow"]}
+  ]
+}

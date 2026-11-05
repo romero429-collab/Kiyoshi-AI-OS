@@ -1,17 +1,18 @@
 ---
 name: moneyprinterturbo
-description: "Generate HD short videos from a topic or keyword with an automated AI workflow. Use when building automated video generation or content pipeline skills."
+description: "Automated HD short-video generation from topic or keyword, modeled from MoneyPrinterTurbo. Use when building AI video content pipelines."
 type: workflow
 lifecycle: active
 ---
 
-# MoneyPrinterTurbo
+# MoneyPrinterTurbo — Automated Video Pipeline
 
-Pilot skill derived from https://github.com/harry0703/MoneyPrinterTurbo.
+Modeled from https://github.com/harry0703/MoneyPrinterTurbo. Remade as a Kiyoshi-owned content loop.
 
 ## Workflow
-1. Reference the source repository for AI-driven short video generation pipelines.
-2. Map to content generation workflows under Kiyoshi-skills.
-3. Enforce contractive dynamics on the generation loop (negative Lyapunov exponents).
+1. Accept topic/keyword input.
+2. Generate script, voice, and visuals in sequence.
+3. Assemble and export HD short video.
+4. Keep the generation loop contractive (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

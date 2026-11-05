@@ -1,0 +1,8 @@
+{
+  "skill": "gstack",
+  "test_cases": [
+    {"name": "role_assign", "input": "Orchestrate a feature with CEO, Designer, and Eng Manager roles", "assertions": ["assigns roles", "handoff contracts"]},
+    {"name": "release", "input": "Run full gstack release flow", "assertions": ["aggregates outputs", "contractive"]},
+    {"name": "trigger", "input": "use gstack multi-role", "assertions": ["activates", "follows workflow"]}
+  ]
+}

@@ -1,17 +1,17 @@
 ---
 name: orca
-description: "Orca is the place for working with a fleet of coding agents (e.g. Claude Code, Codex). Use when orchestrating multi-agent coding fleets or subscription-based agent runtimes."
+description: "Fleet orchestration for coding agents (Claude Code, Codex, etc.), modeled from stablyai/orca. Use when running multi-agent coding fleets."
 type: orchestrator
 lifecycle: active
 ---
 
-# Orca
+# Orca — Coding Agent Fleet
 
-Pilot skill derived from https://github.com/stablyai/orca.
+Modeled from https://github.com/stablyai/orca. Remade as a Kiyoshi-owned fleet runtime.
 
 ## Workflow
-1. Reference the source repository for fleet orchestration of coding agents.
-2. Map to multi-agent coordination under Kiyoshi-skills.
-3. Enforce contractive swarm dynamics (negative Lyapunov exponents on agent interactions).
+1. Register coding agents into the fleet.
+2. Dispatch tasks with subscription-aware routing.
+3. Aggregate results under contractive swarm dynamics (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

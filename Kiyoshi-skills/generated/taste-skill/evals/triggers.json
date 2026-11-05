@@ -1,0 +1,8 @@
+{
+  "skill": "taste-skill",
+  "test_cases": [
+    {"input": "improve visual taste", "should_trigger": true},
+    {"input": "art direction for agents", "should_trigger": true},
+    {"input": "math problem", "should_trigger": false}
+  ]
+}

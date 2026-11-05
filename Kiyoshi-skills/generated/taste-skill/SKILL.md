@@ -1,17 +1,17 @@
 ---
 name: taste-skill
-description: "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages. Use when improving visual quality or aesthetic judgment in agent outputs."
+description: "Art-direction and visual-taste skill for coding agents, modeled from Leonxlnx/taste-skill. Use when improving aesthetic quality of agent outputs."
 type: workflow
 lifecycle: active
 ---
 
-# Taste Skill
+# Taste Skill — Aesthetic Judgment
 
-Pilot skill derived from https://github.com/Leonxlnx/taste-skill.
+Modeled from https://github.com/Leonxlnx/taste-skill. Remade as a Kiyoshi-owned visual refinement loop.
 
 ## Workflow
-1. Reference the source repository for art-direction and visual-taste patterns.
-2. Map to aesthetic evaluation workflows under Kiyoshi-skills.
-3. Enforce contractive refinement dynamics on visual outputs (negative Lyapunov exponents).
+1. Accept agent-generated UI or page.
+2. Apply art-direction rules and reference-image checks.
+3. Iterate until visual quality converges (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

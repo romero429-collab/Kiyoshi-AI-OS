@@ -1,17 +1,18 @@
 ---
 name: gstack
-description: "Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA. Use when applying multi-role agent orchestration patterns."
+description: "Multi-role agent orchestration modeled from Garry Tan's gstack: 23 opinionated tools acting as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA. Use when coordinating multi-role coding agents."
 type: orchestrator
 lifecycle: active
 ---
 
-# GStack
+# GStack — Multi-Role Agent Orchestration
 
-Pilot skill derived from https://github.com/garrytan/gstack.
+Modeled from https://github.com/garrytan/gstack. Remade as a Kiyoshi-owned orchestration pattern.
 
 ## Workflow
-1. Reference the source repository for the 23 opinionated tool roles.
-2. Map to multi-agent orchestration under Kiyoshi-skills.
-3. Enforce contractive coordination dynamics (negative Lyapunov exponents on role handoffs).
+1. Assign roles from the 23-tool set (CEO, Designer, Eng Manager, Release, Docs, QA).
+2. Route tasks through role-specific agents with explicit handoff contracts.
+3. Enforce contractive coordination: each handoff reduces uncertainty (λ_max < 0).
+4. Aggregate outputs into a single release artifact.
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

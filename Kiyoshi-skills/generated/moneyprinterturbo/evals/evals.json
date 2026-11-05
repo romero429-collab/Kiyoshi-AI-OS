@@ -1,0 +1,8 @@
+{
+  "skill": "moneyprinterturbo",
+  "test_cases": [
+    {"name": "generate", "input": "Generate a short video about AI skills", "assertions": ["script + voice + visuals", "export"]},
+    {"name": "pipeline", "input": "Run automated video workflow from keyword", "assertions": ["contractive loop", "HD output"]},
+    {"name": "trigger", "input": "moneyprinter video", "assertions": ["activates", "workflow"]}
+  ]
+}

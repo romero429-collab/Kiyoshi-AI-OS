@@ -1,0 +1,8 @@
+{
+  "skill": "agent-reach",
+  "test_cases": [
+    {"input": "search reddit twitter youtube", "should_trigger": true},
+    {"input": "agent-reach", "should_trigger": true},
+    {"input": "local file edit", "should_trigger": false}
+  ]
+}

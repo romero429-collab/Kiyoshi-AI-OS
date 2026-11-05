@@ -1,0 +1,8 @@
+{
+  "skill": "orca",
+  "test_cases": [
+    {"input": "coding agent fleet", "should_trigger": true},
+    {"input": "orca multi-agent", "should_trigger": true},
+    {"input": "recipe", "should_trigger": false}
+  ]
+}
