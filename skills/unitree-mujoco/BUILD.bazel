@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "unitree_mujoco_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "unitree_mujoco",
+)
+
+rust_binary(
+    name = "unitree_mujoco",
+    srcs = ["src/main.rs"],
+    deps = [":unitree_mujoco_lib"],
+)

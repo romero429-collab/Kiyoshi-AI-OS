@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "sapiens2_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "sapiens2",
+)
+
+rust_binary(
+    name = "sapiens2",
+    srcs = ["src/main.rs"],
+    deps = [":sapiens2_lib"],
+)
