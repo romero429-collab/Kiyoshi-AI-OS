@@ -1,0 +1,8 @@
+{
+  "skill": "jepa-wms",
+  "test_cases": [
+    {"input": "JEPA physical planning", "should_trigger": true},
+    {"input": "jepa-wms", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

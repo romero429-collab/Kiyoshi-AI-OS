@@ -1,0 +1,8 @@
+{
+  "skill": "4dgt",
+  "test_cases": [
+    {"name": "4d", "input": "Model with 4D Gaussian Transformer", "assertions": ["Gaussians", "temporal"]},
+    {"name": "gt", "input": "Use 4DGT", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "4dgt", "assertions": ["activates", "workflow"]}
+  ]
+}

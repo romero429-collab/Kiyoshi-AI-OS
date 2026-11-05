@@ -1,0 +1,8 @@
+{
+  "skill": "seamless-interaction",
+  "test_cases": [
+    {"name": "interact", "input": "Model interactions with Seamless", "assertions": ["human-AI", "dialogue"]},
+    {"name": "foundation", "input": "Use Seamless Interaction", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "seamless-interaction", "assertions": ["activates", "workflow"]}
+  ]
+}

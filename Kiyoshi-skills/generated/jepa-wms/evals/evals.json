@@ -1,0 +1,8 @@
+{
+  "skill": "jepa-wms",
+  "test_cases": [
+    {"name": "plan", "input": "Physical planning with JEPA-WMS", "assertions": ["world model", "actions"]},
+    {"name": "jepa", "input": "Use JEPA-WMS", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "jepa-wms", "assertions": ["activates", "workflow"]}
+  ]
+}

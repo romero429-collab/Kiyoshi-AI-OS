@@ -1,0 +1,8 @@
+{
+  "skill": "4dgt",
+  "test_cases": [
+    {"input": "4DGT Gaussian Transformer", "should_trigger": true},
+    {"input": "4dgt", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

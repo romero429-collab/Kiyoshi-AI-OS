@@ -1,0 +1,8 @@
+{
+  "skill": "partnr-planner",
+  "test_cases": [
+    {"input": "PARTNR planner", "should_trigger": true},
+    {"input": "partnr-planner", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

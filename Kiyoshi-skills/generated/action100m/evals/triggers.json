@@ -1,0 +1,8 @@
+{
+  "skill": "action100m",
+  "test_cases": [
+    {"input": "Action100M dataset", "should_trigger": true},
+    {"input": "action100m", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

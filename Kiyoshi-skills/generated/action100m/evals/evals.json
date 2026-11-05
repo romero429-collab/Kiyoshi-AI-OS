@@ -1,0 +1,8 @@
+{
+  "skill": "action100m",
+  "test_cases": [
+    {"name": "dataset", "input": "Load Action100M video actions", "assertions": ["large-scale", "actions"]},
+    {"name": "video", "input": "Use Action100M", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "action100m", "assertions": ["activates", "workflow"]}
+  ]
+}

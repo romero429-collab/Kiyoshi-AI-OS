@@ -1,15 +1,17 @@
 ---
 name: 4dgt
-description: "[NeurIPS 2025 (Spotlight)] The implementation for the paper 4DGT Learning a 4D Gaussian Transformer. Use when building 4D Gaussian or temporal 3D skills."
+description: "4D Gaussian Transformer modeled from facebookresearch/4DGT. Use when building temporal 3D skills."
 type: tool
 lifecycle: active
 ---
 
-# 4DGT
+# 4DGT — 4D Gaussian Transformer
 
-Pilot skill derived from https://github.com/facebookresearch/4DGT.
+Modeled from https://github.com/facebookresearch/4DGT. Remade as a Kiyoshi-owned 4D tool.
 
 ## Workflow
-1. Reference the source repository for 4D Gaussian Transformer patterns.
-2. Map to temporal 3D tools under Kiyoshi-skills.
-3. Enforce contractive 4D dynamics (negative Lyapunov exponents on Gaussian evolution).
+1. Model dynamic 3D scenes as 4D Gaussians.
+2. Transform with 4DGT.
+3. Evolve under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

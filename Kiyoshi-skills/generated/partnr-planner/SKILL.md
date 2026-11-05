@@ -1,15 +1,17 @@
 ---
 name: partnr-planner
-description: "A repository accompanying the PARTNR benchmark for using Large Planning Models (LPMs) to solve Human tasks. Use when building large planning model skills."
+description: "Large Planning Models for PARTNR benchmark modeled from facebookresearch/partnr-planner. Use when building planning skills."
 type: tool
 lifecycle: active
 ---
 
-# PARTNR Planner
+# PARTNR Planner — Large Planning Models
 
-Pilot skill derived from https://github.com/facebookresearch/partnr-planner.
+Modeled from https://github.com/facebookresearch/partnr-planner. Remade as a Kiyoshi-owned planning tool.
 
 ## Workflow
-1. Reference the source repository for large planning model patterns.
-2. Map to planning benchmark tools under Kiyoshi-skills.
-3. Enforce contractive planning dynamics (negative Lyapunov exponents on task solving).
+1. Load Large Planning Model.
+2. Solve human-centric tasks from PARTNR.
+3. Plan under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

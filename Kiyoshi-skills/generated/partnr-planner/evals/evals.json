@@ -1,0 +1,8 @@
+{
+  "skill": "partnr-planner",
+  "test_cases": [
+    {"name": "plan", "input": "Plan with PARTNR LPM", "assertions": ["tasks", "solve"]},
+    {"name": "lpm", "input": "Use PARTNR planner", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "partnr-planner", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,15 +1,17 @@
 ---
 name: seamless-interaction
-description: "Foundation Models and Data for Human-Human and Human-AI interactions. Use when building interaction foundation model skills."
+description: "Foundation models for human-AI interactions modeled from facebookresearch/seamless_interaction. Use when building interaction skills."
 type: tool
 lifecycle: active
 ---
 
-# Seamless Interaction
+# Seamless Interaction — Human-AI Foundation
 
-Pilot skill derived from https://github.com/facebookresearch/seamless_interaction.
+Modeled from https://github.com/facebookresearch/seamless_interaction. Remade as a Kiyoshi-owned interaction tool.
 
 ## Workflow
-1. Reference the source repository for human-AI interaction patterns.
-2. Map to interaction foundation tools under Kiyoshi-skills.
-3. Enforce contractive interaction dynamics (negative Lyapunov exponents on dialogue modeling).
+1. Load interaction foundation models and data.
+2. Model human-human and human-AI dialogues.
+3. Interact under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.
