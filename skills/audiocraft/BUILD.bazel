@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "audiocraft_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "audiocraft",
+)
+
+rust_binary(
+    name = "audiocraft",
+    srcs = ["src/main.rs"],
+    deps = [":audiocraft_lib"],
+)

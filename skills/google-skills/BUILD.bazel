@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "google_skills_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "google_skills",
+)
+
+rust_binary(
+    name = "google_skills",
+    srcs = ["src/main.rs"],
+    deps = [":google_skills_lib"],
+)
