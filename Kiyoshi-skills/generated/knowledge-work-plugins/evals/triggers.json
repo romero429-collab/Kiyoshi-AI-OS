@@ -1,0 +1,8 @@
+{
+  "skill": "knowledge-work-plugins",
+  "test_cases": [
+    {"input": "knowledge worker plugins", "should_trigger": true},
+    {"input": "knowledge-work-plugins", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

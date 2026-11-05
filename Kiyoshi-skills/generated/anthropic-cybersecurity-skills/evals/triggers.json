@@ -1,0 +1,8 @@
+{
+  "skill": "anthropic-cybersecurity-skills",
+  "test_cases": [
+    {"input": "cybersecurity skills MITRE", "should_trigger": true},
+    {"input": "anthropic-cybersecurity-skills", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "audiocraft",
+  "test_cases": [
+    {"name": "generate", "input": "Generate music with audiocraft", "assertions": ["MusicGen", "output"]},
+    {"name": "audio", "input": "Process audio with audiocraft", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "audiocraft", "assertions": ["activates", "workflow"]}
+  ]
+}

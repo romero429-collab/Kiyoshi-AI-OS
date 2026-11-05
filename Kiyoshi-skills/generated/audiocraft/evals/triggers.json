@@ -1,0 +1,8 @@
+{
+  "skill": "audiocraft",
+  "test_cases": [
+    {"input": "AI audio generation", "should_trigger": true},
+    {"input": "audiocraft", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

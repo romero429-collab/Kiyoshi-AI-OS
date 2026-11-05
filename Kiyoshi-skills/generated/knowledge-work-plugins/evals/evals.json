@@ -1,0 +1,8 @@
+{
+  "skill": "knowledge-work-plugins",
+  "test_cases": [
+    {"name": "plugin", "input": "Use knowledge-work plugin", "assertions": ["integrate", "workflow"]},
+    {"name": "collab", "input": "Collaborate with knowledge plugins", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "knowledge-work-plugins", "assertions": ["activates", "workflow"]}
+  ]
+}

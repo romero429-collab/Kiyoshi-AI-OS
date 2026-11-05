@@ -1,0 +1,8 @@
+{
+  "skill": "anthropic-cybersecurity-skills",
+  "test_cases": [
+    {"name": "map", "input": "Apply cybersecurity skill mapped to MITRE", "assertions": ["framework", "structured"]},
+    {"name": "use", "input": "Use anthropic cybersecurity skills", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "anthropic-cybersecurity-skills", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "pm-skills",
+  "test_cases": [
+    {"input": "PM skills marketplace", "should_trigger": true},
+    {"input": "pm-skills", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

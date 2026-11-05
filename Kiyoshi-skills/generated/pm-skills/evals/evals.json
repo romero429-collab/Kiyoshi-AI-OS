@@ -1,0 +1,8 @@
+{
+  "skill": "pm-skills",
+  "test_cases": [
+    {"name": "pm", "input": "Run PM skill for product discovery", "assertions": ["agentic", "flow"]},
+    {"name": "marketplace", "input": "Use PM skills marketplace", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "pm-skills", "assertions": ["activates", "workflow"]}
+  ]
+}

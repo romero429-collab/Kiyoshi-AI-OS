@@ -1,15 +1,17 @@
 ---
 name: pm-skills
-description: "PM Skills Marketplace: 100+ agentic skills, commands, and plugins — from discovery to strategy, execution. Use when building product management or agentic PM workflow skills."
+description: "PM skills marketplace modeled from phuryn/pm-skills. Use when building agentic product-management skills."
 type: orchestrator
 lifecycle: active
 ---
 
-# PM Skills
+# PM Skills — Product Management Marketplace
 
-Pilot skill derived from https://github.com/phuryn/pm-skills.
+Modeled from https://github.com/phuryn/pm-skills. Remade as a Kiyoshi-owned PM skill set.
 
 ## Workflow
-1. Reference the source repository for PM skills marketplace patterns.
-2. Map to agentic product management workflows under Kiyoshi-skills.
-3. Enforce contractive marketplace dynamics (negative Lyapunov exponents on skill discovery).
+1. Select from 100+ agentic PM skills.
+2. Execute discovery-to-execution flows.
+3. Coordinate under contractive discovery (λ_max < 0).
+
+See inventory entry for source metadata.

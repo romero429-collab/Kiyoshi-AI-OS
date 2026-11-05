@@ -1,15 +1,17 @@
 ---
 name: turso
-description: "A SQL database in Rust: SQLite-compatible, now also speaking Postgres (experimental). The LLVM of databases. Use when building embedded SQL or multi-protocol database skills."
+description: "SQLite-compatible SQL database in Rust modeled from tursodatabase/turso. Use when building embedded database skills."
 type: tool
 lifecycle: active
 ---
 
-# Turso
+# Turso — Embedded SQL
 
-Pilot skill derived from https://github.com/tursodatabase/turso.
+Modeled from https://github.com/tursodatabase/turso. Remade as a Kiyoshi-owned database tool.
 
 ## Workflow
-1. Reference the source repository for Rust SQL database patterns.
-2. Map to embedded database tools under Kiyoshi-skills.
-3. Enforce contractive query dynamics (negative Lyapunov exponents on transaction handling).
+1. Create or connect SQLite-compatible database.
+2. Execute queries (Postgres experimental).
+3. Manage under contractive transactions (λ_max < 0).
+
+See inventory entry for source metadata.

@@ -1,0 +1,8 @@
+{
+  "skill": "turso",
+  "test_cases": [
+    {"input": "SQLite compatible database", "should_trigger": true},
+    {"input": "turso", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "turso",
+  "test_cases": [
+    {"name": "query", "input": "Run SQL query with Turso", "assertions": ["SQLite", "execute"]},
+    {"name": "embed", "input": "Use embedded SQL database", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "turso", "assertions": ["activates", "workflow"]}
+  ]
+}
