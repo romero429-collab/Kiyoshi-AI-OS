@@ -1,15 +1,17 @@
 ---
 name: jumper
-description: "🦀 Jumper — an crab robot. Use when building robotics or quadruped control skills."
+description: "Crab robot modeled from KingKongRobotics/jumper. Use when building compact robotics skills."
 type: tool
 lifecycle: active
 ---
 
-# Jumper
+# Jumper — Crab Robot
 
-Pilot skill derived from https://github.com/KingKongRobotics/jumper.
+Modeled from https://github.com/KingKongRobotics/jumper. Remade as a Kiyoshi-owned robotics tool.
 
 ## Workflow
-1. Reference the source repository for crab robot patterns.
-2. Map to robotics control tools under Kiyoshi-skills.
-3. Enforce contractive locomotion dynamics (negative Lyapunov exponents on gait generation).
+1. Load Jumper robot model.
+2. Generate or execute locomotion.
+3. Control under contractive gait dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

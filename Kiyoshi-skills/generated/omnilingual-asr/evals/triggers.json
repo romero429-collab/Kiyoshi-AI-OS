@@ -1,0 +1,8 @@
+{
+  "skill": "omnilingual-asr",
+  "test_cases": [
+    {"input": "multilingual speech recognition", "should_trigger": true},
+    {"input": "omnilingual-asr", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

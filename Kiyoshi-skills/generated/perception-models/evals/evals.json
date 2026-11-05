@@ -1,0 +1,8 @@
+{
+  "skill": "perception-models",
+  "test_cases": [
+    {"name": "perceive", "input": "Encode media with perception models", "assertions": ["CLIP", "multimodal"]},
+    {"name": "embed", "input": "Use perception models", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "perception-models", "assertions": ["activates", "workflow"]}
+  ]
+}

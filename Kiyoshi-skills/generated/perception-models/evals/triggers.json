@@ -1,0 +1,8 @@
+{
+  "skill": "perception-models",
+  "test_cases": [
+    {"input": "perception models CLIP", "should_trigger": true},
+    {"input": "perception-models", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "jumper",
+  "test_cases": [
+    {"input": "crab robot Jumper", "should_trigger": true},
+    {"input": "jumper", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

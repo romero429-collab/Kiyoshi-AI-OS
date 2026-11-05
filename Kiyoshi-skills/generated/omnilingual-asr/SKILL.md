@@ -1,15 +1,17 @@
 ---
 name: omnilingual-asr
-description: "Omnilingual ASR Open-Source Multilingual Speech Recognition for 1600+ Languages. Use when building multilingual ASR or speech recognition skills."
+description: "Multilingual ASR for 1600+ languages modeled from facebookresearch/omnilingual-asr. Use when building speech skills."
 type: tool
 lifecycle: active
 ---
 
-# Omnilingual ASR
+# Omnilingual ASR — Multilingual Speech
 
-Pilot skill derived from https://github.com/facebookresearch/omnilingual-asr.
+Modeled from https://github.com/facebookresearch/omnilingual-asr. Remade as a Kiyoshi-owned ASR tool.
 
 ## Workflow
-1. Reference the source repository for multilingual speech recognition patterns.
-2. Map to ASR tools under Kiyoshi-skills.
-3. Enforce contractive recognition dynamics (negative Lyapunov exponents on transcription).
+1. Accept audio in any of 1600+ languages.
+2. Transcribe with Omnilingual ASR.
+3. Output under contractive recognition (λ_max < 0).
+
+See inventory entry for source metadata.

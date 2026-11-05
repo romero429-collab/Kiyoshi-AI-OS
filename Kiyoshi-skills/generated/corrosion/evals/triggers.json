@@ -1,0 +1,8 @@
+{
+  "skill": "corrosion",
+  "test_cases": [
+    {"input": "gossip service discovery", "should_trigger": true},
+    {"input": "corrosion", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,15 +1,17 @@
 ---
 name: perception-models
-description: "State-of-the-art Image & Video CLIP, Multimodal Large Language Models, and More! Use when building multimodal perception or CLIP-based skills."
+description: "Image & Video CLIP and multimodal LLMs modeled from facebookresearch/perception_models. Use when building perception skills."
 type: tool
 lifecycle: active
 ---
 
-# Perception Models
+# Perception Models — Multimodal Perception
 
-Pilot skill derived from https://github.com/facebookresearch/perception_models.
+Modeled from https://github.com/facebookresearch/perception_models. Remade as a Kiyoshi-owned perception tool.
 
 ## Workflow
-1. Reference the source repository for multimodal perception patterns.
-2. Map to CLIP and multimodal tools under Kiyoshi-skills.
-3. Enforce contractive perception dynamics (negative Lyapunov exponents on embedding fusion).
+1. Ingest images or video.
+2. Encode with CLIP or multimodal LLMs.
+3. Fuse under contractive embedding (λ_max < 0).
+
+See inventory entry for source metadata.

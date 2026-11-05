@@ -1,15 +1,17 @@
 ---
 name: mantis
-description: "A modular, stack-agnostic toolkit for AI coding agents to autonomously find, reproduce, and patch vulnerabilities. Use when building vulnerability hunting or agentic security skills."
+description: "Vulnerability toolkit for AI agents modeled from google/mantis. Use when building agentic security skills."
 type: tool
 lifecycle: active
 ---
 
-# Mantis
+# Mantis — Vulnerability Toolkit
 
-Pilot skill derived from https://github.com/google/mantis.
+Modeled from https://github.com/google/mantis. Remade as a Kiyoshi-owned security tool.
 
 ## Workflow
-1. Reference the source repository for vulnerability toolkit patterns.
-2. Map to agentic security tools under Kiyoshi-skills.
-3. Enforce contractive patching dynamics (negative Lyapunov exponents on fix verification).
+1. Target codebase or application.
+2. Autonomously find, reproduce, and patch vulnerabilities.
+3. Verify under contractive patching (λ_max < 0).
+
+See inventory entry for source metadata.

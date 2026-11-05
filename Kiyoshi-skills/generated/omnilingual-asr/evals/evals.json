@@ -1,0 +1,8 @@
+{
+  "skill": "omnilingual-asr",
+  "test_cases": [
+    {"name": "asr", "input": "Transcribe multilingual audio", "assertions": ["languages", "text"]},
+    {"name": "speech", "input": "Run Omnilingual ASR", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "omnilingual-asr", "assertions": ["activates", "workflow"]}
+  ]
+}

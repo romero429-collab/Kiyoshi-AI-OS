@@ -1,0 +1,8 @@
+{
+  "skill": "corrosion",
+  "test_cases": [
+    {"name": "gossip", "input": "Run gossip-based service discovery", "assertions": ["membership", "propagate"]},
+    {"name": "dist", "input": "Use Corrosion for distributed systems", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "corrosion", "assertions": ["activates", "workflow"]}
+  ]
+}

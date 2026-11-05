@@ -1,0 +1,8 @@
+{
+  "skill": "mantis",
+  "test_cases": [
+    {"name": "vuln", "input": "Find and patch vulnerabilities with Mantis", "assertions": ["find", "patch"]},
+    {"name": "agent", "input": "Use agentic security toolkit", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "mantis", "assertions": ["activates", "workflow"]}
+  ]
+}

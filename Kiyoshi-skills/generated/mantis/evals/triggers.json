@@ -1,0 +1,8 @@
+{
+  "skill": "mantis",
+  "test_cases": [
+    {"input": "AI vulnerability toolkit", "should_trigger": true},
+    {"input": "mantis", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

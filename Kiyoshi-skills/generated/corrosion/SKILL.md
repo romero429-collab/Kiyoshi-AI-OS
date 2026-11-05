@@ -1,15 +1,17 @@
 ---
 name: corrosion
-description: "Gossip-based service discovery (and more) for large distributed systems. Use when building distributed systems or service discovery skills."
+description: "Gossip-based service discovery modeled from superfly/corrosion. Use when building distributed systems skills."
 type: tool
 lifecycle: active
 ---
 
-# Corrosion
+# Corrosion — Gossip Discovery
 
-Pilot skill derived from https://github.com/superfly/corrosion.
+Modeled from https://github.com/superfly/corrosion. Remade as a Kiyoshi-owned discovery tool.
 
 ## Workflow
-1. Reference the source repository for gossip-based discovery patterns.
-2. Map to distributed systems tools under Kiyoshi-skills.
-3. Enforce contractive gossip dynamics (negative Lyapunov exponents on membership propagation).
+1. Join distributed system.
+2. Propagate membership via gossip.
+3. Converge under contractive propagation (λ_max < 0).
+
+See inventory entry for source metadata.

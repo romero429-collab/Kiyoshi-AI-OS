@@ -1,0 +1,8 @@
+{
+  "skill": "jumper",
+  "test_cases": [
+    {"name": "robot", "input": "Control Jumper crab robot", "assertions": ["locomotion", "gait"]},
+    {"name": "compact", "input": "Run compact robotics", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "jumper", "assertions": ["activates", "workflow"]}
+  ]
+}
