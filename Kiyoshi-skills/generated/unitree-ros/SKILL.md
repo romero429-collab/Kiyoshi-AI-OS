@@ -1,15 +1,17 @@
 ---
 name: unitree-ros
-description: "Unitree ROS. Use when building ROS integration for Unitree robots or robotics middleware skills."
+description: "Unitree ROS integration modeled from unitreerobotics/unitree_ros. Use when building robotics middleware skills."
 type: tool
 lifecycle: active
 ---
 
-# Unitree ROS
+# Unitree ROS — Robotics Middleware
 
-Pilot skill derived from https://github.com/unitreerobotics/unitree_ros.
+Modeled from https://github.com/unitreerobotics/unitree_ros. Remade as a Kiyoshi-owned middleware tool.
 
 ## Workflow
-1. Reference the source repository for Unitree ROS patterns.
-2. Map to robotics middleware tools under Kiyoshi-skills.
-3. Enforce contractive ROS dynamics (negative Lyapunov exponents on message passing).
+1. Launch Unitree ROS nodes.
+2. Publish/subscribe control and sensor topics.
+3. Communicate under contractive messaging (λ_max < 0).
+
+See inventory entry for source metadata.

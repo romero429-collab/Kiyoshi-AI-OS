@@ -1,0 +1,8 @@
+{
+  "skill": "mobilellm",
+  "test_cases": [
+    {"input": "on-device LLM MobileLLM", "should_trigger": true},
+    {"input": "mobilellm", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

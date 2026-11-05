@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-ros",
+  "test_cases": [
+    {"name": "ros", "input": "Integrate Unitree with ROS", "assertions": ["nodes", "topics"]},
+    {"name": "middleware", "input": "Use Unitree ROS", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "unitree-ros", "assertions": ["activates", "workflow"]}
+  ]
+}

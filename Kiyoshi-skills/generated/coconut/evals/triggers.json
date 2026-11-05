@@ -1,0 +1,8 @@
+{
+  "skill": "coconut",
+  "test_cases": [
+    {"input": "continuous latent reasoning", "should_trigger": true},
+    {"input": "coconut", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

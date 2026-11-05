@@ -1,0 +1,8 @@
+{
+  "skill": "coconut",
+  "test_cases": [
+    {"name": "reason", "input": "Reason in continuous latent space with Coconut", "assertions": ["latent", "decode"]},
+    {"name": "llm", "input": "Use Coconut for LLM reasoning", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "coconut", "assertions": ["activates", "workflow"]}
+  ]
+}

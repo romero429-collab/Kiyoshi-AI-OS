@@ -1,15 +1,17 @@
 ---
 name: coconut
-description: "Training Large Language Model to Reason in a Continuous Latent Space. Use when building continuous latent reasoning or advanced LLM training skills."
+description: "Continuous latent space reasoning modeled from facebookresearch/coconut. Use when building advanced LLM reasoning skills."
 type: tool
 lifecycle: active
 ---
 
-# Coconut
+# Coconut — Continuous Latent Reasoning
 
-Pilot skill derived from https://github.com/facebookresearch/coconut.
+Modeled from https://github.com/facebookresearch/coconut. Remade as a Kiyoshi-owned reasoning tool.
 
 ## Workflow
-1. Reference the source repository for continuous latent space reasoning patterns.
-2. Map to advanced LLM reasoning tools under Kiyoshi-skills.
-3. Enforce contractive latent dynamics (negative Lyapunov exponents on continuous reasoning).
+1. Encode problem into continuous latent space.
+2. Reason with Coconut model.
+3. Decode under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

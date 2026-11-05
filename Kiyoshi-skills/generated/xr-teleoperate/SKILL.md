@@ -1,15 +1,17 @@
 ---
 name: xr-teleoperate
-description: "This repository implements teleoperation of the Unitree humanoid robot using XR Devices. Use when building XR teleoperation or humanoid robotics skills."
+description: "XR teleoperation for Unitree humanoid modeled from unitreerobotics/xr_teleoperate. Use when building teleop skills."
 type: tool
 lifecycle: active
 ---
 
-# XR Teleoperate
+# XR Teleoperate — Humanoid Control
 
-Pilot skill derived from https://github.com/unitreerobotics/xr_teleoperate.
+Modeled from https://github.com/unitreerobotics/xr_teleoperate. Remade as a Kiyoshi-owned teleop tool.
 
 ## Workflow
-1. Reference the source repository for XR teleoperation patterns.
-2. Map to humanoid robotics tools under Kiyoshi-skills.
-3. Enforce contractive teleoperation dynamics (negative Lyapunov exponents on control latency).
+1. Connect XR device to Unitree humanoid.
+2. Stream control commands.
+3. Operate under contractive latency dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

@@ -1,0 +1,8 @@
+{
+  "skill": "ais-os",
+  "test_cases": [
+    {"name": "os", "input": "Start AIS-OS kit", "assertions": ["skills", "orchestrate"]},
+    {"name": "starter", "input": "Use AI OS starter", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "ais-os", "assertions": ["activates", "workflow"]}
+  ]
+}

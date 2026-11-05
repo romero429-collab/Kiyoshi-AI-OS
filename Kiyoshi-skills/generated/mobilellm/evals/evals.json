@@ -1,0 +1,8 @@
+{
+  "skill": "mobilellm",
+  "test_cases": [
+    {"name": "ondevice", "input": "Run MobileLLM on device", "assertions": ["sub-billion", "inference"]},
+    {"name": "efficient", "input": "Use efficient small LLM", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "mobilellm", "assertions": ["activates", "workflow"]}
+  ]
+}

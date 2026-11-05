@@ -1,0 +1,8 @@
+{
+  "skill": "xr-teleoperate",
+  "test_cases": [
+    {"name": "teleop", "input": "Teleoperate Unitree with XR", "assertions": ["XR", "humanoid"]},
+    {"name": "control", "input": "Run XR teleoperation", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "xr-teleoperate", "assertions": ["activates", "workflow"]}
+  ]
+}

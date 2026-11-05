@@ -1,15 +1,17 @@
 ---
 name: mobilellm
-description: "MobileLLM Optimizing Sub-billion Parameter Language Models for On-Device Use Cases. Use when building on-device LLM or efficient small model skills."
+description: "Sub-billion parameter on-device LLMs modeled from facebookresearch/MobileLLM. Use when building efficient small-model skills."
 type: tool
 lifecycle: active
 ---
 
-# MobileLLM
+# MobileLLM — On-Device LLMs
 
-Pilot skill derived from https://github.com/facebookresearch/MobileLLM.
+Modeled from https://github.com/facebookresearch/MobileLLM. Remade as a Kiyoshi-owned efficient LLM tool.
 
 ## Workflow
-1. Reference the source repository for on-device LLM patterns.
-2. Map to efficient small model tools under Kiyoshi-skills.
-3. Enforce contractive optimization dynamics (negative Lyapunov exponents on quantization).
+1. Load optimized sub-billion model.
+2. Run on-device inference.
+3. Quantize under contractive optimization (λ_max < 0).
+
+See inventory entry for source metadata.

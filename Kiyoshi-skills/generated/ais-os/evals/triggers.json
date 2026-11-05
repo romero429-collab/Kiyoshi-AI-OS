@@ -1,0 +1,8 @@
+{
+  "skill": "ais-os",
+  "test_cases": [
+    {"input": "AI Operating System starter", "should_trigger": true},
+    {"input": "ais-os", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

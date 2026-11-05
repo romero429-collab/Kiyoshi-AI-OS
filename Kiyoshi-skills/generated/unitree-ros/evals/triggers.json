@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-ros",
+  "test_cases": [
+    {"input": "Unitree ROS", "should_trigger": true},
+    {"input": "unitree-ros", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

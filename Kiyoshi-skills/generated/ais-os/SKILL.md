@@ -1,15 +1,17 @@
 ---
 name: ais-os
-description: "AI Operating System starter kit for Claude Code and Codex. Five skills: /onboard, /audit, /link, /learn. Use when building AI OS starter or multi-skill orchestration skills."
+description: "AI Operating System starter kit modeled from nateherkai/AIS-OS. Use when building multi-skill AI OS skills."
 type: orchestrator
 lifecycle: active
 ---
 
-# AIS-OS
+# AIS-OS — AI Operating System Starter
 
-Pilot skill derived from https://github.com/nateherkai/AIS-OS.
+Modeled from https://github.com/nateherkai/AIS-OS. Remade as a Kiyoshi-owned OS kit.
 
 ## Workflow
-1. Reference the source repository for AI OS starter kit patterns.
-2. Map to multi-skill orchestration under Kiyoshi-skills.
-3. Enforce contractive OS dynamics (negative Lyapunov exponents on skill coordination).
+1. Load the five core skills (onboard, audit, link, learn).
+2. Orchestrate agent sessions.
+3. Coordinate under contractive OS dynamics (λ_max < 0).
+
+See inventory entry for source metadata.
