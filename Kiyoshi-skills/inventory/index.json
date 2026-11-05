@@ -4,7 +4,7 @@
   "starred_captured": 300,
   "forked_captured": 464,
   "total_captured": 764,
-  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill", "agent-reach", "gemini-cli", "ruview", "stirling-pdf", "understand-anything", "deer-flow", "hyperframes", "openmontage", "ai-engineering-from-scratch", "codegraph", "strix", "daily-stock-analysis"],
-  "generated_at": "2026-11-05T23:10:00Z",
-  "note": "Next pilot (daily-stock-analysis) generated. Ready for further expansion."
+  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill", "agent-reach", "gemini-cli", "ruview", "stirling-pdf", "understand-anything", "deer-flow", "hyperframes", "openmontage", "ai-engineering-from-scratch", "codegraph", "strix", "daily-stock-analysis", "last30days-skill"],
+  "generated_at": "2026-11-05T23:15:00Z",
+  "note": "Next pilot (last30days-skill) generated. Ready for further expansion."
 }
