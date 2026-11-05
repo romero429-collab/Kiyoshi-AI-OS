@@ -1,17 +1,17 @@
 ---
 name: deer-flow
-description: "An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents. Use when building long-horizon multi-agent research and creation workflows."
+description: "Long-horizon SuperAgent harness modeled from bytedance/deer-flow. Use when building research-and-create agent loops."
 type: orchestrator
 lifecycle: active
 ---
 
-# Deer-Flow
+# Deer-Flow — Long-Horizon SuperAgent
 
-Pilot skill derived from https://github.com/bytedance/deer-flow.
+Modeled from https://github.com/bytedance/deer-flow. Remade as a Kiyoshi-owned multi-step harness.
 
 ## Workflow
-1. Reference the source repository for long-horizon SuperAgent patterns with sandboxes and subagents.
-2. Map to multi-agent research/creation orchestration under Kiyoshi-skills.
-3. Enforce contractive long-horizon dynamics (negative Lyapunov exponents on multi-step trajectories).
+1. Accept long-horizon goal.
+2. Decompose into sandboxed research/code/create steps with subagents.
+3. Aggregate under contractive multi-step dynamics (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

@@ -1,17 +1,17 @@
 ---
 name: understand-anything
-description: "Graphs that teach > graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Use when building code-understanding or knowledge-graph skills."
+description: "Turn any code into an interactive knowledge graph, modeled from Egonex-AI/Understand-Anything. Use when building code exploration skills."
 type: knowledge
 lifecycle: active
 ---
 
-# Understand-Anything
+# Understand-Anything — Code Knowledge Graph
 
-Pilot skill derived from https://github.com/Egonex-AI/Understand-Anything.
+Modeled from https://github.com/Egonex-AI/Understand-Anything. Remade as a Kiyoshi-owned graph tool.
 
 ## Workflow
-1. Reference the source repository for code-to-knowledge-graph conversion patterns.
-2. Map to interactive graph and query tools under Kiyoshi-skills.
-3. Enforce contractive graph-construction dynamics (negative Lyapunov exponents on node expansion).
+1. Ingest codebase.
+2. Build interactive knowledge graph.
+3. Support query and exploration under contractive expansion (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

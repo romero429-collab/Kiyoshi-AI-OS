@@ -1,0 +1,8 @@
+{
+  "skill": "deer-flow",
+  "test_cases": [
+    {"name": "horizon", "input": "Run a long-horizon research task with deer-flow", "assertions": ["subagents", "sandbox"]},
+    {"name": "create", "input": "Use SuperAgent harness to code and create", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "deer-flow agent", "assertions": ["activates", "workflow"]}
+  ]
+}

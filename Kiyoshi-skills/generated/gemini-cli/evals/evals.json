@@ -1,0 +1,8 @@
+{
+  "skill": "gemini-cli",
+  "test_cases": [
+    {"name": "cli", "input": "Run a Gemini CLI agent task", "assertions": ["terminal loop", "structured output"]},
+    {"name": "integrate", "input": "Integrate gemini-cli pattern", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "gemini cli agent", "assertions": ["activates", "workflow"]}
+  ]
+}

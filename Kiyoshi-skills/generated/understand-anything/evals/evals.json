@@ -1,0 +1,8 @@
+{
+  "skill": "understand-anything",
+  "test_cases": [
+    {"name": "graph", "input": "Turn this repo into a knowledge graph", "assertions": ["interactive", "queryable"]},
+    {"name": "explore", "input": "Explore code with Understand-Anything pattern", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "understand-anything graph", "assertions": ["activates", "workflow"]}
+  ]
+}

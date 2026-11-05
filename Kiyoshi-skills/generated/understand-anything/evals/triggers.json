@@ -1,0 +1,8 @@
+{
+  "skill": "understand-anything",
+  "test_cases": [
+    {"input": "code knowledge graph", "should_trigger": true},
+    {"input": "understand-anything", "should_trigger": true},
+    {"input": "cooking", "should_trigger": false}
+  ]
+}

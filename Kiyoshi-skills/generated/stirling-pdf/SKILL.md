@@ -1,17 +1,17 @@
 ---
 name: stirling-pdf
-description: "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere. Use when building PDF editing, manipulation, or conversion skills."
+description: "PDF editing and manipulation modeled from Stirling-Tools/Stirling-PDF. Use when building cross-device PDF tools."
 type: tool
 lifecycle: active
 ---
 
-# Stirling-PDF
+# Stirling-PDF — PDF Toolkit
 
-Pilot skill derived from https://github.com/Stirling-Tools/Stirling-PDF.
+Modeled from https://github.com/Stirling-Tools/Stirling-PDF. Remade as a Kiyoshi-owned document tool.
 
 ## Workflow
-1. Reference the source repository for PDF editing and manipulation patterns.
-2. Map to document-processing tools under Kiyoshi-skills.
-3. Enforce contractive transformation dynamics on PDF operations (negative Lyapunov exponents).
+1. Accept PDF + operation (edit, convert, merge).
+2. Apply transformation.
+3. Return result under contractive ops (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

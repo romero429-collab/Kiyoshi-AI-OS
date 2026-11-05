@@ -1,17 +1,17 @@
 ---
 name: ruview
-description: "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video. Use when building WiFi-based sensing or spatial intelligence skills."
+description: "WiFi-based spatial intelligence and vital-sign monitoring modeled from ruvnet/RuView. Use when building non-visual sensing skills."
 type: tool
 lifecycle: active
 ---
 
-# RuView
+# RuView — WiFi Spatial Intelligence
 
-Pilot skill derived from https://github.com/ruvnet/RuView.
+Modeled from https://github.com/ruvnet/RuView. Remade as a Kiyoshi-owned sensing tool.
 
 ## Workflow
-1. Reference the source repository for WiFi signal processing and spatial intelligence patterns.
-2. Map to sensing and monitoring tools under Kiyoshi-skills.
-3. Enforce contractive signal-processing dynamics (negative Lyapunov exponents on feature extraction).
+1. Ingest commodity WiFi signal features.
+2. Extract spatial and vital-sign maps.
+3. Return real-time observations under contractive processing (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

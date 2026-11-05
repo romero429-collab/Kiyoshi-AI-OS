@@ -1,0 +1,8 @@
+{
+  "skill": "ruview",
+  "test_cases": [
+    {"name": "sense", "input": "Extract spatial intelligence from WiFi signals", "assertions": ["vital signs", "spatial map"]},
+    {"name": "monitor", "input": "Run RuView-style presence detection", "assertions": ["contractive", "real-time"]},
+    {"name": "trigger", "input": "ruview wifi sensing", "assertions": ["activates", "workflow"]}
+  ]
+}

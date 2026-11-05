@@ -1,0 +1,8 @@
+{
+  "skill": "deer-flow",
+  "test_cases": [
+    {"input": "long-horizon superagent", "should_trigger": true},
+    {"input": "deer-flow", "should_trigger": true},
+    {"input": "simple hello", "should_trigger": false}
+  ]
+}

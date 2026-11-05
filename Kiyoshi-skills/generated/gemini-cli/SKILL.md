@@ -1,17 +1,17 @@
 ---
 name: gemini-cli
-description: "An open-source AI agent that brings the power of Gemini directly into your terminal. Use when integrating terminal-based AI agent workflows or Gemini CLI patterns."
+description: "Terminal AI agent modeled from google-gemini/gemini-cli. Use when integrating Gemini into CLI workflows."
 type: tool
 lifecycle: active
 ---
 
-# Gemini CLI
+# Gemini CLI — Terminal Agent
 
-Pilot skill derived from https://github.com/google-gemini/gemini-cli.
+Modeled from https://github.com/google-gemini/gemini-cli. Remade as a Kiyoshi-owned CLI agent.
 
 ## Workflow
-1. Reference the source repository for terminal AI agent patterns.
-2. Map to CLI-driven agent tools under Kiyoshi-skills.
-3. Enforce contractive interaction dynamics on terminal sessions (negative Lyapunov exponents).
+1. Accept terminal command or prompt.
+2. Route through Gemini-powered agent loop.
+3. Return structured output under contractive interaction (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

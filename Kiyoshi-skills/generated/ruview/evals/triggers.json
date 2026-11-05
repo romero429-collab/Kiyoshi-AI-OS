@@ -1,0 +1,8 @@
+{
+  "skill": "ruview",
+  "test_cases": [
+    {"input": "wifi spatial intelligence", "should_trigger": true},
+    {"input": "ruview vital signs", "should_trigger": true},
+    {"input": "stock market", "should_trigger": false}
+  ]
+}

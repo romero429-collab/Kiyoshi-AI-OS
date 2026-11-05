@@ -1,0 +1,8 @@
+{
+  "skill": "gemini-cli",
+  "test_cases": [
+    {"input": "gemini terminal agent", "should_trigger": true},
+    {"input": "gemini-cli", "should_trigger": true},
+    {"input": "unrelated topic", "should_trigger": false}
+  ]
+}

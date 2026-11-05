@@ -1,0 +1,8 @@
+{
+  "skill": "stirling-pdf",
+  "test_cases": [
+    {"name": "edit", "input": "Edit a PDF with Stirling-PDF pattern", "assertions": ["transform", "return"]},
+    {"name": "convert", "input": "Convert PDF pages", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "stirling pdf edit", "assertions": ["activates", "workflow"]}
+  ]
+}
