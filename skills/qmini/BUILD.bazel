@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "qmini_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "qmini",
+)
+
+rust_binary(
+    name = "qmini",
+    srcs = ["src/main.rs"],
+    deps = [":qmini_lib"],
+)
