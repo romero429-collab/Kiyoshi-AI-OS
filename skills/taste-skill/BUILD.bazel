@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "taste_skill_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "taste_skill",
+)
+
+rust_binary(
+    name = "taste_skill",
+    srcs = ["src/main.rs"],
+    deps = [":taste_skill_lib"],
+)

@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "agent_reach_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "agent_reach",
+)
+
+rust_binary(
+    name = "agent_reach",
+    srcs = ["src/main.rs"],
+    deps = [":agent_reach_lib"],
+)

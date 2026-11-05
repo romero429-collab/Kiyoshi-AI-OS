@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "gemini_cli_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "gemini_cli",
+)
+
+rust_binary(
+    name = "gemini_cli",
+    srcs = ["src/main.rs"],
+    deps = [":gemini_cli_lib"],
+)
