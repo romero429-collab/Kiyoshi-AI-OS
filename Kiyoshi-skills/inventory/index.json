@@ -8,7 +8,7 @@
   "finalized_count": 105,
   "extracted_to_registry": true,
   "bazel_workspace": true,
-  "skills_with_build_rules": ["deer-flow", "hermes-agent"],
-  "generated_at": "2026-11-06T03:20:00Z",
-  "note": "Multi-substrate Bazel workspace initialized (Rust + Mojo placeholder + Node/TS). First two skills have build rules that reproduce original behavior under the Kiyoshi umbrella. Continue adding remaining skills."
+  "skills_with_build_rules": ["deer-flow", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo"],
+  "generated_at": "2026-11-06T03:25:00Z",
+  "note": "Hybrid model continuing. 7 skills now have Rust core + Bazel targets. Next batch ready."
 }
