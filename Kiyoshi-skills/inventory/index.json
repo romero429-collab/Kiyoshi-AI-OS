@@ -10,6 +10,7 @@
   "bazel_workspace": true,
   "skills_with_build_rules_count": 105,
   "scaffold_with_pseudocode": true,
-  "generated_at": "2026-11-06T05:15:00Z",
-  "note": "All 105 skills now have richer scaffold pseudocode in their Rust cores. Each models the original workflow under the hybrid multi-substrate architecture (Rust core + optional Node/TS + Bazel). Personal skill-tree backpack is fully scaffolded."
+  "source_mapped_skills": ["deer-flow", "hermes-agent", "firecrawl", "markitdown", "gstack"],
+  "generated_at": "2026-11-06T05:20:00Z",
+  "note": "Started mapping scaffolds to actual source repository module structure. First 5 skills now have pseudocode that references real directories (backend/, agent/, packages/, agents/, etc.). Continue mapping remaining skills."
 }
