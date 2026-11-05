@@ -1,0 +1,7 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+load("@rules_nodejs//nodejs:defs.bzl", "nodejs_binary", "npm_package")
+
+package(default_visibility = ["//visibility:public"])
+
+# Root workspace for Kiyoshi multi-substrate skills
+# Each skill under //skills/<name> can depend on rust, mojo, or node targets

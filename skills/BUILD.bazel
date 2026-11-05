@@ -1,0 +1,6 @@
+package(default_visibility = ["//visibility:public"])
+
+# Skill targets are defined in their own packages:
+# //skills/deer-flow:deer_flow
+# //skills/hermes-agent:hermes_agent
+# etc.

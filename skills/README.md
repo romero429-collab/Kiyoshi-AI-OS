@@ -1,17 +1,22 @@
-# Skills — the conversation, loadable
+# Kiyoshi Skills Workspace
 
-Agent skills for the thread that produced Phase 0. Each directory is a `SKILL.md` plus references. Drop a directory into a skills folder to load it. These are not a new subsystem. Article IV still holds.
+Multi-substrate Bazel workspace that hosts every finalized skill.
 
-The full words are verbatim under [kiyoshi-conversation/references/transcript](./kiyoshi-conversation/references/transcript/00-index.md). Skills compress. The transcript does not. If they disagree, the transcript wins and the skill is amended by appending.
+## Substrates
+- **Rust** — systems / OS / deterministic runtime (`@rules_rust`)
+- **Mojo** — AI / numerical kernels (Modular rules, placeholder)
+- **Bazel** — orchestration that can also pull TypeScript / Node / other languages via `@rules_nodejs`
 
-| Skill | Load when |
-|---|---|
-| [kiyoshi-conversation](./kiyoshi-conversation/SKILL.md) | Any Kiyoshi work. Index, invariants, where the words live. |
-| [kiyoshi-governor](./kiyoshi-governor/SKILL.md) | Mode transference, hold / transfer / veto, “what mode is this.” |
-| [kiyoshi-agency](./kiyoshi-agency/SKILL.md) | Unplugged operation, needs, RSI of artifacts, “is this AGI.” |
-| [kiyoshi-iris](./kiyoshi-iris/SKILL.md) | Perception, the chair, costume versus occupancy, two eyes. |
-| [kiyoshi-continuity](./kiyoshi-continuity/SKILL.md) | Primitives, provenance, envelopes, keep versus hold, continuity of state. |
-| [kiyoshi-soul-bennu-sui-dds](./kiyoshi-soul-bennu-sui-dds/SKILL.md) | Bennu/Phoenix cycle, Sui object model as DDS, sovereign public system beyond crypto, Lyapunov-gated regeneration. |
-| [kiyoshi-spreadsheet-memory-lattice](./kiyoshi-spreadsheet-memory-lattice/SKILL.md) | Spreadsheet memory bank, exclusive kernel access, resource/scheduling lattice, provenance projection Π. |
+## Goal
+Each skill target reproduces the behavior of its original repository while living under the Kiyoshi umbrella.
 
-Playable encoding of the same decisions: [`phase-0/`](../phase-0).
+## Layout
+```
+skills/
+  <skill-name>/
+    BUILD.bazel          # Bazel targets for this skill
+    src/                 # Rust / Mojo / TS sources
+    SKILL.md             # (copied from generated/)
+```
+
+See `//skills/<name>:BUILD.bazel` for individual skill rules.
