@@ -4,7 +4,7 @@
   "starred_captured": 300,
   "forked_captured": 464,
   "total_captured": 764,
-  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill", "agent-reach", "gemini-cli", "ruview", "stirling-pdf"],
-  "generated_at": "2026-11-05T22:30:00Z",
-  "note": "Next pilot (stirling-pdf) generated. Ready for further expansion."
+  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill", "agent-reach", "gemini-cli", "ruview", "stirling-pdf", "understand-anything"],
+  "generated_at": "2026-11-05T22:35:00Z",
+  "note": "Next pilot (understand-anything) generated. Ready for further expansion."
 }
