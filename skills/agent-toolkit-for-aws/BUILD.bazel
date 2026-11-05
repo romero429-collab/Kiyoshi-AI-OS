@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "agent_toolkit_for_aws_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "agent_toolkit_for_aws",
+)
+
+rust_binary(
+    name = "agent_toolkit_for_aws",
+    srcs = ["src/main.rs"],
+    deps = [":agent_toolkit_for_aws_lib"],
+)

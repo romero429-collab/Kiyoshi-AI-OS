@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "tribev2_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "tribev2",
+)
+
+rust_binary(
+    name = "tribev2",
+    srcs = ["src/main.rs"],
+    deps = [":tribev2_lib"],
+)

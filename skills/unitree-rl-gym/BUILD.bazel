@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "unitree_rl_gym_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "unitree_rl_gym",
+)
+
+rust_binary(
+    name = "unitree_rl_gym",
+    srcs = ["src/main.rs"],
+    deps = [":unitree_rl_gym_lib"],
+)
