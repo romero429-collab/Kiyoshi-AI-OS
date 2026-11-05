@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "perception_models_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "perception_models",
+)
+
+rust_binary(
+    name = "perception_models",
+    srcs = ["src/main.rs"],
+    deps = [":perception_models_lib"],
+)

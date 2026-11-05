@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "coconut_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "coconut",
+)
+
+rust_binary(
+    name = "coconut",
+    srcs = ["src/main.rs"],
+    deps = [":coconut_lib"],
+)
