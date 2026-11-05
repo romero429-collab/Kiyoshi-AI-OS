@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "stirling_pdf_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "stirling_pdf",
+)
+
+rust_binary(
+    name = "stirling_pdf",
+    srcs = ["src/main.rs"],
+    deps = [":stirling_pdf_lib"],
+)

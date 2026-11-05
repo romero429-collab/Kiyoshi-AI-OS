@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "understand_anything_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "understand_anything",
+)
+
+rust_binary(
+    name = "understand_anything",
+    srcs = ["src/main.rs"],
+    deps = [":understand_anything_lib"],
+)

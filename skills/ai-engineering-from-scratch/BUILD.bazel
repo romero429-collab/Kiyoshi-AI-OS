@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "ai_engineering_from_scratch_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "ai_engineering_from_scratch",
+)
+
+rust_binary(
+    name = "ai_engineering_from_scratch",
+    srcs = ["src/main.rs"],
+    deps = [":ai_engineering_from_scratch_lib"],
+)

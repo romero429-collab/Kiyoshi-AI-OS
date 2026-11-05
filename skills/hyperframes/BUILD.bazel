@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "hyperframes_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "hyperframes",
+)
+
+rust_binary(
+    name = "hyperframes",
+    srcs = ["src/main.rs"],
+    deps = [":hyperframes_lib"],
+)
