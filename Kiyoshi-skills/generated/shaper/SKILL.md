@@ -1,15 +1,17 @@
 ---
 name: shaper
-description: "Code for the ShapeR research paper. Use when building shape reconstruction or 3D shape skills."
+description: "Shape reconstruction modeled from facebookresearch/ShapeR. Use when building 3D shape skills."
 type: tool
 lifecycle: active
 ---
 
-# ShapeR
+# ShapeR — Shape Reconstruction
 
-Pilot skill derived from https://github.com/facebookresearch/ShapeR.
+Modeled from https://github.com/facebookresearch/ShapeR. Remade as a Kiyoshi-owned shape tool.
 
 ## Workflow
-1. Reference the source repository for shape reconstruction patterns.
-2. Map to 3D shape tools under Kiyoshi-skills.
-3. Enforce contractive reconstruction dynamics (negative Lyapunov exponents on shape fitting).
+1. Accept input for shape fitting.
+2. Reconstruct 3D shape with ShapeR.
+3. Fit under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

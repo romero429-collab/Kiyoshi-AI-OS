@@ -1,0 +1,8 @@
+{
+  "skill": "qmini",
+  "test_cases": [
+    {"input": "Qmini robot", "should_trigger": true},
+    {"input": "qmini", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

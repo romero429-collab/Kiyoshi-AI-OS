@@ -1,0 +1,8 @@
+{
+  "skill": "audioseal",
+  "test_cases": [
+    {"name": "watermark", "input": "Watermark speech with AudioSeal", "assertions": ["embed", "detect"]},
+    {"name": "security", "input": "Use AudioSeal", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "audioseal", "assertions": ["activates", "workflow"]}
+  ]
+}

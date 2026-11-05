@@ -1,0 +1,8 @@
+{
+  "skill": "shaper",
+  "test_cases": [
+    {"name": "shape", "input": "Reconstruct shape with ShapeR", "assertions": ["3D", "fit"]},
+    {"name": "recon", "input": "Use ShapeR", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "shaper", "assertions": ["activates", "workflow"]}
+  ]
+}

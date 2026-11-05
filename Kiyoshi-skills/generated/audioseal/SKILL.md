@@ -1,15 +1,17 @@
 ---
 name: audioseal
-description: "Localized watermarking for AI-generated speech audios, with SOTA on robustness and very fast detection. Use when building audio watermarking or speech security skills."
+description: "Localized audio watermarking modeled from facebookresearch/audioseal. Use when building speech security skills."
 type: tool
 lifecycle: active
 ---
 
-# AudioSeal
+# AudioSeal — Audio Watermarking
 
-Pilot skill derived from https://github.com/facebookresearch/audioseal.
+Modeled from https://github.com/facebookresearch/audioseal. Remade as a Kiyoshi-owned security tool.
 
 ## Workflow
-1. Reference the source repository for audio watermarking patterns.
-2. Map to speech security tools under Kiyoshi-skills.
-3. Enforce contractive watermark dynamics (negative Lyapunov exponents on embedding).
+1. Embed localized watermark in speech audio.
+2. Detect with high robustness and speed.
+3. Verify under contractive embedding (λ_max < 0).
+
+See inventory entry for source metadata.

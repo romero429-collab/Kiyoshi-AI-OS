@@ -1,0 +1,8 @@
+{
+  "skill": "metamotivo",
+  "test_cases": [
+    {"name": "control", "input": "Control humanoid with MetaMotivo", "assertions": ["behavioral", "tasks"]},
+    {"name": "foundation", "input": "Use MetaMotivo", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "metamotivo", "assertions": ["activates", "workflow"]}
+  ]
+}

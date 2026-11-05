@@ -1,15 +1,17 @@
 ---
 name: metamotivo
-description: "The first behavioral foundation model to control a virtual physics-based humanoid agent for a wide range of tasks. Use when building behavioral foundation or humanoid control skills."
+description: "Behavioral foundation model for humanoid control modeled from facebookresearch/metamotivo. Use when building humanoid skills."
 type: tool
 lifecycle: active
 ---
 
-# MetaMotivo
+# MetaMotivo — Behavioral Foundation
 
-Pilot skill derived from https://github.com/facebookresearch/metamotivo.
+Modeled from https://github.com/facebookresearch/metamotivo. Remade as a Kiyoshi-owned control tool.
 
 ## Workflow
-1. Reference the source repository for behavioral foundation model patterns.
-2. Map to humanoid control tools under Kiyoshi-skills.
-3. Enforce contractive behavioral dynamics (negative Lyapunov exponents on task adaptation).
+1. Load behavioral foundation model.
+2. Control virtual humanoid across tasks.
+3. Adapt under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

@@ -1,0 +1,8 @@
+{
+  "skill": "qmini",
+  "test_cases": [
+    {"name": "robot", "input": "Control Qmini robot", "assertions": ["locomotion", "compact"]},
+    {"name": "unitree", "input": "Use Qmini", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "qmini", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,15 +1,17 @@
 ---
 name: codegen
-description: "Reference implementation of code generation projects from Facebook AI Research. General toolkit to apply code generation. Use when building code generation or program synthesis skills."
+description: "Code generation toolkit modeled from facebookresearch/CodeGen. Use when building program synthesis skills."
 type: tool
 lifecycle: active
 ---
 
-# CodeGen
+# CodeGen — Program Synthesis
 
-Pilot skill derived from https://github.com/facebookresearch/CodeGen.
+Modeled from https://github.com/facebookresearch/CodeGen. Remade as a Kiyoshi-owned synthesis tool.
 
 ## Workflow
-1. Reference the source repository for code generation patterns.
-2. Map to program synthesis tools under Kiyoshi-skills.
-3. Enforce contractive generation dynamics (negative Lyapunov exponents on code synthesis).
+1. Accept specification or prompt.
+2. Generate code with CodeGen toolkit.
+3. Synthesize under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

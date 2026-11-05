@@ -1,0 +1,8 @@
+{
+  "skill": "shaper",
+  "test_cases": [
+    {"input": "ShapeR reconstruction", "should_trigger": true},
+    {"input": "shaper", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "audioseal",
+  "test_cases": [
+    {"input": "audio watermark AudioSeal", "should_trigger": true},
+    {"input": "audioseal", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

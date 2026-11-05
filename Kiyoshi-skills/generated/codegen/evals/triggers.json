@@ -1,0 +1,8 @@
+{
+  "skill": "codegen",
+  "test_cases": [
+    {"input": "CodeGen program synthesis", "should_trigger": true},
+    {"input": "codegen", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

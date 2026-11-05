@@ -1,15 +1,17 @@
 ---
 name: qmini
-description: "Qmini. Use when building Unitree Qmini robot or compact robotics skills."
+description: "Unitree Qmini robot modeled from unitreerobotics/Qmini. Use when building compact robot skills."
 type: tool
 lifecycle: active
 ---
 
-# Qmini
+# Qmini — Compact Robot
 
-Pilot skill derived from https://github.com/unitreerobotics/Qmini.
+Modeled from https://github.com/unitreerobotics/Qmini. Remade as a Kiyoshi-owned robotics tool.
 
 ## Workflow
-1. Reference the source repository for Qmini robot patterns.
-2. Map to compact robotics tools under Kiyoshi-skills.
-3. Enforce contractive control dynamics (negative Lyapunov exponents on motion).
+1. Load Qmini robot model.
+2. Execute compact locomotion.
+3. Control under contractive motion (λ_max < 0).
+
+See inventory entry for source metadata.

@@ -1,0 +1,8 @@
+{
+  "skill": "metamotivo",
+  "test_cases": [
+    {"input": "MetaMotivo humanoid", "should_trigger": true},
+    {"input": "metamotivo", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

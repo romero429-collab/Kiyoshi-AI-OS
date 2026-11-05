@@ -1,0 +1,8 @@
+{
+  "skill": "codegen",
+  "test_cases": [
+    {"name": "generate", "input": "Generate code with CodeGen", "assertions": ["code", "synthesis"]},
+    {"name": "toolkit", "input": "Use CodeGen toolkit", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "codegen", "assertions": ["activates", "workflow"]}
+  ]
+}
