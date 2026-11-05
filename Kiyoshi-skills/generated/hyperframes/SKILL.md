@@ -1,17 +1,17 @@
 ---
 name: hyperframes
-description: "Write HTML. Render video. Built for agents. Use when building HTML-to-video rendering or agent-driven video generation skills."
+description: "HTML-to-video rendering modeled from heygen-com/hyperframes. Use when building agent-driven video from HTML."
 type: workflow
 lifecycle: active
 ---
 
-# Hyperframes
+# Hyperframes — HTML to Video
 
-Pilot skill derived from https://github.com/heygen-com/hyperframes.
+Modeled from https://github.com/heygen-com/hyperframes. Remade as a Kiyoshi-owned render pipeline.
 
 ## Workflow
-1. Reference the source repository for HTML-to-video rendering patterns.
-2. Map to agent-driven video generation workflows under Kiyoshi-skills.
-3. Enforce contractive rendering dynamics (negative Lyapunov exponents on frame generation).
+1. Accept HTML scene description.
+2. Render frames via agent-controlled pipeline.
+3. Export video under contractive generation (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

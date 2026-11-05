@@ -1,17 +1,17 @@
 ---
 name: openmontage
-description: "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Use when building agentic video production or multi-pipeline content skills."
+description: "Agentic video production system modeled from calesthio/OpenMontage. Use when building multi-pipeline video skills."
 type: orchestrator
 lifecycle: active
 ---
 
-# OpenMontage
+# OpenMontage — Agentic Video Production
 
-Pilot skill derived from https://github.com/calesthio/OpenMontage.
+Modeled from https://github.com/calesthio/OpenMontage. Remade as a Kiyoshi-owned production system.
 
 ## Workflow
-1. Reference the source repository for agentic video production pipelines and skill files.
-2. Map to multi-pipeline video orchestration under Kiyoshi-skills.
-3. Enforce contractive production dynamics (negative Lyapunov exponents on pipeline stages).
+1. Select from 12 production pipelines.
+2. Orchestrate tools and agent skills.
+3. Output finished video under contractive stages (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

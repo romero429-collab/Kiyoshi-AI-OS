@@ -1,0 +1,8 @@
+{
+  "skill": "strix",
+  "test_cases": [
+    {"input": "AI penetration testing", "should_trigger": true},
+    {"input": "strix", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

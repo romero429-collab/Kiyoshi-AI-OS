@@ -1,0 +1,8 @@
+{
+  "skill": "strix",
+  "test_cases": [
+    {"name": "scan", "input": "Run AI pentest with strix", "assertions": ["findings", "report"]},
+    {"name": "vuln", "input": "Find and fix vulnerabilities", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "strix pentest", "assertions": ["activates", "workflow"]}
+  ]
+}

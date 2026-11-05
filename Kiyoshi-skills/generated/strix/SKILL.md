@@ -1,17 +1,17 @@
 ---
 name: strix
-description: "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities. Use when building AI-driven security testing or vulnerability scanning skills."
+description: "AI penetration testing modeled from usestrix/strix. Use when building autonomous vulnerability scanning skills."
 type: tool
 lifecycle: active
 ---
 
-# Strix
+# Strix — AI Pentest
 
-Pilot skill derived from https://github.com/usestrix/strix.
+Modeled from https://github.com/usestrix/strix. Remade as a Kiyoshi-owned security tool.
 
 ## Workflow
-1. Reference the source repository for AI penetration testing and vulnerability patterns.
-2. Map to security scanning tools under Kiyoshi-skills.
-3. Enforce contractive security-analysis dynamics (negative Lyapunov exponents on scan iterations).
+1. Target application or repo.
+2. Run AI-driven recon and exploit discovery.
+3. Report findings under contractive analysis (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

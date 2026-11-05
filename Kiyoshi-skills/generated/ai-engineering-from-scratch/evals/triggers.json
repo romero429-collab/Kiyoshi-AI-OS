@@ -1,0 +1,8 @@
+{
+  "skill": "ai-engineering-from-scratch",
+  "test_cases": [
+    {"input": "learn AI engineering", "should_trigger": true},
+    {"input": "ai-engineering-from-scratch", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "hyperframes",
+  "test_cases": [
+    {"input": "html to video", "should_trigger": true},
+    {"input": "hyperframes", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

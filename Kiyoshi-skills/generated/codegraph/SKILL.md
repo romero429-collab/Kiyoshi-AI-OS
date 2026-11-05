@@ -1,17 +1,17 @@
 ---
 name: codegraph
-description: "Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, CoPilot, and Hermes. Use when building code knowledge graphs or multi-agent code indexing skills."
+description: "Pre-indexed code knowledge graph modeled from colbymchenry/codegraph. Use when building multi-agent code indexing skills."
 type: knowledge
 lifecycle: active
 ---
 
-# CodeGraph
+# CodeGraph — Pre-indexed Code Graph
 
-Pilot skill derived from https://github.com/colbymchenry/codegraph.
+Modeled from https://github.com/colbymchenry/codegraph. Remade as a Kiyoshi-owned indexing tool.
 
 ## Workflow
-1. Reference the source repository for pre-indexed code knowledge graph patterns.
-2. Map to auto-syncing code graph tools under Kiyoshi-skills.
-3. Enforce contractive indexing dynamics (negative Lyapunov exponents on graph updates).
+1. Index codebase into persistent graph.
+2. Auto-sync on changes.
+3. Serve queries to multiple coding agents under contractive updates (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

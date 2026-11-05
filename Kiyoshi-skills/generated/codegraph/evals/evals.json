@@ -1,0 +1,8 @@
+{
+  "skill": "codegraph",
+  "test_cases": [
+    {"name": "index", "input": "Build pre-indexed code graph", "assertions": ["graph", "sync"]},
+    {"name": "query", "input": "Query codegraph for agents", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "codegraph", "assertions": ["activates", "workflow"]}
+  ]
+}

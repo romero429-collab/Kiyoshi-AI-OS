@@ -1,0 +1,8 @@
+{
+  "skill": "codegraph",
+  "test_cases": [
+    {"input": "pre-indexed code graph", "should_trigger": true},
+    {"input": "codegraph", "should_trigger": true},
+    {"input": "weather", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "ai-engineering-from-scratch",
+  "test_cases": [
+    {"name": "learn", "input": "Start AI engineering from scratch curriculum", "assertions": ["modules", "build"]},
+    {"name": "ship", "input": "Follow learn-build-ship path", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "ai engineering from scratch", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "openmontage",
+  "test_cases": [
+    {"name": "produce", "input": "Produce a video with OpenMontage pipelines", "assertions": ["pipelines", "tools"]},
+    {"name": "agentic", "input": "Run agentic video production", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "openmontage", "assertions": ["activates", "workflow"]}
+  ]
+}

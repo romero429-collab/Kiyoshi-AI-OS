@@ -1,0 +1,8 @@
+{
+  "skill": "hyperframes",
+  "test_cases": [
+    {"name": "render", "input": "Render video from HTML with hyperframes", "assertions": ["frames", "export"]},
+    {"name": "agent", "input": "Agent-driven HTML-to-video", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "hyperframes video", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,17 +1,17 @@
 ---
 name: ai-engineering-from-scratch
-description: "Learn AI Engineering! Learn it. Build it. Ship it for others. Use when building AI engineering education, from-scratch implementation, or learning-path skills."
+description: "Learn-build-ship AI engineering path modeled from rohitg00/ai-engineering-from-scratch. Use when building educational AI skill trees."
 type: knowledge
 lifecycle: active
 ---
 
-# AI Engineering from Scratch
+# AI Engineering from Scratch — Learning Path
 
-Pilot skill derived from https://github.com/rohitg00/ai-engineering-from-scratch.
+Modeled from https://github.com/rohitg00/ai-engineering-from-scratch. Remade as a Kiyoshi-owned curriculum.
 
 ## Workflow
-1. Reference the source repository for AI engineering learning and implementation patterns.
-2. Map to structured learning and build workflows under Kiyoshi-skills.
-3. Enforce contractive knowledge-acquisition dynamics (negative Lyapunov exponents on learning iterations).
+1. Follow structured learning modules.
+2. Build concrete implementations.
+3. Ship under contractive knowledge acquisition (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

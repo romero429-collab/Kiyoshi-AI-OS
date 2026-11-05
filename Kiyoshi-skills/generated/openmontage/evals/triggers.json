@@ -1,0 +1,8 @@
+{
+  "skill": "openmontage",
+  "test_cases": [
+    {"input": "agentic video production", "should_trigger": true},
+    {"input": "openmontage", "should_trigger": true},
+    {"input": "math", "should_trigger": false}
+  ]
+}
