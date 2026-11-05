@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "deepseek_reasonix_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "deepseek_reasonix",
+)
+
+rust_binary(
+    name = "deepseek_reasonix",
+    srcs = ["src/main.rs"],
+    deps = [":deepseek_reasonix_lib"],
+)

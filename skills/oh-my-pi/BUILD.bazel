@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "oh_my_pi_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "oh_my_pi",
+)
+
+rust_binary(
+    name = "oh_my_pi",
+    srcs = ["src/main.rs"],
+    deps = [":oh_my_pi_lib"],
+)

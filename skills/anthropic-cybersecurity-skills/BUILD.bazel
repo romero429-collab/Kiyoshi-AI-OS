@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "anthropic_cybersecurity_skills_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "anthropic_cybersecurity_skills",
+)
+
+rust_binary(
+    name = "anthropic_cybersecurity_skills",
+    srcs = ["src/main.rs"],
+    deps = [":anthropic_cybersecurity_skills_lib"],
+)
