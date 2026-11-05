@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "omnilingual_asr_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "omnilingual_asr",
+)
+
+rust_binary(
+    name = "omnilingual_asr",
+    srcs = ["src/main.rs"],
+    deps = [":omnilingual_asr_lib"],
+)

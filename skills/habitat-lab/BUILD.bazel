@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "habitat_lab_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "habitat_lab",
+)
+
+rust_binary(
+    name = "habitat_lab",
+    srcs = ["src/main.rs"],
+    deps = [":habitat_lab_lib"],
+)
