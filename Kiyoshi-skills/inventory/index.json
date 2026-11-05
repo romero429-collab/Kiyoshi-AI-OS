@@ -8,7 +8,7 @@
   "finalized_count": 105,
   "extracted_to_registry": true,
   "bazel_workspace": true,
-  "skills_with_build_rules": ["deer-flow", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill", "agent-reach", "gemini-cli", "ruview", "stirling-pdf", "understand-anything", "hyperframes", "openmontage", "ai-engineering-from-scratch", "codegraph", "strix", "daily-stock-analysis", "last30days-skill", "gods-eye-view", "penpot", "security-audit-skill", "voicebox", "container", "herdr", "codebase-memory-mcp", "freellmapi", "airllm", "open-notebook", "ai-website-cloner-template", "oh-my-pi", "deepseek-reasonix", "anthropic-cybersecurity-skills", "knowledge-work-plugins", "pm-skills"],
-  "generated_at": "2026-11-06T03:55:00Z",
-  "note": "Hybrid model continuing. 37 skills now have Rust core + Bazel targets. Next batch ready."
+  "skills_with_build_rules": ["deer-flow", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill", "agent-reach", "gemini-cli", "ruview", "stirling-pdf", "understand-anything", "hyperframes", "openmontage", "ai-engineering-from-scratch", "codegraph", "strix", "daily-stock-analysis", "last30days-skill", "gods-eye-view", "penpot", "security-audit-skill", "voicebox", "container", "herdr", "codebase-memory-mcp", "freellmapi", "airllm", "open-notebook", "ai-website-cloner-template", "oh-my-pi", "deepseek-reasonix", "anthropic-cybersecurity-skills", "knowledge-work-plugins", "pm-skills", "turso", "audiocraft", "google-skills", "openshell", "sam2"],
+  "generated_at": "2026-11-06T04:00:00Z",
+  "note": "Hybrid model continuing. 42 skills now have Rust core + Bazel targets. Next batch ready."
 }
