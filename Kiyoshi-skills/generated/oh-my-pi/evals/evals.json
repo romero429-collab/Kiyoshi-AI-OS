@@ -1,0 +1,8 @@
+{
+  "skill": "oh-my-pi",
+  "test_cases": [
+    {"name": "ide", "input": "Run IDE-wired coding agent", "assertions": ["editor state", "tasks"]},
+    {"name": "integrate", "input": "Integrate oh-my-pi pattern", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "oh-my-pi", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "airllm",
+  "test_cases": [
+    {"name": "infer", "input": "Run large LLM on 4GB GPU with airllm", "assertions": ["layer-by-layer", "inference"]},
+    {"name": "memory", "input": "Manage low-memory inference", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "airllm", "assertions": ["activates", "workflow"]}
+  ]
+}

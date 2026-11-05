@@ -1,0 +1,8 @@
+{
+  "skill": "ai-website-cloner-template",
+  "test_cases": [
+    {"input": "clone website one command", "should_trigger": true},
+    {"input": "ai-website-cloner", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

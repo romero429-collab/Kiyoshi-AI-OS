@@ -1,0 +1,8 @@
+{
+  "skill": "airllm",
+  "test_cases": [
+    {"input": "low memory LLM inference", "should_trigger": true},
+    {"input": "airllm", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

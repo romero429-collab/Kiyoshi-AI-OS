@@ -1,15 +1,17 @@
 ---
 name: oh-my-pi
-description: "⌥ Coding agent with the IDE wired in. Built by Stencil Labs. Use when building IDE-integrated coding agent skills."
+description: "IDE-wired coding agent modeled from can1357/oh-my-pi. Use when building integrated coding agent skills."
 type: tool
 lifecycle: active
 ---
 
-# Oh My Pi
+# Oh My Pi — IDE Coding Agent
 
-Pilot skill derived from https://github.com/can1357/oh-my-pi.
+Modeled from https://github.com/can1357/oh-my-pi. Remade as a Kiyoshi-owned IDE agent.
 
 ## Workflow
-1. Reference the source repository for IDE-wired coding agent patterns.
-2. Map to integrated coding tools under Kiyoshi-skills.
-3. Enforce contractive IDE-interaction dynamics (negative Lyapunov exponents on editor state).
+1. Wire agent into IDE context.
+2. Execute coding tasks with full editor state.
+3. Update under contractive interaction (λ_max < 0).
+
+See inventory entry for source metadata.

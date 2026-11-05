@@ -1,17 +1,17 @@
 ---
 name: open-notebook
-description: "An Open Source implementation of Notebook LM with more flexibility and features. Use when building open-source notebook, knowledge management, or AI research skills."
+description: "Open-source Notebook LM modeled from lfnovo/open-notebook. Use when building flexible knowledge notebook skills."
 type: tool
 lifecycle: active
 ---
 
-# Open Notebook
+# Open Notebook — Knowledge Notebook
 
-Pilot skill derived from https://github.com/lfnovo/open-notebook.
+Modeled from https://github.com/lfnovo/open-notebook. Remade as a Kiyoshi-owned notebook.
 
 ## Workflow
-1. Reference the source repository for open-source Notebook LM patterns.
-2. Map to flexible knowledge and research tools under Kiyoshi-skills.
-3. Enforce contractive knowledge-organization dynamics (negative Lyapunov exponents on note linking).
+1. Ingest sources into notebook.
+2. Organize and query knowledge.
+3. Maintain under contractive linking (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

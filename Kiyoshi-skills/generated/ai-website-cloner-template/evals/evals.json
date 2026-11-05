@@ -1,0 +1,8 @@
+{
+  "skill": "ai-website-cloner-template",
+  "test_cases": [
+    {"name": "clone", "input": "Clone a website with one command", "assertions": ["reconstruct", "output"]},
+    {"name": "rapid", "input": "Rapid prototype via cloner", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "ai-website-cloner", "assertions": ["activates", "workflow"]}
+  ]
+}

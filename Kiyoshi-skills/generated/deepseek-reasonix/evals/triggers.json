@@ -1,0 +1,8 @@
+{
+  "skill": "deepseek-reasonix",
+  "test_cases": [
+    {"input": "reliable coding agent", "should_trigger": true},
+    {"input": "deepseek-reasonix", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

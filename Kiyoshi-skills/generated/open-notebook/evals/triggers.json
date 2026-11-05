@@ -1,0 +1,8 @@
+{
+  "skill": "open-notebook",
+  "test_cases": [
+    {"input": "open source notebook LM", "should_trigger": true},
+    {"input": "open-notebook", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

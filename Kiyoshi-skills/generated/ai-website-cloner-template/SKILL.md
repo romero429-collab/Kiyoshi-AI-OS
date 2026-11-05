@@ -1,17 +1,17 @@
 ---
 name: ai-website-cloner-template
-description: "Clone any website with one command using AI coding agents. Use when building AI-driven website cloning or rapid prototyping skills."
+description: "One-command website cloning modeled from JCodesMore/ai-website-cloner-template. Use when building rapid prototyping skills."
 type: workflow
 lifecycle: active
 ---
 
-# AI Website Cloner Template
+# AI Website Cloner — One-Command Clone
 
-Pilot skill derived from https://github.com/JCodesMore/ai-website-cloner-template.
+Modeled from https://github.com/JCodesMore/ai-website-cloner-template. Remade as a Kiyoshi-owned cloner.
 
 ## Workflow
-1. Reference the source repository for AI website cloning patterns.
-2. Map to one-command cloning workflows under Kiyoshi-skills.
-3. Enforce contractive cloning dynamics (negative Lyapunov exponents on page reconstruction).
+1. Accept target URL.
+2. Reconstruct site via AI agents.
+3. Output under contractive reconstruction (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

@@ -1,0 +1,8 @@
+{
+  "skill": "open-notebook",
+  "test_cases": [
+    {"name": "notebook", "input": "Create open-notebook knowledge base", "assertions": ["ingest", "query"]},
+    {"name": "organize", "input": "Organize research notebook", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "open-notebook", "assertions": ["activates", "workflow"]}
+  ]
+}

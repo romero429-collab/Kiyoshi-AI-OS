@@ -1,0 +1,8 @@
+{
+  "skill": "deepseek-reasonix",
+  "test_cases": [
+    {"name": "complex", "input": "Handle complex coding task with Reasonix", "assertions": ["reliable", "implement"]},
+    {"name": "engineer", "input": "Use reliable coding agent", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "deepseek-reasonix", "assertions": ["activates", "workflow"]}
+  ]
+}

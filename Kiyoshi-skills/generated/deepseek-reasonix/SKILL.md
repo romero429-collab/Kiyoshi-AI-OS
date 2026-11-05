@@ -1,15 +1,17 @@
 ---
 name: deepseek-reasonix
-description: "A reliable coding agent for complex software engineering tasks. Use when building reliable coding agent or complex engineering workflow skills."
+description: "Reliable coding agent for complex tasks modeled from esengine/DeepSeek-Reasonix. Use when building robust engineering agents."
 type: tool
 lifecycle: active
 ---
 
-# DeepSeek-Reasonix
+# DeepSeek-Reasonix — Reliable Coding Agent
 
-Pilot skill derived from https://github.com/esengine/DeepSeek-Reasonix.
+Modeled from https://github.com/esengine/DeepSeek-Reasonix. Remade as a Kiyoshi-owned engineering agent.
 
 ## Workflow
-1. Reference the source repository for reliable coding agent patterns.
-2. Map to complex engineering tools under Kiyoshi-skills.
-3. Enforce contractive reasoning dynamics (negative Lyapunov exponents on task decomposition).
+1. Accept complex software engineering task.
+2. Reason and implement with reliability guarantees.
+3. Deliver under contractive decomposition (λ_max < 0).
+
+See inventory entry for source metadata.

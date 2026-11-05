@@ -1,17 +1,17 @@
 ---
 name: airllm
-description: "AirLLM 2.8T LLM inference with single 4GB GPU. Use when building low-resource LLM inference or memory-efficient model loading skills."
+description: "Low-memory LLM inference modeled from lyogavin/airllm. Use when building 4GB-GPU inference skills."
 type: tool
 lifecycle: active
 ---
 
-# AirLLM
+# AirLLM — Low-Memory Inference
 
-Pilot skill derived from https://github.com/lyogavin/airllm.
+Modeled from https://github.com/lyogavin/airllm. Remade as a Kiyoshi-owned inference tool.
 
 ## Workflow
-1. Reference the source repository for low-memory LLM inference patterns.
-2. Map to resource-efficient inference tools under Kiyoshi-skills.
-3. Enforce contractive memory-management dynamics (negative Lyapunov exponents on layer loading).
+1. Load large model layer-by-layer on 4GB GPU.
+2. Run inference.
+3. Manage memory under contractive loading (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

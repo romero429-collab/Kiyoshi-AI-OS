@@ -1,0 +1,8 @@
+{
+  "skill": "oh-my-pi",
+  "test_cases": [
+    {"input": "IDE coding agent", "should_trigger": true},
+    {"input": "oh-my-pi", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}
