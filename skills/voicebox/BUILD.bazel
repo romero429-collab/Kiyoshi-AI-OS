@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "voicebox_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "voicebox",
+)
+
+rust_binary(
+    name = "voicebox",
+    srcs = ["src/main.rs"],
+    deps = [":voicebox_lib"],
+)

@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "container_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "container",
+)
+
+rust_binary(
+    name = "container",
+    srcs = ["src/main.rs"],
+    deps = [":container_lib"],
+)

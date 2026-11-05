@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "security_audit_skill_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "security_audit_skill",
+)
+
+rust_binary(
+    name = "security_audit_skill",
+    srcs = ["src/main.rs"],
+    deps = [":security_audit_skill_lib"],
+)
