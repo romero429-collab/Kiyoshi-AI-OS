@@ -5,7 +5,7 @@
   "forked_captured": 464,
   "total_captured": 764,
   "pilots_generated_count": 105,
-  "finalized_count": 5,
-  "generated_at": "2026-11-06T01:30:00Z",
-  "note": "Finalization started. First 5 pilots now have evals/evals.json and evals/triggers.json. Continue finalizing remaining ~100 before next generation batch."
+  "finalized_count": 10,
+  "generated_at": "2026-11-06T01:35:00Z",
+  "note": "Finalization continuing. 10 pilots now have modeled SKILL.md + evals. Goal: personal skill tree (backpack of essentials) for Kiyoshi. Continue finalizing remaining before next generation."
 }
