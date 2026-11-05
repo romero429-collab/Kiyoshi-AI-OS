@@ -1,0 +1,8 @@
+{
+  "skill": "benchmarl",
+  "test_cases": [
+    {"name": "bench", "input": "Benchmark MARL with BenchMARL", "assertions": ["algorithms", "compare"]},
+    {"name": "marl", "input": "Use BenchMARL", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "benchmarl", "assertions": ["activates", "workflow"]}
+  ]
+}

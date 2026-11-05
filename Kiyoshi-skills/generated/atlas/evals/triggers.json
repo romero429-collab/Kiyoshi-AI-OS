@@ -1,0 +1,8 @@
+{
+  "skill": "atlas",
+  "test_cases": [
+    {"input": "Atlas few-shot RAG", "should_trigger": true},
+    {"input": "atlas", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

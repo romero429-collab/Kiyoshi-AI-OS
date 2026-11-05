@@ -1,15 +1,17 @@
 ---
 name: drzero
-description: "Dr. Zero Self-Evolving Search Agents without Training Data. Use when building self-evolving agent or search skills."
+description: "Self-evolving search agents modeled from facebookresearch/drzero. Use when building evolving agent skills."
 type: tool
 lifecycle: active
 ---
 
-# Dr. Zero
+# Dr. Zero — Self-Evolving Search
 
-Pilot skill derived from https://github.com/facebookresearch/drzero.
+Modeled from https://github.com/facebookresearch/drzero. Remade as a Kiyoshi-owned evolving tool.
 
 ## Workflow
-1. Reference the source repository for self-evolving search agent patterns.
-2. Map to evolving agent tools under Kiyoshi-skills.
-3. Enforce contractive evolution dynamics (negative Lyapunov exponents on self-improvement).
+1. Launch search agent without training data.
+2. Self-evolve through interactions.
+3. Improve under contractive evolution (λ_max < 0).
+
+See inventory entry for source metadata.

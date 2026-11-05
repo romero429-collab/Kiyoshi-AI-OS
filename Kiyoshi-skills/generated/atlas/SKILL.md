@@ -1,15 +1,17 @@
 ---
 name: atlas
-description: "Code repository for supporting the paper Atlas Few-shot Learning with Retrieval Augmented Language Models. Use when building retrieval-augmented few-shot skills."
+description: "Few-shot learning with retrieval-augmented LMs modeled from facebookresearch/atlas. Use when building RAG skills."
 type: tool
 lifecycle: active
 ---
 
-# Atlas
+# Atlas — Retrieval-Augmented Few-Shot
 
-Pilot skill derived from https://github.com/facebookresearch/atlas.
+Modeled from https://github.com/facebookresearch/atlas. Remade as a Kiyoshi-owned RAG tool.
 
 ## Workflow
-1. Reference the source repository for retrieval-augmented few-shot patterns.
-2. Map to RAG tools under Kiyoshi-skills.
-3. Enforce contractive retrieval dynamics (negative Lyapunov exponents on augmentation).
+1. Retrieve relevant passages.
+2. Augment few-shot LM with Atlas.
+3. Generate under contractive retrieval (λ_max < 0).
+
+See inventory entry for source metadata.

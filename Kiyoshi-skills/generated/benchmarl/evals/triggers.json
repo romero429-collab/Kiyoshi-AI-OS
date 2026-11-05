@@ -1,0 +1,8 @@
+{
+  "skill": "benchmarl",
+  "test_cases": [
+    {"input": "BenchMARL multi-agent RL", "should_trigger": true},
+    {"input": "benchmarl", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

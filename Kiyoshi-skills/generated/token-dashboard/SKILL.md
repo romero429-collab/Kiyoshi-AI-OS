@@ -1,15 +1,17 @@
 ---
 name: token-dashboard
-description: "See where Claude Code is burning tokens - turn raw JSONL transcripts into local cost analytics. Use when building token usage or cost analytics skills."
+description: "Claude Code token analytics modeled from nateherkai/token-dashboard. Use when building cost tracking skills."
 type: tool
 lifecycle: active
 ---
 
-# Token Dashboard
+# Token Dashboard — Cost Analytics
 
-Pilot skill derived from https://github.com/nateherkai/token-dashboard.
+Modeled from https://github.com/nateherkai/token-dashboard. Remade as a Kiyoshi-owned analytics tool.
 
 ## Workflow
-1. Reference the source repository for token analytics patterns.
-2. Map to cost tracking tools under Kiyoshi-skills.
-3. Enforce contractive analytics dynamics (negative Lyapunov exponents on aggregation).
+1. Ingest JSONL transcripts.
+2. Compute token usage and cost analytics.
+3. Aggregate under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

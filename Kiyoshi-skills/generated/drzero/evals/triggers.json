@@ -1,0 +1,8 @@
+{
+  "skill": "drzero",
+  "test_cases": [
+    {"input": "Dr. Zero self-evolving", "should_trigger": true},
+    {"input": "drzero", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

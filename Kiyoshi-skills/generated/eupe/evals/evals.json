@@ -1,0 +1,8 @@
+{
+  "skill": "eupe",
+  "test_cases": [
+    {"name": "encode", "input": "Encode with EUPE", "assertions": ["on-device", "representations"]},
+    {"name": "efficient", "input": "Use efficient perception encoder", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "eupe", "assertions": ["activates", "workflow"]}
+  ]
+}

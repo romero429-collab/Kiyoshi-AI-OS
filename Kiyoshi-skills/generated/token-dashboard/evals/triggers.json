@@ -1,0 +1,8 @@
+{
+  "skill": "token-dashboard",
+  "test_cases": [
+    {"input": "token usage analytics", "should_trigger": true},
+    {"input": "token-dashboard", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

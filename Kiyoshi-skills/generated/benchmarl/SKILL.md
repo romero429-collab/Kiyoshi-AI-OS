@@ -1,15 +1,17 @@
 ---
 name: benchmarl
-description: "BenchMARL is a library for benchmarking Multi-Agent Reinforcement Learning (MARL). Use when building multi-agent RL benchmarking skills."
+description: "Multi-Agent RL benchmarking library modeled from facebookresearch/BenchMARL. Use when building MARL skills."
 type: tool
 lifecycle: active
 ---
 
-# BenchMARL
+# BenchMARL — MARL Benchmarking
 
-Pilot skill derived from https://github.com/facebookresearch/BenchMARL.
+Modeled from https://github.com/facebookresearch/BenchMARL. Remade as a Kiyoshi-owned benchmarking tool.
 
 ## Workflow
-1. Reference the source repository for MARL benchmarking patterns.
-2. Map to multi-agent RL tools under Kiyoshi-skills.
-3. Enforce contractive benchmarking dynamics (negative Lyapunov exponents on evaluation).
+1. Configure multi-agent environment.
+2. Run and compare MARL algorithms.
+3. Evaluate under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

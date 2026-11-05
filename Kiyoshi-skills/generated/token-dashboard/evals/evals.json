@@ -1,0 +1,8 @@
+{
+  "skill": "token-dashboard",
+  "test_cases": [
+    {"name": "analytics", "input": "Analyze Claude Code token usage", "assertions": ["cost", "transcripts"]},
+    {"name": "dashboard", "input": "Use token dashboard", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "token-dashboard", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,15 +1,17 @@
 ---
 name: eupe
-description: "Efficient Universal Perception Encoder: a single on-device vision encoder with versatile representations. Use when building efficient vision encoder skills."
+description: "Efficient Universal Perception Encoder modeled from facebookresearch/EUPE. Use when building on-device vision skills."
 type: tool
 lifecycle: active
 ---
 
-# EUPE
+# EUPE — Efficient Perception Encoder
 
-Pilot skill derived from https://github.com/facebookresearch/EUPE.
+Modeled from https://github.com/facebookresearch/EUPE. Remade as a Kiyoshi-owned vision tool.
 
 ## Workflow
-1. Reference the source repository for efficient perception encoder patterns.
-2. Map to on-device vision tools under Kiyoshi-skills.
-3. Enforce contractive encoding dynamics (negative Lyapunov exponents on feature extraction).
+1. Load single on-device vision encoder.
+2. Extract versatile representations.
+3. Encode under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

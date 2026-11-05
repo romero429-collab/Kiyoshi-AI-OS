@@ -1,0 +1,8 @@
+{
+  "skill": "drzero",
+  "test_cases": [
+    {"name": "evolve", "input": "Run self-evolving search with Dr. Zero", "assertions": ["search", "evolve"]},
+    {"name": "agent", "input": "Use Dr. Zero", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "drzero", "assertions": ["activates", "workflow"]}
+  ]
+}

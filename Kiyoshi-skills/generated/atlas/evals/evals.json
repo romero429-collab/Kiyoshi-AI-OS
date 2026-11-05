@@ -1,0 +1,8 @@
+{
+  "skill": "atlas",
+  "test_cases": [
+    {"name": "fewshot", "input": "Few-shot with Atlas RAG", "assertions": ["retrieve", "augment"]},
+    {"name": "rag", "input": "Use Atlas", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "atlas", "assertions": ["activates", "workflow"]}
+  ]
+}

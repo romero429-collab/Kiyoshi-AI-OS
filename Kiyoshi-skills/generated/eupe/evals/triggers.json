@@ -1,0 +1,8 @@
+{
+  "skill": "eupe",
+  "test_cases": [
+    {"input": "EUPE perception encoder", "should_trigger": true},
+    {"input": "eupe", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}
