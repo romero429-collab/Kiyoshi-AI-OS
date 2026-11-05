@@ -9,6 +9,7 @@
   "extracted_to_registry": true,
   "bazel_workspace": true,
   "skills_with_build_rules_count": 105,
-  "generated_at": "2026-11-06T05:05:00Z",
-  "note": "Hybrid multi-substrate Bazel workspace complete. All 105 finalized skills have Rust core + Bazel targets (with Node/TS available when needed). Personal skill-tree backpack is fully buildable under the Kiyoshi umbrella."
+  "scaffold_with_pseudocode": true,
+  "generated_at": "2026-11-06T05:15:00Z",
+  "note": "All 105 skills now have richer scaffold pseudocode in their Rust cores. Each models the original workflow under the hybrid multi-substrate architecture (Rust core + optional Node/TS + Bazel). Personal skill-tree backpack is fully scaffolded."
 }
