@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "gstack_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "gstack",
+)
+
+rust_binary(
+    name = "gstack",
+    srcs = ["src/main.rs"],
+    deps = [":gstack_lib"],
+)

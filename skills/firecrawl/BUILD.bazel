@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "firecrawl_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "firecrawl",
+)
+
+rust_binary(
+    name = "firecrawl",
+    srcs = ["src/main.rs"],
+    deps = [":firecrawl_lib"],
+)

@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "moneyprinterturbo_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "moneyprinterturbo",
+)
+
+rust_binary(
+    name = "moneyprinterturbo",
+    srcs = ["src/main.rs"],
+    deps = [":moneyprinterturbo_lib"],
+)
