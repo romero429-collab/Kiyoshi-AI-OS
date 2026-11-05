@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "partnr_planner_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "partnr_planner",
+)
+
+rust_binary(
+    name = "partnr_planner",
+    srcs = ["src/main.rs"],
+    deps = [":partnr_planner_lib"],
+)

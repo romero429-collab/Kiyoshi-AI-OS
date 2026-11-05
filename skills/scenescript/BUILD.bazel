@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "scenescript_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "scenescript",
+)
+
+rust_binary(
+    name = "scenescript",
+    srcs = ["src/main.rs"],
+    deps = [":scenescript_lib"],
+)

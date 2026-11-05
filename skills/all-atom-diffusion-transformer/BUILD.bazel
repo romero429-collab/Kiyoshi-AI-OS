@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "all_atom_diffusion_transformer_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "all_atom_diffusion_transformer",
+)
+
+rust_binary(
+    name = "all_atom_diffusion_transformer",
+    srcs = ["src/main.rs"],
+    deps = [":all_atom_diffusion_transformer_lib"],
+)
