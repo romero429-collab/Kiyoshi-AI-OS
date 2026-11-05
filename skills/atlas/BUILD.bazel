@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "atlas_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "atlas",
+)
+
+rust_binary(
+    name = "atlas",
+    srcs = ["src/main.rs"],
+    deps = [":atlas_lib"],
+)

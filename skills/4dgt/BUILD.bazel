@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "four_dgt_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "four_dgt",
+)
+
+rust_binary(
+    name = "four_dgt",
+    srcs = ["src/main.rs"],
+    deps = [":four_dgt_lib"],
+)
