@@ -1,0 +1,8 @@
+{
+  "skill": "sam-3d-objects",
+  "test_cases": [
+    {"input": "3D object segmentation", "should_trigger": true},
+    {"input": "sam-3d-objects", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

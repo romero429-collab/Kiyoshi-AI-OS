@@ -1,15 +1,17 @@
 ---
 name: imagebind
-description: "ImageBind One Embedding Space to Bind Them All. Use when building multi-modal embedding or binding skills."
+description: "Multi-modal embedding space modeled from facebookresearch/ImageBind. Use when building binding skills."
 type: tool
 lifecycle: active
 ---
 
-# ImageBind
+# ImageBind — Multi-Modal Binding
 
-Pilot skill derived from https://github.com/facebookresearch/ImageBind.
+Modeled from https://github.com/facebookresearch/ImageBind. Remade as a Kiyoshi-owned embedding tool.
 
 ## Workflow
-1. Reference the source repository for multi-modal embedding patterns.
-2. Map to binding and fusion tools under Kiyoshi-skills.
-3. Enforce contractive embedding dynamics (negative Lyapunov exponents on modality alignment).
+1. Ingest multiple modalities.
+2. Bind into unified embedding space.
+3. Align under contractive fusion (λ_max < 0).
+
+See inventory entry for source metadata.

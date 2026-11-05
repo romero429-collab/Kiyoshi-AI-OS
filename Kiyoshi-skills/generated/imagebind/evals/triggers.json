@@ -1,0 +1,8 @@
+{
+  "skill": "imagebind",
+  "test_cases": [
+    {"input": "multi-modal embedding", "should_trigger": true},
+    {"input": "imagebind", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

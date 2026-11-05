@@ -1,0 +1,8 @@
+{
+  "skill": "openai-plugins",
+  "test_cases": [
+    {"name": "plugin", "input": "Use OpenAI-style plugin", "assertions": ["discover", "invoke"]},
+    {"name": "extend", "input": "Extend with plugins", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "openai-plugins", "assertions": ["activates", "workflow"]}
+  ]
+}

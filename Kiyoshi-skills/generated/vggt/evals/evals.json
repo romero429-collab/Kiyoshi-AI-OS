@@ -1,0 +1,8 @@
+{
+  "skill": "vggt",
+  "test_cases": [
+    {"name": "reconstruct", "input": "Reconstruct 3D with VGGT", "assertions": ["geometry", "transformer"]},
+    {"name": "pose", "input": "Estimate poses with VGGT", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "vggt", "assertions": ["activates", "workflow"]}
+  ]
+}

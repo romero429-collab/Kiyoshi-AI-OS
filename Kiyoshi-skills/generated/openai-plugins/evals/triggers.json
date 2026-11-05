@@ -1,0 +1,8 @@
+{
+  "skill": "openai-plugins",
+  "test_cases": [
+    {"input": "OpenAI plugins", "should_trigger": true},
+    {"input": "openai-plugins", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

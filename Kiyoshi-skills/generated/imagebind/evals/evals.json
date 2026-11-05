@@ -1,0 +1,8 @@
+{
+  "skill": "imagebind",
+  "test_cases": [
+    {"name": "bind", "input": "Bind modalities with ImageBind", "assertions": ["embedding", "unified"]},
+    {"name": "align", "input": "Align multi-modal embeddings", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "imagebind", "assertions": ["activates", "workflow"]}
+  ]
+}

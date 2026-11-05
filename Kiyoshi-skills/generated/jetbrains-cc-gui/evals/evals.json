@@ -1,0 +1,8 @@
+{
+  "skill": "jetbrains-cc-gui",
+  "test_cases": [
+    {"name": "plugin", "input": "Use JetBrains coding agent GUI", "assertions": ["plugin", "GUI"]},
+    {"name": "ide", "input": "Integrate into IDE", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "jetbrains-cc-gui", "assertions": ["activates", "workflow"]}
+  ]
+}

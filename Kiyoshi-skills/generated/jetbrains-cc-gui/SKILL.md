@@ -1,15 +1,17 @@
 ---
 name: jetbrains-cc-gui
-description: "Jetbrains Claude Code and Codex GUI Plugin. Use when building IDE plugin or coding assistant GUI skills."
+description: "JetBrains Claude Code and Codex GUI plugin modeled from zhukunpenglinyutong/jetbrains-cc-gui. Use when building IDE plugin skills."
 type: tool
 lifecycle: active
 ---
 
-# JetBrains CC GUI
+# JetBrains CC GUI — IDE Plugin
 
-Pilot skill derived from https://github.com/zhukunpenglinyutong/jetbrains-cc-gui.
+Modeled from https://github.com/zhukunpenglinyutong/jetbrains-cc-gui. Remade as a Kiyoshi-owned IDE integration.
 
 ## Workflow
-1. Reference the source repository for JetBrains plugin patterns.
-2. Map to IDE integration tools under Kiyoshi-skills.
-3. Enforce contractive plugin dynamics (negative Lyapunov exponents on UI state).
+1. Install as JetBrains plugin.
+2. Expose Claude Code / Codex GUI.
+3. Interact under contractive UI state (λ_max < 0).
+
+See inventory entry for source metadata.

@@ -1,15 +1,17 @@
 ---
 name: vggt
-description: "[CVPR 2025 Best Paper Award] VGGT: Visual Geometry Grounded Transformer. Use when building visual geometry or 3D reconstruction skills."
+description: "Visual Geometry Grounded Transformer modeled from facebookresearch/vggt. Use when building 3D reconstruction skills."
 type: tool
 lifecycle: active
 ---
 
-# VGGT
+# VGGT — Visual Geometry
 
-Pilot skill derived from https://github.com/facebookresearch/vggt.
+Modeled from https://github.com/facebookresearch/vggt. Remade as a Kiyoshi-owned geometry tool.
 
 ## Workflow
-1. Reference the source repository for visual geometry transformer patterns.
-2. Map to 3D reconstruction tools under Kiyoshi-skills.
-3. Enforce contractive geometry dynamics (negative Lyapunov exponents on pose estimation).
+1. Accept multi-view images.
+2. Reconstruct 3D geometry via transformer.
+3. Output under contractive pose estimation (λ_max < 0).
+
+See inventory entry for source metadata.

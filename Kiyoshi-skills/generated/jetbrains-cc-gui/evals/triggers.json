@@ -1,0 +1,8 @@
+{
+  "skill": "jetbrains-cc-gui",
+  "test_cases": [
+    {"input": "JetBrains Claude Code plugin", "should_trigger": true},
+    {"input": "jetbrains-cc-gui", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

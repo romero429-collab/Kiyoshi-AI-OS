@@ -1,0 +1,8 @@
+{
+  "skill": "vggt",
+  "test_cases": [
+    {"input": "visual geometry transformer", "should_trigger": true},
+    {"input": "vggt", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

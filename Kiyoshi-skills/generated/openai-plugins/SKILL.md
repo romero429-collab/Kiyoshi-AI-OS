@@ -1,15 +1,17 @@
 ---
 name: openai-plugins
-description: "OpenAI Plugins. Use when building plugin systems or OpenAI-compatible extension skills."
+description: "Plugin system modeled from openai/plugins. Use when building extensible tool skills."
 type: knowledge
 lifecycle: active
 ---
 
-# OpenAI Plugins
+# OpenAI Plugins — Extensible Tools
 
-Pilot skill derived from https://github.com/openai/plugins.
+Modeled from https://github.com/openai/plugins. Remade as a Kiyoshi-owned plugin architecture.
 
 ## Workflow
-1. Reference the source repository for plugin architecture patterns.
-2. Map to extensible tool systems under Kiyoshi-skills.
-3. Enforce contractive plugin-loading dynamics (negative Lyapunov exponents on discovery).
+1. Discover available plugins.
+2. Load and invoke.
+3. Compose under contractive discovery (λ_max < 0).
+
+See inventory entry for source metadata.

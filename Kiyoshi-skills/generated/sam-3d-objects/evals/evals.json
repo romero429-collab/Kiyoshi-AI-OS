@@ -1,0 +1,8 @@
+{
+  "skill": "sam-3d-objects",
+  "test_cases": [
+    {"name": "segment", "input": "Segment 3D objects with SAM", "assertions": ["3D", "objects"]},
+    {"name": "spatial", "input": "Run spatial segmentation", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "sam-3d-objects", "assertions": ["activates", "workflow"]}
+  ]
+}
