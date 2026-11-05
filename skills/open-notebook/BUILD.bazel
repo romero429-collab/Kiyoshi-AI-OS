@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "open_notebook_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "open_notebook",
+)
+
+rust_binary(
+    name = "open_notebook",
+    srcs = ["src/main.rs"],
+    deps = [":open_notebook_lib"],
+)

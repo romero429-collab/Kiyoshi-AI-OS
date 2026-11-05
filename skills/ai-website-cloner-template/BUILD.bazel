@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "ai_website_cloner_template_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "ai_website_cloner_template",
+)
+
+rust_binary(
+    name = "ai_website_cloner_template",
+    srcs = ["src/main.rs"],
+    deps = [":ai_website_cloner_template_lib"],
+)
