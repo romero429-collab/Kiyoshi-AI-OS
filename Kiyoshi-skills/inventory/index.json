@@ -4,7 +4,7 @@
   "starred_captured": 300,
   "forked_captured": 464,
   "total_captured": 764,
-  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca"],
-  "generated_at": "2026-11-05T22:05:00Z",
-  "note": "Next pilot (orca) generated. Ready for further expansion."
+  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl", "markitdown", "iptv", "gstack", "moneyprinterturbo", "orca", "taste-skill"],
+  "generated_at": "2026-11-05T22:10:00Z",
+  "note": "Next pilot (taste-skill) generated. Ready for further expansion."
 }
