@@ -4,6 +4,7 @@
   "starred_captured": 300,
   "forked_captured": 464,
   "total_captured": 764,
-  "generated_at": "2026-11-05T21:35:00Z",
-  "note": "Correction applied. Live profile: 877 Repositories, 302 Starred. Captured inventory is partial due to API pagination/truncation and mixed fork:true results. Ready for skill generation pilots."
+  "pilots_generated": ["mattpocock-skills", "hermes-agent", "firecrawl"],
+  "generated_at": "2026-11-05T21:40:00Z",
+  "note": "Pilot skills generated in generated/. Inventory ready for further expansion."
 }
