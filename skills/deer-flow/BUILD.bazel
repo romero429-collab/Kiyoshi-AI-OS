@@ -1,0 +1,25 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+load("@rules_nodejs//nodejs:defs.bzl", "nodejs_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+# Deer-Flow modeled as a long-horizon SuperAgent harness.
+# Rust core for orchestration, Node/TS for any original JS tooling.
+
+rust_library(
+    name = "deer_flow_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "deer_flow",
+)
+
+rust_binary(
+    name = "deer_flow",
+    srcs = ["src/main.rs"],
+    deps = [":deer_flow_lib"],
+)
+
+# Optional Node entry if original repo used JS
+# nodejs_binary(
+#     name = "deer_flow_js",
+#     entry_point = "src/index.js",
+# )

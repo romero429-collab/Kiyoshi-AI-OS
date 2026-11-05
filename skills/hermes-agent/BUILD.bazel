@@ -1,0 +1,17 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+# Hermes-Agent modeled as a self-improving agent.
+
+rust_library(
+    name = "hermes_agent_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "hermes_agent",
+)
+
+rust_binary(
+    name = "hermes_agent",
+    srcs = ["src/main.rs"],
+    deps = [":hermes_agent_lib"],
+)
