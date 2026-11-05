@@ -1,0 +1,8 @@
+{
+  "skill": "sam-3d-body",
+  "test_cases": [
+    {"name": "reconstruct", "input": "Reconstruct 3D body with SAM", "assertions": ["meshes", "human"]},
+    {"name": "body", "input": "Run SAM 3D Body model", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "sam-3d-body", "assertions": ["activates", "workflow"]}
+  ]
+}

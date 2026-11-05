@@ -1,15 +1,17 @@
 ---
 name: dlrm
-description: "An implementation of a deep learning recommendation model (DLRM). Use when building recommendation system or embedding skills."
+description: "Deep learning recommendation model modeled from facebookresearch/dlrm. Use when building recommender skills."
 type: tool
 lifecycle: active
 ---
 
-# DLRM
+# DLRM — Recommendation Model
 
-Pilot skill derived from https://github.com/facebookresearch/dlrm.
+Modeled from https://github.com/facebookresearch/dlrm. Remade as a Kiyoshi-owned recommender.
 
 ## Workflow
-1. Reference the source repository for DLRM recommendation patterns.
-2. Map to recommendation tools under Kiyoshi-skills.
-3. Enforce contractive embedding dynamics (negative Lyapunov exponents on interaction modeling).
+1. Prepare sparse and dense features.
+2. Train or infer with DLRM.
+3. Score under contractive interactions (λ_max < 0).
+
+See inventory entry for source metadata.

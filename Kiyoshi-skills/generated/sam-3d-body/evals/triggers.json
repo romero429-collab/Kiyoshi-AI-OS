@@ -1,0 +1,8 @@
+{
+  "skill": "sam-3d-body",
+  "test_cases": [
+    {"input": "SAM 3D Body", "should_trigger": true},
+    {"input": "sam-3d-body", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

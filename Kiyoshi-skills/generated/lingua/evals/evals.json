@@ -1,0 +1,8 @@
+{
+  "skill": "lingua",
+  "test_cases": [
+    {"name": "train", "input": "Train LLM with Lingua", "assertions": ["lean", "efficient"]},
+    {"name": "research", "input": "Use Lingua for LLM research", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "lingua", "assertions": ["activates", "workflow"]}
+  ]
+}

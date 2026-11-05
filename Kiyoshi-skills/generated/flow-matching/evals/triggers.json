@@ -1,0 +1,8 @@
+{
+  "skill": "flow-matching",
+  "test_cases": [
+    {"input": "flow matching generative", "should_trigger": true},
+    {"input": "flow-matching", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

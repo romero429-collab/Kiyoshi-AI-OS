@@ -1,0 +1,8 @@
+{
+  "skill": "sam-audio",
+  "test_cases": [
+    {"input": "segment anything audio", "should_trigger": true},
+    {"input": "sam-audio", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

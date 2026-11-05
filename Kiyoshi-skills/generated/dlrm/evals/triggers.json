@@ -1,0 +1,8 @@
+{
+  "skill": "dlrm",
+  "test_cases": [
+    {"input": "DLRM recommendation", "should_trigger": true},
+    {"input": "dlrm", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

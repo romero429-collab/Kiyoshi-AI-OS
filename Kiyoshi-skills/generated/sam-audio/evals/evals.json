@@ -1,0 +1,8 @@
+{
+  "skill": "sam-audio",
+  "test_cases": [
+    {"name": "segment", "input": "Segment audio with SAM-Audio", "assertions": ["sounds", "masks"]},
+    {"name": "audio", "input": "Run audio segmentation", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "sam-audio", "assertions": ["activates", "workflow"]}
+  ]
+}

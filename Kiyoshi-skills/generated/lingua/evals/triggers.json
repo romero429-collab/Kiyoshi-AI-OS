@@ -1,0 +1,8 @@
+{
+  "skill": "lingua",
+  "test_cases": [
+    {"input": "lean LLM research codebase", "should_trigger": true},
+    {"input": "lingua", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

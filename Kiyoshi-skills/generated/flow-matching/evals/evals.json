@@ -1,0 +1,8 @@
+{
+  "skill": "flow-matching",
+  "test_cases": [
+    {"name": "flow", "input": "Generate samples with flow matching", "assertions": ["trajectories", "samples"]},
+    {"name": "match", "input": "Run flow matching algorithm", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "flow-matching", "assertions": ["activates", "workflow"]}
+  ]
+}

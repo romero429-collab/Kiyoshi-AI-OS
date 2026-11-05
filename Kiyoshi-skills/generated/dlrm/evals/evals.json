@@ -1,0 +1,8 @@
+{
+  "skill": "dlrm",
+  "test_cases": [
+    {"name": "recommend", "input": "Run DLRM recommendation", "assertions": ["features", "scores"]},
+    {"name": "model", "input": "Use deep learning recommendation model", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "dlrm", "assertions": ["activates", "workflow"]}
+  ]
+}

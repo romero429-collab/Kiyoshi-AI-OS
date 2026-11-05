@@ -1,15 +1,17 @@
 ---
 name: sam-audio
-description: "The repository provides code for running inference with the Meta Segment Anything Audio Model (SAM-Audio). Use when building audio segmentation or sound understanding skills."
+description: "Segment Anything Audio modeled from facebookresearch/sam-audio. Use when building audio segmentation skills."
 type: tool
 lifecycle: active
 ---
 
-# SAM Audio
+# SAM Audio — Audio Segmentation
 
-Pilot skill derived from https://github.com/facebookresearch/sam-audio.
+Modeled from https://github.com/facebookresearch/sam-audio. Remade as a Kiyoshi-owned audio tool.
 
 ## Workflow
-1. Reference the source repository for audio segmentation patterns.
-2. Map to audio understanding tools under Kiyoshi-skills.
-3. Enforce contractive audio dynamics (negative Lyapunov exponents on spectrogram processing).
+1. Ingest audio spectrogram.
+2. Segment sounds with SAM-Audio.
+3. Output under contractive processing (λ_max < 0).
+
+See inventory entry for source metadata.
