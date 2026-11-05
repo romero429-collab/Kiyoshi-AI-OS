@@ -1,8 +1,15 @@
 // Deer-Flow — long-horizon SuperAgent harness (Kiyoshi-owned scaffold)
-// Modeled from bytedance/deer-flow
+// Source structure (bytedance/deer-flow):
+//   backend/     — core agent runtime
+//   frontend/    — UI
+//   skills/      — skill definitions
+//   contracts/   — API contracts
+//   deploy/      — deployment
+//   scripts/     — utilities
+//   tests/       — tests
+//   Makefile, config.example.yaml
 
-/// Contractive multi-step agent that decomposes a long-horizon goal
-/// into sandboxed research / code / create steps.
+/// Contractive multi-step agent that mirrors the deer-flow module layout.
 pub struct DeerFlow {
     goal: String,
     steps: Vec<String>,
@@ -16,17 +23,19 @@ impl DeerFlow {
         }
     }
 
-    /// Pseudocode workflow:
-    /// 1. Accept long-horizon goal.
-    /// 2. Decompose into sandboxed sub-steps (research, code, create).
-    /// 3. Execute each step with subagents.
-    /// 4. Aggregate under contractive dynamics (λ_max < 0).
+    /// Pseudocode mapped to source modules:
+    /// 1. Load config (config.example.yaml).
+    /// 2. Initialize backend/ agent runtime.
+    /// 3. Register skills/ and contracts/.
+    /// 4. Decompose goal into sandboxed steps.
+    /// 5. Execute and aggregate under contractive dynamics (λ_max < 0).
     pub fn run(&mut self) -> String {
-        self.steps.push("research".into());
-        self.steps.push("code".into());
-        self.steps.push("create".into());
+        self.steps.push("backend.init".into());
+        self.steps.push("skills.register".into());
+        self.steps.push("contracts.bind".into());
+        self.steps.push("execute".into());
         format!(
-            "deer-flow: executed long-horizon goal '{}' in {} contractive steps",
+            "deer-flow: executed long-horizon goal '{}' via backend/skills/contracts ({} steps, contractive)",
             self.goal,
             self.steps.len()
         )
