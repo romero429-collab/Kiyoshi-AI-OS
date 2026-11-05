@@ -1,15 +1,17 @@
 ---
 name: unitree-rl-lab
-description: "This is a repository for reinforcement learning implementation for Unitree robots, based on IsaacLab. Use when building Unitree RL or IsaacLab-based skills."
+description: "Unitree RL on IsaacLab modeled from unitreerobotics/unitree_rl_lab. Use when building IsaacLab robotics skills."
 type: tool
 lifecycle: active
 ---
 
-# Unitree RL Lab
+# Unitree RL Lab — IsaacLab RL
 
-Pilot skill derived from https://github.com/unitreerobotics/unitree_rl_lab.
+Modeled from https://github.com/unitreerobotics/unitree_rl_lab. Remade as a Kiyoshi-owned RL tool.
 
 ## Workflow
-1. Reference the source repository for Unitree RL patterns.
-2. Map to robotics RL tools under Kiyoshi-skills.
-3. Enforce contractive RL dynamics (negative Lyapunov exponents on policy gradients).
+1. Load IsaacLab environment for Unitree.
+2. Train RL policy.
+3. Update under contractive gradients (λ_max < 0).
+
+See inventory entry for source metadata.

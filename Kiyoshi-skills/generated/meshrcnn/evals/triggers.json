@@ -1,0 +1,8 @@
+{
+  "skill": "meshrcnn",
+  "test_cases": [
+    {"input": "Mesh R-CNN", "should_trigger": true},
+    {"input": "meshrcnn", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

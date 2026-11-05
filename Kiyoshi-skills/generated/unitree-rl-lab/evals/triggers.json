@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-rl-lab",
+  "test_cases": [
+    {"input": "Unitree RL IsaacLab", "should_trigger": true},
+    {"input": "unitree-rl-lab", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

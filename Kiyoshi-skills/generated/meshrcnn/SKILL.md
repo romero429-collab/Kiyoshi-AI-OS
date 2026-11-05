@@ -1,15 +1,17 @@
 ---
 name: meshrcnn
-description: "code for Mesh R-CNN, ICCV 2019. Use when building 3D mesh reconstruction or object detection skills."
+description: "Mesh R-CNN for 3D reconstruction modeled from facebookresearch/meshrcnn. Use when building mesh skills."
 type: tool
 lifecycle: active
 ---
 
-# Mesh R-CNN
+# Mesh R-CNN — 3D Reconstruction
 
-Pilot skill derived from https://github.com/facebookresearch/meshrcnn.
+Modeled from https://github.com/facebookresearch/meshrcnn. Remade as a Kiyoshi-owned mesh tool.
 
 ## Workflow
-1. Reference the source repository for Mesh R-CNN patterns.
-2. Map to 3D mesh tools under Kiyoshi-skills.
-3. Enforce contractive reconstruction dynamics (negative Lyapunov exponents on mesh generation).
+1. Detect objects in image.
+2. Reconstruct 3D meshes with Mesh R-CNN.
+3. Generate under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

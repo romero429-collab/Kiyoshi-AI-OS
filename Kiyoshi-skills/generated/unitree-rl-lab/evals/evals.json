@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-rl-lab",
+  "test_cases": [
+    {"name": "rl", "input": "Train Unitree on IsaacLab", "assertions": ["IsaacLab", "policy"]},
+    {"name": "lab", "input": "Use Unitree RL Lab", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "unitree-rl-lab", "assertions": ["activates", "workflow"]}
+  ]
+}

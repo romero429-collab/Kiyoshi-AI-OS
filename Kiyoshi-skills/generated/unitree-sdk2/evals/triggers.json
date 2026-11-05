@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-sdk2",
+  "test_cases": [
+    {"input": "Unitree SDK2", "should_trigger": true},
+    {"input": "unitree-sdk2", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

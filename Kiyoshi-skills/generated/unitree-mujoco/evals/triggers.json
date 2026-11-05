@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-mujoco",
+  "test_cases": [
+    {"input": "Unitree MuJoCo", "should_trigger": true},
+    {"input": "unitree-mujoco", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

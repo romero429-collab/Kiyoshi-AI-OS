@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-sdk2",
+  "test_cases": [
+    {"name": "control", "input": "Control Unitree with SDK2", "assertions": ["commands", "connection"]},
+    {"name": "sdk", "input": "Use Unitree SDK v2", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "unitree-sdk2", "assertions": ["activates", "workflow"]}
+  ]
+}

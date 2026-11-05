@@ -1,0 +1,8 @@
+{
+  "skill": "unitree-mujoco",
+  "test_cases": [
+    {"name": "sim", "input": "Simulate Unitree in MuJoCo", "assertions": ["physics", "step"]},
+    {"name": "mujoco", "input": "Use Unitree MuJoCo", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "unitree-mujoco", "assertions": ["activates", "workflow"]}
+  ]
+}

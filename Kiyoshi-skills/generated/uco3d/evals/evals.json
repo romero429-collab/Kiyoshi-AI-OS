@@ -1,0 +1,8 @@
+{
+  "skill": "uco3d",
+  "test_cases": [
+    {"name": "dataset", "input": "Load uncommon 3D objects from UCO3D", "assertions": ["3D", "objects"]},
+    {"name": "sample", "input": "Sample from UCO3D", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "uco3d", "assertions": ["activates", "workflow"]}
+  ]
+}

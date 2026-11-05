@@ -1,0 +1,8 @@
+{
+  "skill": "meshrcnn",
+  "test_cases": [
+    {"name": "mesh", "input": "Reconstruct meshes with Mesh R-CNN", "assertions": ["3D", "meshes"]},
+    {"name": "rcnn", "input": "Run Mesh R-CNN", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "meshrcnn", "assertions": ["activates", "workflow"]}
+  ]
+}

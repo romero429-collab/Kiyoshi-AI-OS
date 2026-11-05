@@ -1,15 +1,17 @@
 ---
 name: unitree-mujoco
-description: "Unitree MuJoCo. Use when building MuJoCo simulation for Unitree robots or physics-based control skills."
+description: "Unitree MuJoCo simulation modeled from unitreerobotics/unitree_mujoco. Use when building physics sim skills."
 type: tool
 lifecycle: active
 ---
 
-# Unitree MuJoCo
+# Unitree MuJoCo — Physics Simulation
 
-Pilot skill derived from https://github.com/unitreerobotics/unitree_mujoco.
+Modeled from https://github.com/unitreerobotics/unitree_mujoco. Remade as a Kiyoshi-owned sim tool.
 
 ## Workflow
-1. Reference the source repository for Unitree MuJoCo patterns.
-2. Map to physics simulation tools under Kiyoshi-skills.
-3. Enforce contractive simulation dynamics (negative Lyapunov exponents on physics steps).
+1. Load Unitree model in MuJoCo.
+2. Step physics simulation.
+3. Control under contractive steps (λ_max < 0).
+
+See inventory entry for source metadata.

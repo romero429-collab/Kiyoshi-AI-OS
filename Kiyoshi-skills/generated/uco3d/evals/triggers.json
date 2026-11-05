@@ -1,0 +1,8 @@
+{
+  "skill": "uco3d",
+  "test_cases": [
+    {"input": "uncommon objects 3D", "should_trigger": true},
+    {"input": "uco3d", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}
