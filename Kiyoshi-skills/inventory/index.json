@@ -5,7 +5,7 @@
   "forked_captured": 464,
   "total_captured": 764,
   "pilots_generated_count": 105,
-  "finalized_count": 100,
-  "generated_at": "2026-11-06T03:05:00Z",
-  "note": "Finalization continuing. 100 pilots now have modeled SKILL.md + evals. Personal skill-tree backpack for Kiyoshi. Continue finalizing remaining ~5."
+  "finalized_count": 105,
+  "generated_at": "2026-11-06T03:10:00Z",
+  "note": "Finalization of existing ~105 pilots complete. All have modeled SKILL.md + evals/evals.json + evals/triggers.json. Personal skill-tree backpack for Kiyoshi ready. Next step: extract into agent registry or continue generation of remaining starred/forked."
 }
