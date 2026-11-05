@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "gods_eye_view_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "gods_eye_view",
+)
+
+rust_binary(
+    name = "gods_eye_view",
+    srcs = ["src/main.rs"],
+    deps = [":gods_eye_view_lib"],
+)

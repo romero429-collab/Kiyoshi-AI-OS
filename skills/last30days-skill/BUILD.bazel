@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "last30days_skill_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "last30days_skill",
+)
+
+rust_binary(
+    name = "last30days_skill",
+    srcs = ["src/main.rs"],
+    deps = [":last30days_skill_lib"],
+)

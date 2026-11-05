@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "daily_stock_analysis_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "daily_stock_analysis",
+)
+
+rust_binary(
+    name = "daily_stock_analysis",
+    srcs = ["src/main.rs"],
+    deps = [":daily_stock_analysis_lib"],
+)
