@@ -1,17 +1,17 @@
 ---
 name: container
-description: "A tool for creating and running Linux containers using lightweight virtual machines on a Mac. Written in Swift, optimized for Apple silicon. Use when building container, VM, or Apple-silicon runtime skills."
+description: "Lightweight Linux containers on Apple silicon modeled from apple/container. Use when building Mac container skills."
 type: tool
 lifecycle: active
 ---
 
-# Container
+# Container — Apple Silicon Containers
 
-Pilot skill derived from https://github.com/apple/container.
+Modeled from https://github.com/apple/container. Remade as a Kiyoshi-owned runtime tool.
 
 ## Workflow
-1. Reference the source repository for lightweight Linux container patterns on Apple silicon.
-2. Map to container/runtime tools under Kiyoshi-skills.
-3. Enforce contractive virtualization dynamics (negative Lyapunov exponents on VM lifecycle).
+1. Create lightweight VM-based Linux container.
+2. Run workload optimized for Apple silicon.
+3. Manage lifecycle under contractive virtualization (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

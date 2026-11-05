@@ -1,0 +1,8 @@
+{
+  "skill": "container",
+  "test_cases": [
+    {"input": "Linux containers on Mac", "should_trigger": true},
+    {"input": "apple container", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "herdr",
+  "test_cases": [
+    {"input": "coding agent runtime", "should_trigger": true},
+    {"input": "herdr", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

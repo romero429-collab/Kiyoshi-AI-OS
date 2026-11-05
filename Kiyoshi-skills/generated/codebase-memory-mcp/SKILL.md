@@ -1,17 +1,17 @@
 ---
 name: codebase-memory-mcp
-description: "Local code intelligence for developers and AI agents. Connect code, docs and infrastructure in a persistent graph, with CBM Lens, MCP tools, agent integration. Use when building local code intelligence or MCP graph skills."
+description: "Local code intelligence graph modeled from DeusData/codebase-memory-mcp. Use when building persistent code memory skills."
 type: knowledge
 lifecycle: active
 ---
 
-# Codebase Memory MCP
+# Codebase Memory MCP — Persistent Graph
 
-Pilot skill derived from https://github.com/DeusData/codebase-memory-mcp.
+Modeled from https://github.com/DeusData/codebase-memory-mcp. Remade as a Kiyoshi-owned memory tool.
 
 ## Workflow
-1. Reference the source repository for local code intelligence and persistent graph patterns.
-2. Map to MCP-based code memory tools under Kiyoshi-skills.
-3. Enforce contractive graph-persistence dynamics (negative Lyapunov exponents on memory updates).
+1. Index code, docs, and infrastructure into persistent graph.
+2. Expose via MCP tools.
+3. Update under contractive persistence (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

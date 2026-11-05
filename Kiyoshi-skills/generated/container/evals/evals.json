@@ -1,0 +1,8 @@
+{
+  "skill": "container",
+  "test_cases": [
+    {"name": "run", "input": "Run Linux container on Mac", "assertions": ["VM", "Apple silicon"]},
+    {"name": "manage", "input": "Manage container lifecycle", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "apple container", "assertions": ["activates", "workflow"]}
+  ]
+}

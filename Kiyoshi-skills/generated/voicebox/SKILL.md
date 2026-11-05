@@ -1,17 +1,17 @@
 ---
 name: voicebox
-description: "The open-source AI voice studio. Clone, dictate, create. Use when building AI voice cloning, dictation, or audio creation skills."
+description: "Open-source AI voice studio modeled from jamiepine/voicebox. Use when building voice cloning or dictation skills."
 type: tool
 lifecycle: active
 ---
 
-# Voicebox
+# Voicebox — AI Voice Studio
 
-Pilot skill derived from https://github.com/jamiepine/voicebox.
+Modeled from https://github.com/jamiepine/voicebox. Remade as a Kiyoshi-owned voice tool.
 
 ## Workflow
-1. Reference the source repository for AI voice studio patterns.
-2. Map to voice cloning and creation tools under Kiyoshi-skills.
-3. Enforce contractive audio-generation dynamics (negative Lyapunov exponents on synthesis steps).
+1. Accept text or reference audio.
+2. Clone, dictate, or create voice output.
+3. Return audio under contractive synthesis (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

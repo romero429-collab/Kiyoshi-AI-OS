@@ -1,0 +1,8 @@
+{
+  "skill": "freellmapi",
+  "test_cases": [
+    {"name": "route", "input": "Route LLM request through free providers", "assertions": ["multi-provider", "response"]},
+    {"name": "aggregate", "input": "Use freellmapi aggregation", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "freellmapi", "assertions": ["activates", "workflow"]}
+  ]
+}

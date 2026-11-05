@@ -1,0 +1,8 @@
+{
+  "skill": "freellmapi",
+  "test_cases": [
+    {"input": "free LLM providers", "should_trigger": true},
+    {"input": "freellmapi", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

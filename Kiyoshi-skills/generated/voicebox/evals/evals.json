@@ -1,0 +1,8 @@
+{
+  "skill": "voicebox",
+  "test_cases": [
+    {"name": "clone", "input": "Clone a voice with voicebox", "assertions": ["audio output", "clone"]},
+    {"name": "dictate", "input": "Dictate text to speech", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "voicebox", "assertions": ["activates", "workflow"]}
+  ]
+}

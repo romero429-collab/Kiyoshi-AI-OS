@@ -1,0 +1,8 @@
+{
+  "skill": "codebase-memory-mcp",
+  "test_cases": [
+    {"name": "index", "input": "Build local code memory graph", "assertions": ["graph", "MCP"]},
+    {"name": "query", "input": "Query codebase memory", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "codebase-memory-mcp", "assertions": ["activates", "workflow"]}
+  ]
+}

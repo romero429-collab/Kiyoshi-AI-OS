@@ -1,0 +1,8 @@
+{
+  "skill": "codebase-memory-mcp",
+  "test_cases": [
+    {"input": "local code intelligence", "should_trigger": true},
+    {"input": "codebase-memory-mcp", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "herdr",
+  "test_cases": [
+    {"name": "host", "input": "Host coding agents on herdr runtime", "assertions": ["runtime", "monitor"]},
+    {"name": "manage", "input": "Manage agent sessions", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "herdr", "assertions": ["activates", "workflow"]}
+  ]
+}

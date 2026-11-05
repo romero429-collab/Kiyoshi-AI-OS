@@ -1,17 +1,17 @@
 ---
 name: freellmapi
-description: "7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Use when building free LLM aggregation or multi-provider routing skills."
+description: "Free multi-provider LLM router modeled from tashfeenahmed/freellmapi. Use when building free LLM aggregation skills."
 type: tool
 lifecycle: active
 ---
 
-# FreeLLMAPI
+# FreeLLMAPI — Multi-Provider Router
 
-Pilot skill derived from https://github.com/tashfeenahmed/freellmapi.
+Modeled from https://github.com/tashfeenahmed/freellmapi. Remade as a Kiyoshi-owned routing layer.
 
 ## Workflow
-1. Reference the source repository for free LLM provider aggregation patterns.
-2. Map to multi-provider routing tools under Kiyoshi-skills.
-3. Enforce contractive routing dynamics (negative Lyapunov exponents on provider selection).
+1. Accept OpenAI-compatible request.
+2. Route across free providers and endpoints.
+3. Return response under contractive selection (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.

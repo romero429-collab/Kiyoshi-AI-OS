@@ -1,0 +1,8 @@
+{
+  "skill": "voicebox",
+  "test_cases": [
+    {"input": "AI voice studio", "should_trigger": true},
+    {"input": "voicebox", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

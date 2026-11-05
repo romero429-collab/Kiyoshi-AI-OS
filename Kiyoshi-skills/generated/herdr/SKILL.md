@@ -1,17 +1,17 @@
 ---
 name: herdr
-description: "the runtime your coding agents live on. Use when building agent runtimes, hosting environments, or coding-agent infrastructure skills."
+description: "Coding-agent runtime modeled from herdrdev/herdr. Use when building agent hosting skills."
 type: tool
 lifecycle: active
 ---
 
-# Herdr
+# Herdr — Agent Runtime
 
-Pilot skill derived from https://github.com/herdrdev/herdr.
+Modeled from https://github.com/herdrdev/herdr. Remade as a Kiyoshi-owned hosting layer.
 
 ## Workflow
-1. Reference the source repository for coding-agent runtime patterns.
-2. Map to agent hosting and runtime tools under Kiyoshi-skills.
-3. Enforce contractive runtime dynamics (negative Lyapunov exponents on agent lifecycle).
+1. Spin up runtime for coding agents.
+2. Host and monitor sessions.
+3. Manage under contractive lifecycle (λ_max < 0).
 
-See inventory entry for full metadata.
+See inventory entry for source metadata.
