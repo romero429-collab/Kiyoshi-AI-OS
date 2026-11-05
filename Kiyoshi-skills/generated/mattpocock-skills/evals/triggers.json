@@ -1,0 +1,8 @@
+{
+  "skill": "mattpocock-skills",
+  "test_cases": [
+    {"input": "apply mattpocock skill patterns", "should_trigger": true},
+    {"input": "opinionated agent skills", "should_trigger": true},
+    {"input": "unrelated cooking recipe", "should_trigger": false}
+  ]
+}

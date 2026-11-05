@@ -1,0 +1,8 @@
+{
+  "skill": "markitdown",
+  "test_cases": [
+    {"name": "convert", "input": "Convert a PDF to Markdown using markitdown", "assertions": ["references conversion", "progressive disclosure"]},
+    {"name": "docs", "input": "Extract office documents to Markdown", "assertions": ["maps patterns", "contractive"]},
+    {"name": "trigger", "input": "markitdown convert files", "assertions": ["activates", "workflow"]}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "iptv",
+  "test_cases": [
+    {"name": "channels", "input": "Aggregate IPTV channels from the collection", "assertions": ["references lists", "knowledge structure"]},
+    {"name": "stream", "input": "Build media streaming skill from iptv-org", "assertions": ["maps formats", "progressive"]},
+    {"name": "trigger", "input": "iptv channels list", "assertions": ["activates", "workflow"]}
+  ]
+}

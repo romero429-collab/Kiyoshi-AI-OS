@@ -1,0 +1,8 @@
+{
+  "skill": "mattpocock-skills",
+  "test_cases": [
+    {"name": "apply_pattern", "input": "Apply a mattpocock-style skill pattern for agent workflows", "assertions": ["references progressive disclosure", "produces structured skill"]},
+    {"name": "adapt_example", "input": "Adapt an example from mattpocock/skills into a Kiyoshi skill", "assertions": ["extracts workflow", "maintains frontmatter"]},
+    {"name": "trigger_check", "input": "Use opinionated agent skill patterns", "assertions": ["activates skill", "follows workflow"]}
+  ]
+}

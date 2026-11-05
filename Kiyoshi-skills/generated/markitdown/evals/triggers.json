@@ -1,0 +1,8 @@
+{
+  "skill": "markitdown",
+  "test_cases": [
+    {"input": "convert document to markdown", "should_trigger": true},
+    {"input": "markitdown pdf", "should_trigger": true},
+    {"input": "stock prices", "should_trigger": false}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "skill": "iptv",
+  "test_cases": [
+    {"input": "iptv channel list", "should_trigger": true},
+    {"input": "public iptv streams", "should_trigger": true},
+    {"input": "recipe for cake", "should_trigger": false}
+  ]
+}

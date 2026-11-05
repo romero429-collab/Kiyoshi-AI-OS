@@ -1,0 +1,8 @@
+{
+  "skill": "hermes-agent",
+  "test_cases": [
+    {"name": "growth_pattern", "input": "Design a self-improving agent based on hermes-agent", "assertions": ["maps growth dynamics", "uses negative Lyapunov"]},
+    {"name": "adapt", "input": "Extend agent adaptation from NousResearch/hermes-agent", "assertions": ["extracts patterns", "integrates with Kiyoshi"]},
+    {"name": "trigger", "input": "agent that grows with you", "assertions": ["activates", "follows workflow"]}
+  ]
+}

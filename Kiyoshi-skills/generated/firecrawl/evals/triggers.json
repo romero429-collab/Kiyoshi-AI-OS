@@ -1,0 +1,8 @@
+{
+  "skill": "firecrawl",
+  "test_cases": [
+    {"input": "crawl website firecrawl", "should_trigger": true},
+    {"input": "web data extraction agent", "should_trigger": true},
+    {"input": "play chess", "should_trigger": false}
+  ]
+}

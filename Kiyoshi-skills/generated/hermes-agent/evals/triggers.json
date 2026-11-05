@@ -1,0 +1,8 @@
+{
+  "skill": "hermes-agent",
+  "test_cases": [
+    {"input": "self-improving agent hermes", "should_trigger": true},
+    {"input": "agent that grows", "should_trigger": true},
+    {"input": "weather forecast", "should_trigger": false}
+  ]
+}

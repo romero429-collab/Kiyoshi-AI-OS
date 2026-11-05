@@ -1,0 +1,8 @@
+{
+  "skill": "firecrawl",
+  "test_cases": [
+    {"name": "crawl", "input": "Extract data from a website using firecrawl patterns", "assertions": ["references crawling", "contractive ingestion"]},
+    {"name": "web_data", "input": "Supercharge agents with web data", "assertions": ["maps extraction", "skill scripts"]},
+    {"name": "trigger", "input": "firecrawl web scraping", "assertions": ["activates", "follows workflow"]}
+  ]
+}
