@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "stop_slop_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "stop_slop",
+)
+
+rust_binary(
+    name = "stop_slop",
+    srcs = ["src/main.rs"],
+    deps = [":stop_slop_lib"],
+)

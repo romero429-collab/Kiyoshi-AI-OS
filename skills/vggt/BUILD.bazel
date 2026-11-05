@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "vggt_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "vggt",
+)
+
+rust_binary(
+    name = "vggt",
+    srcs = ["src/main.rs"],
+    deps = [":vggt_lib"],
+)
