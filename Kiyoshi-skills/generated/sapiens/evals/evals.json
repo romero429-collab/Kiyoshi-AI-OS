@@ -1,0 +1,8 @@
+{
+  "skill": "sapiens",
+  "test_cases": [
+    {"name": "human", "input": "Process human images with Sapiens", "assertions": ["high-res", "features"]},
+    {"name": "vision", "input": "Run high-resolution human model", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "sapiens", "assertions": ["activates", "workflow"]}
+  ]
+}

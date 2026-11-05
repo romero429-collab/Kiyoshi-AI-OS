@@ -1,15 +1,17 @@
 ---
 name: sapiens
-description: "High-resolution models for human tasks. Use when building high-resolution human understanding or vision skills."
+description: "High-resolution human models modeled from facebookresearch/sapiens. Use when building human vision skills."
 type: tool
 lifecycle: active
 ---
 
-# Sapiens
+# Sapiens — High-Res Human Vision
 
-Pilot skill derived from https://github.com/facebookresearch/sapiens.
+Modeled from https://github.com/facebookresearch/sapiens. Remade as a Kiyoshi-owned vision tool.
 
 ## Workflow
-1. Reference the source repository for high-resolution human model patterns.
-2. Map to human vision tools under Kiyoshi-skills.
-3. Enforce contractive resolution dynamics (negative Lyapunov exponents on feature extraction).
+1. Accept high-resolution human images.
+2. Extract features with Sapiens models.
+3. Process under contractive extraction (λ_max < 0).
+
+See inventory entry for source metadata.

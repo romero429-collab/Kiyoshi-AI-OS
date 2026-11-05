@@ -1,0 +1,8 @@
+{
+  "skill": "vjepa2",
+  "test_cases": [
+    {"input": "VJEPA2 video learning", "should_trigger": true},
+    {"input": "vjepa2", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

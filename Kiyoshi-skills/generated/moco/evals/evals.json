@@ -1,0 +1,8 @@
+{
+  "skill": "moco",
+  "test_cases": [
+    {"name": "contrast", "input": "Run MoCo contrastive learning", "assertions": ["embeddings", "loss"]},
+    {"name": "selfsup", "input": "Self-supervised vision with MoCo", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "moco", "assertions": ["activates", "workflow"]}
+  ]
+}

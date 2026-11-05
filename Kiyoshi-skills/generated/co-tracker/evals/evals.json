@@ -1,0 +1,8 @@
+{
+  "skill": "co-tracker",
+  "test_cases": [
+    {"name": "track", "input": "Track points in video with CoTracker", "assertions": ["trajectories", "points"]},
+    {"name": "correspond", "input": "Run video point tracking", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "co-tracker", "assertions": ["activates", "workflow"]}
+  ]
+}

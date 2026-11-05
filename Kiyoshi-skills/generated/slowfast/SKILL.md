@@ -1,15 +1,17 @@
 ---
 name: slowfast
-description: "PySlowFast: video understanding codebase from FAIR for reproducing state-of-the-art video models. Use when building video understanding or action recognition skills."
+description: "Video understanding codebase modeled from facebookresearch/SlowFast. Use when building action recognition skills."
 type: tool
 lifecycle: active
 ---
 
-# SlowFast
+# SlowFast — Video Understanding
 
-Pilot skill derived from https://github.com/facebookresearch/SlowFast.
+Modeled from https://github.com/facebookresearch/SlowFast. Remade as a Kiyoshi-owned video tool.
 
 ## Workflow
-1. Reference the source repository for video understanding patterns.
-2. Map to video model tools under Kiyoshi-skills.
-3. Enforce contractive video dynamics (negative Lyapunov exponents on temporal modeling).
+1. Ingest video clips.
+2. Run SlowFast temporal modeling.
+3. Classify under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

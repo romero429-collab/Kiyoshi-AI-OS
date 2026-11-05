@@ -1,15 +1,17 @@
 ---
 name: moco
-description: "PyTorch implementation of MoCo. Use when building contrastive learning or self-supervised vision skills."
+description: "Contrastive learning (MoCo) modeled from facebookresearch/moco. Use when building self-supervised vision skills."
 type: tool
 lifecycle: active
 ---
 
-# MoCo
+# MoCo — Contrastive Learning
 
-Pilot skill derived from https://github.com/facebookresearch/moco.
+Modeled from https://github.com/facebookresearch/moco. Remade as a Kiyoshi-owned self-supervised tool.
 
 ## Workflow
-1. Reference the source repository for MoCo contrastive learning patterns.
-2. Map to self-supervised vision tools under Kiyoshi-skills.
-3. Enforce contractive contrastive dynamics (negative Lyapunov exponents on embedding alignment).
+1. Prepare image batches.
+2. Train or infer with MoCo contrastive loss.
+3. Align embeddings under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

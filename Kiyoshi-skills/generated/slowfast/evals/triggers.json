@@ -1,0 +1,8 @@
+{
+  "skill": "slowfast",
+  "test_cases": [
+    {"input": "video understanding SlowFast", "should_trigger": true},
+    {"input": "slowfast", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

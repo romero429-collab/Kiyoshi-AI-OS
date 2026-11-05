@@ -1,15 +1,17 @@
 ---
 name: co-tracker
-description: "CoTracker is a model for tracking any point (pixel) on a video. Use when building point tracking or video correspondence skills."
+description: "Point tracking in video modeled from facebookresearch/co-tracker. Use when building correspondence skills."
 type: tool
 lifecycle: active
 ---
 
-# CoTracker
+# CoTracker — Point Tracking
 
-Pilot skill derived from https://github.com/facebookresearch/co-tracker.
+Modeled from https://github.com/facebookresearch/co-tracker. Remade as a Kiyoshi-owned tracking tool.
 
 ## Workflow
-1. Reference the source repository for point tracking patterns.
-2. Map to video tracking tools under Kiyoshi-skills.
-3. Enforce contractive tracking dynamics (negative Lyapunov exponents on point trajectories).
+1. Select points on video frames.
+2. Track across time with CoTracker.
+3. Output trajectories under contractive dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

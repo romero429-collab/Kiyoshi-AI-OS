@@ -1,0 +1,8 @@
+{
+  "skill": "vjepa2",
+  "test_cases": [
+    {"name": "video", "input": "Self-supervised learning on video with VJEPA2", "assertions": ["temporal", "predict"]},
+    {"name": "jepa", "input": "Run VJEPA2 model", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "vjepa2", "assertions": ["activates", "workflow"]}
+  ]
+}

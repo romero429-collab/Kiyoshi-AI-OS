@@ -1,0 +1,8 @@
+{
+  "skill": "co-tracker",
+  "test_cases": [
+    {"input": "track any point in video", "should_trigger": true},
+    {"input": "co-tracker", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

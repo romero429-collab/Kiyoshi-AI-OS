@@ -1,15 +1,17 @@
 ---
 name: vjepa2
-description: "PyTorch code and models for VJEPA2 self-supervised learning from video. Use when building video self-supervised learning skills."
+description: "Self-supervised video learning modeled from facebookresearch/vjepa2. Use when building video JEPA skills."
 type: tool
 lifecycle: active
 ---
 
-# VJEPA2
+# VJEPA2 — Video Self-Supervised
 
-Pilot skill derived from https://github.com/facebookresearch/vjepa2.
+Modeled from https://github.com/facebookresearch/vjepa2. Remade as a Kiyoshi-owned video tool.
 
 ## Workflow
-1. Reference the source repository for VJEPA2 video patterns.
-2. Map to self-supervised video tools under Kiyoshi-skills.
-3. Enforce contractive temporal dynamics (negative Lyapunov exponents on video prediction).
+1. Ingest video sequences.
+2. Train or predict with VJEPA2.
+3. Update under contractive temporal dynamics (λ_max < 0).
+
+See inventory entry for source metadata.

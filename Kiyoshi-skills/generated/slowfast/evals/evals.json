@@ -1,0 +1,8 @@
+{
+  "skill": "slowfast",
+  "test_cases": [
+    {"name": "understand", "input": "Understand video with SlowFast", "assertions": ["temporal", "classify"]},
+    {"name": "action", "input": "Run action recognition", "assertions": ["contractive", "owned"]},
+    {"name": "trigger", "input": "slowfast", "assertions": ["activates", "workflow"]}
+  ]
+}

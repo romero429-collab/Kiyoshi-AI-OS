@@ -1,0 +1,8 @@
+{
+  "skill": "sapiens",
+  "test_cases": [
+    {"input": "high-resolution human models", "should_trigger": true},
+    {"input": "sapiens", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}

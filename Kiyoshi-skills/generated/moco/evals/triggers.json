@@ -1,0 +1,8 @@
+{
+  "skill": "moco",
+  "test_cases": [
+    {"input": "MoCo contrastive learning", "should_trigger": true},
+    {"input": "moco", "should_trigger": true},
+    {"input": "unrelated", "should_trigger": false}
+  ]
+}
