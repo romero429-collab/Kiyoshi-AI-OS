@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "sam_3d_objects_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "sam_3d_objects",
+)
+
+rust_binary(
+    name = "sam_3d_objects",
+    srcs = ["src/main.rs"],
+    deps = [":sam_3d_objects_lib"],
+)

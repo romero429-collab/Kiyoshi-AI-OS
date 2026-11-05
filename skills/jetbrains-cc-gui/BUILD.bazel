@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "jetbrains_cc_gui_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "jetbrains_cc_gui",
+)
+
+rust_binary(
+    name = "jetbrains_cc_gui",
+    srcs = ["src/main.rs"],
+    deps = [":jetbrains_cc_gui_lib"],
+)

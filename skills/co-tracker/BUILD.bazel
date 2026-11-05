@@ -1,0 +1,15 @@
+load("@rules_rust//rust:defs.bzl", "rust_library", "rust_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+rust_library(
+    name = "co_tracker_lib",
+    srcs = ["src/lib.rs"],
+    crate_name = "co_tracker",
+)
+
+rust_binary(
+    name = "co_tracker",
+    srcs = ["src/main.rs"],
+    deps = [":co_tracker_lib"],
+)
