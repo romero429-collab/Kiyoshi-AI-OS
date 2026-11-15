@@ -24,6 +24,7 @@ Operational-space torque is obtained by Jacobian transpose of the attenuated wre
 - `kiyoshi_biped.urdf` — symmetrical 6-DoF Morphite morphology with fractal inertial tensors.
 - `core.py` — dual-quaternion algebra and Protective Hull.
 - `pybullet_bridge.py` — torque-control interface (to be completed locally with pybullet).
+- `robotics-hal/` — OM1-inspired modular HAL: Natural Language Data Bus, multi-LLM decision, architecture (see README inside).
 
 ## Next
 Full model-based impedance (\(M(q)\), Coriolis, gravity compensation) and null-space projection once the morphological plant is locked.
