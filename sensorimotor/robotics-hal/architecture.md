@@ -1,19 +1,26 @@
-# Robotics HAL Architecture (OM1-derived)
+# Systems Architecture — Robotics HAL
 
-## Layers
-1. Raw Sensor Layer — cameras, LiDAR, IMU, microphones, battery.
-2. Captioning / Compression — VLM / ASR produce text events.
-3. Natural Language Data Bus (NLDB) — shared discrete token stream.
-4. Data Fuser — merges into context window.
-5. Decision Layer
-   - Fast Action LLM (local, latency-bounded).
-   - Core LLM (cloud/planning).
-   - Coach LLM (review).
-6. HAL — intent → robot commands (Zenoh/ROS2-style or direct).
-7. Actuation — plant (see dual-quaternion biped in parent).
+## 1. Physical Plant
+Dual-quaternion kinematics on \(\mathbb{D}\mathbb{H}_1\) with Protective Hull contraction gain \(\kappa(k)\). Source of truth: `../core.py`.
 
-## Mode Machine
-Discrete states with guarded transitions: Welcome → Conversation | SLAM | Navigation | Guard.
+## 2. Agent Discrete Loop
+1. SensorFrame \( y_k \)
+2. NLDB compression → bounded event list
+3. Context window
+4. MultiLLMDecision (Fast path ≤ 300 ms target, Core fallback)
+5. ModeMachine transition (guarded by confidence)
+6. HAL maps Decision → PlantCommand with \(\kappa\)-attenuation
+7. Plant step
 
-## Stability Note
-Under high sensor rates or network jitter the delay-augmented Jacobian may have positive Lyapunov exponent; Fast Action path is the primary contraction mechanism.
+## 3. Stability
+Variable LLM latency enters as a time-varying delay. The Fast Action path supplies local contraction when the largest error Lyapunov exponent would otherwise become positive. Hull gain \(\kappa(k)\) further attenuates commands under high error or delay.
+
+## 4. Interfaces
+- Inputs: SensorFrame
+- Outputs: PlantCommand (velocity / pose / torque stub)
+- Observability: `runtime.status()`, event count, current mode
+
+## 5. Extension Points
+- Replace stub LLM calls with real endpoints
+- Bind PlantCommand to pybullet / ROS2 / Zenoh bridge
+- Add Coach LLM periodic review

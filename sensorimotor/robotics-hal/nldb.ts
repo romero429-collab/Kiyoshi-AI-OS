@@ -1,40 +1,58 @@
 /**
- * Natural Language Data Bus sketch for Kiyoshi robotics.
- * Compresses sensor frames into discrete language events.
+ * Natural Language Data Bus.
+ * Compresses multimodal sensor frames into a bounded discrete event stream.
  */
 
-export interface SensorFrame {
-  timestamp: number;
-  vision?: string; // VLM caption
-  audio?: string;  // ASR text
-  lidar?: string;  // spatial summary
-  battery?: number;
-}
-
-export interface NLEvent {
-  t: number;
-  text: string;
-  source: 'vision' | 'audio' | 'lidar' | 'system';
-}
+import { SensorFrame, NLEvent } from './types';
 
 export class NaturalLanguageDataBus {
   private events: NLEvent[] = [];
+  private readonly maxEvents = 256;
 
   ingest(frame: SensorFrame): NLEvent[] {
     const out: NLEvent[] = [];
-    if (frame.vision) out.push({ t: frame.timestamp, text: frame.vision, source: 'vision' });
-    if (frame.audio) out.push({ t: frame.timestamp, text: frame.audio, source: 'audio' });
-    if (frame.lidar) out.push({ t: frame.timestamp, text: frame.lidar, source: 'lidar' });
+    if (frame.vision) {
+      out.push({ t: frame.timestamp, text: frame.vision, source: 'vision' });
+    }
+    if (frame.audio) {
+      out.push({ t: frame.timestamp, text: frame.audio, source: 'audio' });
+    }
+    if (frame.lidar) {
+      out.push({ t: frame.timestamp, text: frame.lidar, source: 'lidar' });
+    }
     if (frame.battery !== undefined) {
-      out.push({ t: frame.timestamp, text: `Battery at ${frame.battery}%`, source: 'system' });
+      out.push({
+        t: frame.timestamp,
+        text: `Battery ${frame.battery.toFixed(1)}%`,
+        source: 'system',
+      });
+    }
+    if (frame.pose) {
+      out.push({
+        t: frame.timestamp,
+        text: `Pose norm ${Math.hypot(...frame.pose).toFixed(3)}`,
+        source: 'pose',
+      });
     }
     this.events.push(...out);
-    // Keep last N for context window
-    if (this.events.length > 256) this.events = this.events.slice(-256);
+    if (this.events.length > this.maxEvents) {
+      this.events = this.events.slice(-this.maxEvents);
+    }
     return out;
   }
 
   recent(n = 16): string {
-    return this.events.slice(-n).map(e => `[${e.source}] ${e.text}`).join('\n');
+    return this.events
+      .slice(-n)
+      .map((e) => `[${e.source}@${e.t}] ${e.text}`)
+      .join('\n');
+  }
+
+  clear(): void {
+    this.events = [];
+  }
+
+  get length(): number {
+    return this.events.length;
   }
 }

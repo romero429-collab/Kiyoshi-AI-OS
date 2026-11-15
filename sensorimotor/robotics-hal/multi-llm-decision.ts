@@ -1,28 +1,35 @@
 /**
- * Multi-LLM decision sketch inspired by OM1.
- * Fast Action for low latency, Core for planning.
+ * Multi-LLM decision layer.
+ * Fast Action path for latency-critical contraction; Core for planning.
  */
 
-export interface Decision {
-  action: string;
-  confidence: number;
-  source: 'fast' | 'core' | 'coach';
-}
+import { Decision, Mode } from './types';
 
 export class MultiLLMDecision {
-  async decide(context: string): Promise<Decision> {
-    // Placeholder: in production route to local small model vs cloud.
-    const fast = await this.fastAction(context);
-    if (fast.confidence > 0.7) return fast;
-    return this.core(context);
+  async decide(context: string, currentMode: Mode): Promise<Decision> {
+    const fast = this.fastAction(context, currentMode);
+    if (fast.confidence >= 0.65) return fast;
+    return this.core(context, currentMode);
   }
 
-  private async fastAction(ctx: string): Promise<Decision> {
-    // ~300 ms local path
-    return { action: 'hold', confidence: 0.5, source: 'fast' };
+  private fastAction(ctx: string, mode: Mode): Decision {
+    const lower = ctx.toLowerCase();
+    if (lower.includes('stop') || lower.includes('halt') || lower.includes('emergency')) {
+      return { action: 'emergency_stop', confidence: 0.95, source: 'fast', modeHint: mode };
+    }
+    if (lower.includes('battery') && lower.includes('low')) {
+      return { action: 'return_to_charge', confidence: 0.8, source: 'fast' };
+    }
+    return { action: 'hold_position', confidence: 0.4, source: 'fast' };
   }
 
-  private async core(ctx: string): Promise<Decision> {
-    return { action: 'navigate_to_goal', confidence: 0.8, source: 'core' };
+  private core(ctx: string, mode: Mode): Decision {
+    if (mode === 'Navigation' || mode === 'SLAM') {
+      return { action: 'follow_path', confidence: 0.75, source: 'core', modeHint: mode };
+    }
+    if (mode === 'Guard') {
+      return { action: 'patrol_loop', confidence: 0.7, source: 'core' };
+    }
+    return { action: 'converse', confidence: 0.6, source: 'core', modeHint: 'Conversation' };
   }
 }
